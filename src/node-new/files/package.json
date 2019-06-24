@@ -1,0 +1,14 @@
+{
+  "name": "<%= dasherize(name) %>",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "author": "<%= author %>",
+  "license": "MIT",
+  "scripts": {
+    "prepublish": "yarn build",
+    "build": "tsc --build .",
+    "watch": "tsc --watch -p ."
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}

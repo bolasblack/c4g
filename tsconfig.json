@@ -1,0 +1,11 @@
+{
+  "extends": "@c4605/toolconfs/tsconfig-node",
+  "compilerOptions": {
+    "target": "es6",
+    // some angular-cli function type not strict matched
+    "strictFunctionTypes": false,
+    "types": ["jasmine", "node"]
+  },
+  "include": ["src/**/*"],
+  "exclude": ["src/*/files/**/*"]
+}
