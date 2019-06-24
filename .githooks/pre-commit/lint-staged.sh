@@ -1,0 +1,1 @@
+../../node_modules/@c4605/toolconfs/.githooks/pre-commit/lint-staged-prettier.sh

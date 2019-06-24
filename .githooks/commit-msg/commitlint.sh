@@ -1,0 +1,1 @@
+../../node_modules/@c4605/toolconfs/.githooks/commit-msg/commitlint.sh

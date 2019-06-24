@@ -1,0 +1,10 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "node-new": {
+      "description": "Create a new node project",
+      "factory": "./node-new/index#main",
+      "schema": "./node-new/schema.json"
+    }
+  }
+}
