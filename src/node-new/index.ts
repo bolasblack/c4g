@@ -4,7 +4,6 @@ import {
   apply,
   mergeWith,
   move,
-  partitionApplyMerge,
   template,
   url,
   chain,
@@ -24,14 +23,11 @@ export function main(options: Options): Rule {
     addDependencies(options),
     mergeWith(
       apply(url('./files'), [
-        partitionApplyMerge(
-          p => !/\/src\/.*?\/files\//.test(p),
-          template({
-            ...options,
-            dot: '.',
-            dasherize: strings.dasherize,
-          }),
-        ),
+        template({
+          ...options,
+          dot: '.',
+          dasherize: strings.dasherize,
+        }),
         move(options.name),
       ]),
     ),

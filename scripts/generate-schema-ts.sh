@@ -6,5 +6,10 @@ schemaFilenameToTsFilename() {
 }
 
 for f in ./src/**/schema.json; do
-  yarn quicktype -s schema $f -l ts --just-types -o "$(schemaFilenameToTsFilename $f)"
+  yarn quicktype \
+       -s schema $f \
+       -l ts \
+       -o "$(schemaFilenameToTsFilename $f)" \
+       --nice-property-names \
+       --just-types
 done

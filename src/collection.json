@@ -5,6 +5,11 @@
       "description": "Create a new node project",
       "factory": "./node-new/index#main",
       "schema": "./node-new/schema.json"
+    },
+    "jest-install": {
+      "description": "Add jest support to project",
+      "factory": "./jest-install/index#main",
+      "schema": "./jest-install/schema.json"
     }
   }
 }

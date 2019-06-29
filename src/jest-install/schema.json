@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "SchematicsSchematicSchema",
+  "title": "Schematic Options Schema",
+  "type": "object",
+  "properties": {
+    "react": {
+      "type": "boolean",
+      "default": false,
+      "description": "Also add React support"
+    }
+  },
+  "required": []
+}
