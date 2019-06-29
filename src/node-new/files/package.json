@@ -1,8 +1,8 @@
 {
   "name": "<%= dasherize(name) %>",
   "version": "0.1.0",
-  "main": "lib/index.js",
-  "author": "<%= author %>",
+  "main": "lib/index.js",<% if (author) { %>
+  "author": "<%= author %>",<% } %>
   "license": "MIT",
   "scripts": {
     "prepublish": "yarn build",

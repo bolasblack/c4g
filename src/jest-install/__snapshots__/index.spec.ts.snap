@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`jest-install support \`react\` option: file content: /jest.config.js 1`] = `
+"module.exports = {
+  transform: {
+    '^.+\\\\\\\\.jsx?$': 'babel-jest',
+    '^.+\\\\\\\\.tsx?$': 'ts-jest',
+  },
+  snapshotSerializers: [
+    'enzyme-to-json/serializer',
+  ],
+  moduleNameMapper: {
+    '\\\\\\\\.(css|less|scss)$': 'identity-obj-proxy',
+  },
+  testMatch: [
+    '**/?(*.)+(spec|test).ts?(x)',
+  ],
+  testPathIgnorePatterns: [
+    '/node_modules/',
+  ],
+  moduleFileExtensions: [
+    'ts',
+    'tsx',
+    'js',
+    'jsx',
+    'json',
+    'node',
+    'html',
+  ],
+}
+"
+`;
+
+exports[`jest-install support \`react\` option: file structure 1`] = `
+Array [
+  "/jest.config.js",
+]
+`;
+
+exports[`jest-install support \`react\` option: rule tasks 1`] = `
+Array [
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "jest",
+        "jest-cli",
+        "ts-jest",
+        "@types/jest",
+        "enzyme",
+        "enzyme-to-json",
+        "enzyme-adapter-react-16",
+        "identity-obj-proxy",
+      ],
+      "type": "dev",
+      "workingDirectory": "",
+    },
+  },
+]
+`;
+
+exports[`jest-install works: file content: /jest.config.js 1`] = `
+"module.exports = {
+  transform: {
+    '^.+\\\\\\\\.js$': 'babel-jest',
+    '^.+\\\\\\\\.ts$': 'ts-jest',
+  },
+  testMatch: [
+    '**/?(*.)+(spec|test).ts',
+  ],
+  testPathIgnorePatterns: [
+    '/node_modules/',
+  ],
+  moduleFileExtensions: [
+    'ts',
+    'js',
+    'json',
+    'node',
+  ],
+}
+"
+`;
+
+exports[`jest-install works: file structure 1`] = `
+Array [
+  "/jest.config.js",
+]
+`;
+
+exports[`jest-install works: rule tasks 1`] = `
+Array [
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "jest",
+        "jest-cli",
+        "ts-jest",
+        "@types/jest",
+      ],
+      "type": "dev",
+      "workingDirectory": "",
+    },
+  },
+]
+`;
