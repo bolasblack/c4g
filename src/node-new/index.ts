@@ -7,19 +7,25 @@ import {
   template,
   url,
   chain,
+  noop,
+  externalSchematic,
 } from '@angular-devkit/schematics'
 import { Schema as Options } from './schema'
 import {
   NodePackageInstallTask,
   NodePackageInstallTaskExecutor,
 } from '../tasks/NodePackageInstall'
+import { Options as InstallJestOptions } from '../jest-install'
 
 export { Options }
 
 export function main(options: Options): Rule {
-  // TODO: jest setup
-
   return chain([
+    options.jest
+      ? externalSchematic('c4g', 'jest-install', {
+          cwd: options.name,
+        } as InstallJestOptions)
+      : noop,
     addDependencies(options),
     mergeWith(
       apply(url('./files'), [

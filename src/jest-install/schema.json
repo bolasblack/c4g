@@ -8,6 +8,11 @@
       "type": "boolean",
       "default": false,
       "description": "Also add React support"
+    },
+    "cwd": {
+      "type": "string",
+      "default": ".",
+      "description": "Specify the schematic execute cwd relative to current cwd"
     }
   },
   "required": []

@@ -6,6 +6,7 @@ import {
   template,
   url,
   chain,
+  move,
 } from '@angular-devkit/schematics'
 import { Schema as Options } from './schema'
 import {
@@ -15,7 +16,7 @@ import {
 
 export { Options }
 
-type FinalOptions = Required<Options>
+type CompletedOptions = Required<Options>
 
 export function main(_options: Options = {}): Rule {
   const options = transformOptions(_options)
@@ -30,17 +31,18 @@ export function main(_options: Options = {}): Rule {
             dot: '.',
             dasherize: strings.dasherize,
           }),
+          move(options.cwd),
         ]),
       ),
     ])
   }
 }
 
-function transformOptions(options: Options): FinalOptions {
-  return Object.assign({ react: false }, options)
+function transformOptions(options: Options): CompletedOptions {
+  return Object.assign({ react: false, cwd: '.' }, options)
 }
 
-function addJestDependencies(options: FinalOptions): Rule {
+function addJestDependencies(options: CompletedOptions): Rule {
   return (tree, context) => {
     const { react } = options
 

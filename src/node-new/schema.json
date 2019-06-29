@@ -11,6 +11,11 @@
     "author": {
       "type": "string",
       "description": "Author for the new project."
+    },
+    "jest": {
+      "type": "boolean",
+      "description": "Add jest configs to the new project.",
+      "default": false
     }
   },
   "required": ["name"]

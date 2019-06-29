@@ -1,5 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`jest-install support \`cwd\` option: file content: /hello/jest.config.js 1`] = `
+"module.exports = {
+  transform: {
+    '^.+\\\\\\\\.js$': 'babel-jest',
+    '^.+\\\\\\\\.ts$': 'ts-jest',
+  },
+  testMatch: [
+    '**/?(*.)+(spec|test).ts',
+  ],
+  testPathIgnorePatterns: [
+    '/node_modules/',
+  ],
+  moduleFileExtensions: [
+    'ts',
+    'js',
+    'json',
+    'node',
+  ],
+}
+"
+`;
+
+exports[`jest-install support \`cwd\` option: file structure 1`] = `
+Array [
+  "/hello/jest.config.js",
+]
+`;
+
+exports[`jest-install support \`cwd\` option: rule tasks 1`] = `
+Array [
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "jest",
+        "jest-cli",
+        "ts-jest",
+        "@types/jest",
+      ],
+      "type": "dev",
+      "workingDirectory": "",
+    },
+  },
+]
+`;
+
 exports[`jest-install support \`react\` option: file content: /jest.config.js 1`] = `
 "module.exports = {
   transform: {

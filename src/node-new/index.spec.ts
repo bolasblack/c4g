@@ -26,4 +26,14 @@ describe('node-new', () => {
     )
     assertTreeSnapshot(runner, tree)
   })
+
+  it('support `jest` option', () => {
+    const runner = new SchematicTestRunner('schematics', collectionPath)
+    const tree = runner.runSchematic<Options>(
+      'node-new',
+      { name: 'hello', jest: true },
+      Tree.empty(),
+    )
+    assertTreeSnapshot(runner, tree)
+  })
 })

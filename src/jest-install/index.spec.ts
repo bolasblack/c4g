@@ -22,4 +22,14 @@ describe('jest-install', () => {
     )
     assertTreeSnapshot(runner, tree)
   })
+
+  it('support `cwd` option', () => {
+    const runner = new SchematicTestRunner('schematics', collectionPath)
+    const tree = runner.runSchematic<Options>(
+      'jest-install',
+      { cwd: 'hello' },
+      Tree.empty(),
+    )
+    assertTreeSnapshot(runner, tree)
+  })
 })

@@ -3,10 +3,10 @@
 ## Roadmap
 
 - `jest` schematic
-  - [ ] Create `jest` schematic
+  - [x] Create `jest` schematic
 - `node-new` schematic
   - [ ] Add `lint-staged`, `commitlint`, `githooks`, `renovate` configs
-  * [ ] Add `jest` option
+  * [x] Add `jest` option
   * [ ] Publish `@c4/create-node` (`yarn create @c4/node`)
 - `react` schematic
   - [ ] Create `react` schematic
