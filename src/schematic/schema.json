@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "SchematicsSchematicSchema",
+  "title": "Schematic Options Schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The schematic name."
+    },
+    "desc": {
+      "type": "string",
+      "description": "The schematic description."
+    }
+  },
+  "required": ["name"]
+}

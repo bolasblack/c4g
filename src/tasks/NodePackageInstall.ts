@@ -22,14 +22,13 @@ import {
   TaskExecutor,
   TaskConfigurationGenerator,
   TaskConfiguration,
-  TaskExecutorFactory,
   TypedSchematicContext,
-  SchematicEngine,
 } from '@angular-devkit/schematics'
-import { SpawnOptions, spawn } from 'child_process'
+import { SpawnOptions } from 'child_process'
 import * as path from 'path'
-import { Observable } from 'rxjs'
-import { FileSystemEngineHostBase } from '@angular-devkit/schematics/tools'
+import { catchError } from 'rxjs/operators'
+import { runShell } from './ShellExec'
+import { registerInContextFactory } from './utils'
 
 export const NodePackageInstallTaskExecutorName =
   '@c4g/node-package-install-task'
@@ -78,44 +77,20 @@ export namespace NodePackageInstallTask {
 type Options = NodePackageInstallTask.Options
 const Type = NodePackageInstallTask.Type
 
-const _NodePackageInstallTaskExecutorRegisteredHost = new WeakSet<
-  FileSystemEngineHostBase
->()
 export const NodePackageInstallTaskExecutor = {
-  ...(<TaskExecutorFactory<void>>{
-    name: NodePackageInstallTaskExecutorName,
-    create: async () => createNodePackageInstallTaskExecutor(),
-  }),
+  name: NodePackageInstallTaskExecutorName,
+  create: async () => createNodePackageInstallTaskExecutor(),
   registerInContext: (context: TypedSchematicContext<any, any>) => {
-    if (!(context.engine instanceof SchematicEngine)) {
-      console.warn(
-        '[NodePackageInstall#registerInContext] context.engine not instanceof SchematicEngine, skipped',
-      )
-    }
-
-    if (!(context.engine['_host'] instanceof FileSystemEngineHostBase)) {
-      console.warn(
-        '[NodePackageInstall#registerInContext] context.engine._host not instanceof FileSystemEngineHostBase, skipped',
-      )
-    }
-
-    const host: FileSystemEngineHostBase = context.engine['_host']
-
-    if (_NodePackageInstallTaskExecutorRegisteredHost.has(host)) return
-
-    host.registerTaskExecutor(NodePackageInstallTaskExecutor, undefined)
-
-    _NodePackageInstallTaskExecutorRegisteredHost.add(host)
+    registerInContext(context)
   },
 }
+const registerInContext = registerInContextFactory(
+  NodePackageInstallTaskExecutor,
+)
 
 function createNodePackageInstallTaskExecutor(): TaskExecutor<Options> {
-  return (options: Options) => {
-    const outputStream = process.stdout
-    const errorStream = process.stderr
+  return (options: Options, context) => {
     const spawnOptions: SpawnOptions = {
-      stdio: [process.stdin, outputStream, errorStream],
-      shell: true,
       cwd: path.join(process.cwd(), options.workingDirectory),
     }
 
@@ -133,16 +108,11 @@ function createNodePackageInstallTaskExecutor(): TaskExecutor<Options> {
         break
     }
 
-    return new Observable(obs => {
-      spawn('yarn', args, spawnOptions).on('close', code => {
-        if (code === 0) {
-          obs.next()
-          obs.complete()
-        } else {
-          const message = 'Package install failed, see above.'
-          obs.error(new Error(message))
-        }
-      })
-    })
+    return runShell('yarn', args, spawnOptions).pipe(
+      catchError(_ => {
+        const message = 'Package install failed, see above.'
+        throw new Error(message)
+      }),
+    )
   }
 }

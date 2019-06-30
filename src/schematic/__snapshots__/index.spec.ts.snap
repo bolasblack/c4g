@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`schematic works: file content: /src/collection.json 1`] = `
+"{
+  \\"$schema\\": \\"../node_modules/@angular-devkit/schematics/collection-schema.json\\",
+  \\"schematics\\": {
+    \\"hello-schematic\\": {
+      \\"factory\\": \\"./helloSchematic/index#main\\",
+      \\"schema\\": \\"./helloSchematic/schema.json\\"
+    }
+  }
+}"
+`;
+
+exports[`schematic works: file content: /src/hello-schematic/index.spec.ts 1`] = `
+"import * as path from 'path'
+import { Tree } from '@angular-devkit/schematics'
+import { SchematicTestRunner } from '../test-utils/SchematicTestRunner'
+import { assertTreeSnapshot } from '../test-utils/TreeAssertHelpers'
+import { Options } from './index'
+
+const collectionPath = path.join(__dirname, '../collection.json')
+
+describe('hello-schematic', () => {
+  it('works', () => {
+    const runner = new SchematicTestRunner('schematics', collectionPath)
+    const resultTree = runner.runSchematic<Options>(
+      'hello-schematic',
+      {},
+      Tree.empty(),
+    )
+    assertTreeSnapshot(runner, resultTree)
+  })
+})
+"
+`;
+
+exports[`schematic works: file content: /src/hello-schematic/index.ts 1`] = `
+"import {
+  Rule,
+  apply,
+  mergeWith,
+  template,
+  url,
+  chain,
+} from '@angular-devkit/schematics'
+import { Schema as Options } from './schema'
+
+export { Options }
+
+export function main(options: Options): Rule {
+  return tree => {
+    return chain([mergeWith(apply(url('./files'), [template(options)]))])
+  }
+}
+"
+`;
+
+exports[`schematic works: file content: /src/hello-schematic/schema.json 1`] = `
+"{
+  \\"$schema\\": \\"http://json-schema.org/schema\\",
+  \\"id\\": \\"SchematicsSchematicSchema\\",
+  \\"title\\": \\"Schematic Options Schema\\",
+  \\"type\\": \\"object\\",
+  \\"properties\\": {},
+  \\"required\\": []
+}
+"
+`;
+
+exports[`schematic works: file structure 1`] = `
+Array [
+  "/src/collection.json",
+  "/src/hello-schematic/index.spec.ts",
+  "/src/hello-schematic/index.ts",
+  "/src/hello-schematic/schema.json",
+]
+`;
+
+exports[`schematic works: rule tasks 1`] = `
+Array [
+  Object {
+    "name": "@c4g/shell-exec-task",
+    "options": Object {
+      "args": Array [
+        "build-schema-ts",
+      ],
+      "command": "yarn",
+      "options": Object {},
+    },
+  },
+]
+`;
