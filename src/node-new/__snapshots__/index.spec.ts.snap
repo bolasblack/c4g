@@ -31,7 +31,9 @@ exports[`node-new support \`author\` option: file content: /hello/package.json 1
 `;
 
 exports[`node-new support \`author\` option: file content: /hello/src/index.ts 1`] = `
-"export function main() {}
+"export function main() {
+  console.log('hello from hello')
+}
 
 if (require.main === module) {
   main()
@@ -84,6 +86,7 @@ Array [
     "options": Object {
       "packageNames": Array [
         "typescript",
+        "@types/node",
       ],
       "type": "dev",
       "workingDirectory": "hello",
@@ -144,7 +147,9 @@ exports[`node-new support \`jest\` option: file content: /hello/package.json 1`]
 `;
 
 exports[`node-new support \`jest\` option: file content: /hello/src/index.ts 1`] = `
-"export function main() {}
+"export function main() {
+  console.log('hello from hello')
+}
 
 if (require.main === module) {
   main()
@@ -211,6 +216,7 @@ Array [
     "options": Object {
       "packageNames": Array [
         "typescript",
+        "@types/node",
       ],
       "type": "dev",
       "workingDirectory": "hello",
@@ -249,7 +255,9 @@ exports[`node-new works: file content: /hello/package.json 1`] = `
 `;
 
 exports[`node-new works: file content: /hello/src/index.ts 1`] = `
-"export function main() {}
+"export function main() {
+  console.log('hello from hello')
+}
 
 if (require.main === module) {
   main()
@@ -302,6 +310,7 @@ Array [
     "options": Object {
       "packageNames": Array [
         "typescript",
+        "@types/node",
       ],
       "type": "dev",
       "workingDirectory": "hello",

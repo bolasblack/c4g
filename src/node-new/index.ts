@@ -53,7 +53,7 @@ function addDependencies(options: Options): Rule {
 
     context.addTask(
       new NodePackageInstallTask({
-        packageName: 'typescript',
+        packageName: ['typescript', '@types/node'],
         type: NodePackageInstallTask.Type.Dev,
         workingDirectory: options.name,
       }),

@@ -1,6 +1,6 @@
 import * as path from 'path'
 import { Tree } from '@angular-devkit/schematics'
-import { SchematicTestRunner } from '../test-utils/SchematicTestRunner'
+import { SchematicTestRunner } from '@angular-devkit/schematics/testing'
 import { assertTreeSnapshot } from '../test-utils/TreeAssertHelpers'
 import { Options } from './index'
 

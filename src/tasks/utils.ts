@@ -1,6 +1,5 @@
 import {
   TypedSchematicContext,
-  SchematicEngine,
   TaskExecutorFactory,
 } from '@angular-devkit/schematics'
 import { FileSystemEngineHostBase } from '@angular-devkit/schematics/tools'
@@ -15,19 +14,15 @@ export const registerInContextFactory = (
   >()
 
   return (context: TypedSchematicContext<any, any>) => {
-    if (!(context.engine instanceof SchematicEngine)) {
+    if (
+      !context.engine ||
+      !context.engine['_host'] ||
+      // @ts-ignore
+      typeof context.engine['_host'].registerTaskExecutor !== 'function'
+    ) {
       console.warn(
         chalk.yellow(
-          `[${factory.name}#registerInContext] context.engine not instanceof SchematicEngine, skipped`,
-        ),
-      )
-      return
-    }
-
-    if (!(context.engine['_host'] instanceof FileSystemEngineHostBase)) {
-      console.warn(
-        chalk.yellow(
-          `[${factory.name}#registerInContext] context.engine._host not instanceof FileSystemEngineHostBase, skipped`,
+          `[${factory.name}#registerInContext] context.engine._host.registerTaskExecutor not a function, skipped`,
         ),
       )
       return

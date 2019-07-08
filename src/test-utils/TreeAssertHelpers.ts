@@ -1,5 +1,7 @@
-import { UnitTestTree } from '@angular-devkit/schematics/testing'
-import { SchematicTestRunner } from '../test-utils/SchematicTestRunner'
+import {
+  UnitTestTree,
+  SchematicTestRunner,
+} from '@angular-devkit/schematics/testing'
 
 export function assertTreeSnapshot(
   runner: SchematicTestRunner,
