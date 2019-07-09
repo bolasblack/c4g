@@ -35,7 +35,7 @@
     "jest-cli": "^24.8.0",
     "lint-staged": "^8.2.1",
     "prettier": "^1.18.2",
-    "quicktype": "^15.0.194",
+    "quicktype": "^15.0.197",
     "ts-jest": "^24.0.2"
   }
 }
