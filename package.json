@@ -33,7 +33,7 @@
     "git-hook-pure": "^1.2.2",
     "jest": "^24.8.0",
     "jest-cli": "^24.8.0",
-    "lint-staged": "^8.2.1",
+    "lint-staged": "^9.2.0",
     "prettier": "^1.18.2",
     "quicktype": "^15.0.194",
     "ts-jest": "^24.0.2"
