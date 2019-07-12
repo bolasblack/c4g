@@ -1,4 +1,4 @@
-# c4g
+# @c4/g
 
 ## Roadmap
 
@@ -19,7 +19,23 @@ Related:
 
 ## Testing
 
-To test locally, install `@angular-devkit/schematics-cli` globally and use the `schematics` command line tool. That tool acts the same as the `generate` command of the Angular CLI, but also has a debug mode.
+To test locally:
+
+```bash
+// cd project and create link
+cd /path/to/this/project
+yarn link
+
+// install this project globally and change to symlink
+yarn global add file:$PWD
+cd $(yarn global dir)
+yarn link @c4/g
+
+// install schematics-cli globally
+yarn global add @angular-devkit/schematics-cli
+```
+
+and use the `schematics` command line tool.
 
 Check the documentation with
 
@@ -27,9 +43,15 @@ Check the documentation with
 schematics --help
 ```
 
+Create a new schematic with command:
+
+```bash
+schematics @c4/g:schematic --name=
+```
+
 ## Unit Testing
 
-`yarn test` will run the unit tests, using Jasmine as a runner and test framework.
+`yarn test` will run the unit tests, using Jest as a runner and test framework.
 
 ## Publishing
 
