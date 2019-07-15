@@ -40,7 +40,7 @@ Array [
         "@types/jest",
       ],
       "type": "dev",
-      "workingDirectory": "",
+      "workingDirectory": "hello",
     },
   },
 ]
@@ -99,7 +99,7 @@ Array [
         "identity-obj-proxy",
       ],
       "type": "dev",
-      "workingDirectory": "",
+      "workingDirectory": ".",
     },
   },
 ]
@@ -145,7 +145,7 @@ Array [
         "@types/jest",
       ],
       "type": "dev",
-      "workingDirectory": "",
+      "workingDirectory": ".",
     },
   },
 ]

@@ -198,7 +198,7 @@ Array [
         "@types/jest",
       ],
       "type": "dev",
-      "workingDirectory": "",
+      "workingDirectory": "hello",
     },
   },
   Object {

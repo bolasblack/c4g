@@ -63,6 +63,7 @@ function addJestDependencies(options: CompletedOptions): Rule {
       new NodePackageInstallTask({
         type: NodePackageInstallTask.Type.Dev,
         packageName: deps,
+        workingDirectory: options.cwd,
       }),
     )
   }
