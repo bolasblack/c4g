@@ -1,3 +1,11 @@
+packages
+scripts
+renovate.json
+lint-staged.config.js
+jest.config.js
+tslint.yml
+.commitlintrc.js
+
 # Ignores TypeScript files, but keeps definitions.
 *.ts
 !*.d.ts

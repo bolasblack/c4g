@@ -5,6 +5,7 @@ src/**/*.d.ts
 src/**/*.d.ts.map
 src/**/schema.ts
 !src/**/files/**/*.js
+packages/**/lib
 
 # IDEs
 .idea/
