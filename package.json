@@ -30,6 +30,7 @@
     "@types/jasmine": "^3.3.13",
     "@types/jest": "^24.0.15",
     "commitlint": "^8.0.0",
+    "coveralls": "^3.0.5",
     "git-hook-pure": "^1.2.2",
     "jest": "^24.8.0",
     "jest-cli": "^24.8.0",
