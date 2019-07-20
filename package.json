@@ -20,7 +20,7 @@
   "dependencies": {
     "@angular-devkit/core": "^8.1.2",
     "@angular-devkit/schematics": "^8.1.2",
-    "@c4605/toolconfs": "^1.1.0",
+    "@c4605/toolconfs": "^2.1.0",
     "@types/node": "^8.0.31",
     "chalk": "^2.4.2",
     "typescript": "~3.5.3"
