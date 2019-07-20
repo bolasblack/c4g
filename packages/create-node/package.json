@@ -15,7 +15,7 @@
     "typescript": "^3.5.3"
   },
   "dependencies": {
-    "@angular-devkit/schematics-cli": "^0.801.1",
+    "@angular-devkit/schematics-cli": "^0.801.2",
     "@c4/g": "^0.1.2",
     "dedent": "^0.7.0"
   }
