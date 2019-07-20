@@ -20,8 +20,8 @@
   "dependencies": {
     "@angular-devkit/core": "^8.1.2",
     "@angular-devkit/schematics": "^8.1.2",
-    "@c4605/toolconfs": "^1.1.0",
-    "@types/node": "^8.0.31",
+    "@c4605/toolconfs": "^2.1.0",
+    "@types/node": "^12.6.8",
     "chalk": "^2.4.2",
     "typescript": "~3.5.3"
   },
@@ -29,14 +29,14 @@
     "@types/chalk": "^2.2.0",
     "@types/jasmine": "^3.3.14",
     "@types/jest": "^24.0.15",
-    "commitlint": "^8.0.0",
+    "commitlint": "^8.1.0",
     "coveralls": "^3.0.5",
     "git-hook-pure": "^1.2.2",
     "jest": "^24.8.0",
     "jest-cli": "^24.8.0",
-    "lint-staged": "^8.2.1",
+    "lint-staged": "^9.2.0",
     "prettier": "^1.18.2",
-    "quicktype": "^15.0.194",
+    "quicktype": "^15.0.197",
     "ts-jest": "^24.0.2"
   }
 }
