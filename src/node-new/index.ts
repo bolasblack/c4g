@@ -5,6 +5,7 @@ import {
   mergeWith,
   move,
   template,
+  applyTemplates,
   url,
   chain,
   noop,
@@ -20,6 +21,11 @@ import { Options as InstallJestOptions } from '../jest-install'
 export { Options }
 
 export function main(options: Options): Rule {
+  const templateOpts = {
+    ...options,
+    dasherize: strings.dasherize,
+  }
+
   return chain([
     options.jest
       ? externalSchematic('c4g', 'jest-install', {
@@ -29,11 +35,8 @@ export function main(options: Options): Rule {
     addDependencies(options),
     mergeWith(
       apply(url('./files'), [
-        template({
-          ...options,
-          dot: '.',
-          dasherize: strings.dasherize,
-        }),
+        applyTemplates(templateOpts),
+        template(templateOpts),
         move(options.name),
       ]),
     ),
