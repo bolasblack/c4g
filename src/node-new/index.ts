@@ -9,7 +9,7 @@ import {
   url,
   chain,
   noop,
-  externalSchematic,
+  schematic,
 } from '@angular-devkit/schematics'
 import { Schema as Options } from './schema'
 import {
@@ -28,7 +28,7 @@ export function main(options: Options): Rule {
 
   return chain([
     options.jest
-      ? externalSchematic('c4g', 'jest-install', {
+      ? schematic('jest-install', {
           cwd: options.name,
         } as InstallJestOptions)
       : noop,
