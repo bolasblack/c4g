@@ -20,19 +20,16 @@ type CompletedOptions = Required<Options>
 
 export function main(_options: Options = {}): Rule {
   const options = transformOptions(_options)
+  const templateOpts = {
+    ...options,
+    dasherize: strings.dasherize,
+  }
 
   return tree => {
     return chain([
       addJestDependencies(options),
       mergeWith(
-        apply(url('./files'), [
-          template({
-            ...options,
-            dot: '.',
-            dasherize: strings.dasherize,
-          }),
-          move(options.cwd),
-        ]),
+        apply(url('./files'), [template(templateOpts), move(options.cwd)]),
       ),
     ])
   }

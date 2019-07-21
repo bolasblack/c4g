@@ -5,10 +5,11 @@ import {
   mergeWith,
   move,
   template,
+  applyTemplates,
   url,
   chain,
   noop,
-  externalSchematic,
+  schematic,
 } from '@angular-devkit/schematics'
 import { Schema as Options } from './schema'
 import {
@@ -20,20 +21,22 @@ import { Options as InstallJestOptions } from '../jest-install'
 export { Options }
 
 export function main(options: Options): Rule {
+  const templateOpts = {
+    ...options,
+    dasherize: strings.dasherize,
+  }
+
   return chain([
     options.jest
-      ? externalSchematic('c4g', 'jest-install', {
+      ? schematic('jest-install', {
           cwd: options.name,
         } as InstallJestOptions)
       : noop,
     addDependencies(options),
     mergeWith(
       apply(url('./files'), [
-        template({
-          ...options,
-          dot: '.',
-          dasherize: strings.dasherize,
-        }),
+        applyTemplates(templateOpts),
+        template(templateOpts),
         move(options.name),
       ]),
     ),
