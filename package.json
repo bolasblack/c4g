@@ -21,8 +21,10 @@
     "@angular-devkit/core": "^8.1.2",
     "@angular-devkit/schematics": "^8.1.2",
     "@c4605/toolconfs": "^2.1.0",
+    "@types/inquirer": "^6.0.3",
     "@types/node": "^12.6.8",
     "chalk": "^2.4.2",
+    "inquirer": "^6.5.0",
     "typescript": "~3.5.3"
   },
   "devDependencies": {
@@ -38,5 +40,8 @@
     "prettier": "^1.18.2",
     "quicktype": "^15.0.197",
     "ts-jest": "^24.0.2"
+  },
+  "resolutions": {
+    "**/rxjs": "^6.4.0"
   }
 }

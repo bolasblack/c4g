@@ -15,6 +15,11 @@
       "description": "Add new schematic to c4g",
       "factory": "./schematic/index#main",
       "schema": "./schematic/schema.json"
+    },
+    "proj-tools": {
+      "description": "Add project tools to project",
+      "factory": "./proj-tools/index#main",
+      "schema": "./proj-tools/schema.json"
     }
   }
 }

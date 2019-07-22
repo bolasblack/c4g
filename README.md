@@ -1,16 +1,13 @@
 # @c4/g
 
-## Roadmap
+## Plans
 
-- `jest` schematic
-  - [x] Create `jest` schematic
 - `node-new` schematic
-  - [ ] Add `lint-staged`, `commitlint`, `githooks`, `renovate` configs
-  * [x] Add `jest` option
-  * [ ] Publish `@c4/create-node` (`yarn create @c4/node`)
+  - [ ] add `proj-tools`
 - `react` schematic
   - [ ] Create `react` schematic
-  - [ ] Add `jest` option
+  - [ ] Add `jest` schematic
+  - [ ] Add `proj-tools` schematic
   - [ ] Publish `@c4/create-react` (`yarn create @c4/react`)
 
 Related:
@@ -22,16 +19,16 @@ Related:
 To test locally:
 
 ```bash
-// cd project and create link
+# cd project and create link
 cd /path/to/this/project
 yarn link
 
-// install this project globally and change to symlink
+# install this project globally and change to symlink
 yarn global add file:$PWD
 cd $(yarn global dir)
 yarn link @c4/g
 
-// install schematics-cli globally
+# install schematics-cli globally
 yarn global add @angular-devkit/schematics-cli
 ```
 

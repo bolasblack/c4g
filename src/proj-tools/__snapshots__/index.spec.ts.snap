@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`proj-tools with option \`include\` works with \`commitlint\`: file content: /.commitlintrc.js 1`] = `
+"module.exports = {
+  extends: ['@c4605/toolconfs/commitlintrc'],
+  rules: {},
+}
+"
+`;
+
+exports[`proj-tools with option \`include\` works with \`commitlint\`: file structure 1`] = `
+Array [
+  "/.commitlintrc.js",
+]
+`;
+
+exports[`proj-tools with option \`include\` works with \`commitlint\`: rule tasks 1`] = `
+Array [
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "commitlint",
+      ],
+      "type": "dev",
+      "workingDirectory": "",
+    },
+  },
+]
+`;
+
+exports[`proj-tools with option \`include\` works with \`githooks\`: file structure 1`] = `Array []`;
+
+exports[`proj-tools with option \`include\` works with \`githooks\`: rule tasks 1`] = `
+Array [
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "git-hook-pure",
+      ],
+      "type": "dev",
+      "workingDirectory": "",
+    },
+  },
+]
+`;
+
+exports[`proj-tools with option \`include\` works with \`lint-staged\`: file content: /lint-staged.config.js 1`] = `
+"module.exports = require('@c4605/toolconfs/lint-staged.config')
+"
+`;
+
+exports[`proj-tools with option \`include\` works with \`lint-staged\`: file structure 1`] = `
+Array [
+  "/lint-staged.config.js",
+]
+`;
+
+exports[`proj-tools with option \`include\` works with \`lint-staged\`: rule tasks 1`] = `
+Array [
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "lint-staged",
+      ],
+      "type": "dev",
+      "workingDirectory": "",
+    },
+  },
+]
+`;
+
+exports[`proj-tools with option \`include\` works with \`renovate\`: file content: /renovate.json 1`] = `
+"{
+  \\"extends\\": [\\"github>bolasblack/js-toolconfs:renovate\\"],
+  \\"baseBranches\\": [\\"develop\\"]
+}
+"
+`;
+
+exports[`proj-tools with option \`include\` works with \`renovate\`: file structure 1`] = `
+Array [
+  "/renovate.json",
+]
+`;
+
+exports[`proj-tools with option \`include\` works with \`renovate\`: rule tasks 1`] = `Array []`;
+
+exports[`proj-tools with option \`include\` works with empty value: file structure 1`] = `Array []`;
+
+exports[`proj-tools with option \`include\` works with empty value: rule tasks 1`] = `Array []`;
