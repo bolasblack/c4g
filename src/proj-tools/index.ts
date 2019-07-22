@@ -5,8 +5,9 @@ import {
   callRule,
   apply,
   move,
+  schematic,
 } from '@angular-devkit/schematics'
-import { Observable, merge, of, empty } from 'rxjs'
+import { Observable, merge, of, empty, from } from 'rxjs'
 import * as inquirer from 'inquirer'
 import {
   NodePackageInstallTask,
@@ -14,24 +15,18 @@ import {
 } from '../tasks/NodePackageInstall'
 import { Schema as Options, IncludeItem } from './schema'
 import { map, mergeMap, reduce } from 'rxjs/operators'
+import { Options as JestInstallOptions } from '../jest-install'
 import { file as fileSource } from '../utils/sources'
 
 export { Options, IncludeItem }
 
 export function main(options: Options): Rule {
   return (tree, ctx) =>
-    (options.interactive
-      ? requestIncludeOption({ default: options.include })
-      : of(options.include || [])
-    ).pipe(
-      mergeMap(includes => merge(...includes.map(getRule.bind(null, options)))),
+    (options.interactive ? requestOptions(options) : of(options)).pipe(
+      map(opts => ({ ...opts, include: opts.include || [] })),
+      mergeMap(opts => merge(...opts.include.map(getRule.bind(null, options)))),
       reduce((acc, r) => acc.concat(r), [] as Rule[]),
-      mergeMap(
-        i =>
-          i[0]
-            ? callRule(i[0], tree, ctx)
-            : of(tree) /*callRule(chain(i), tree, ctx)*/,
-      ),
+      mergeMap(i => callRule(chain(i), tree.branch(), ctx)),
     )
 }
 
@@ -67,6 +62,14 @@ function getRule(options: Options, includeItem: IncludeItem): Observable<Rule> {
 
     case IncludeItem.Renovate:
       return of(file('renovate.json'))
+
+    case IncludeItem.Jest:
+      return of(
+        schematic('jest-install', {
+          cwd: options.cwd,
+          react: options.jestReact,
+        } as JestInstallOptions),
+      )
   }
 
   return empty()
@@ -83,14 +86,27 @@ const installPkg = (
   ctx.addTask(new NodePackageInstallTask(opts))
 }
 
-export const requestIncludeOption = (opts: { default?: IncludeItem[] } = {}) =>
-  inquirer
-    .prompt([
+export const requestOptions = (
+  opts: Partial<Options> = {},
+): Observable<Options> =>
+  from(
+    inquirer.prompt([
       {
         name: 'include',
         type: 'checkbox',
         choices: Object.values(IncludeItem),
-        default: opts.default || [],
+        default: opts.include || [],
       },
-    ])
-    .ui.process.pipe(map(a => a.answer as IncludeItem[]))
+      {
+        name: 'jestReact',
+        type: 'confirm',
+        message: 'jest add react support?',
+        default: false,
+        when(ans: Options) {
+          return (
+            opts.jestReact == null && ans.include!.includes(IncludeItem.Jest)
+          )
+        },
+      },
+    ]),
+  )

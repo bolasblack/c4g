@@ -6,10 +6,12 @@
     "includeItem": {
       "$id": "#includeItem",
       "type": "string",
-      "enum": ["lint-staged", "commitlint", "githooks", "renovate"]
-    },
+      "enum": ["lint-staged", "commitlint", "githooks", "renovate", "jest"]
+    }
+  },
+  "type": "object",
+  "properties": {
     "include": {
-      "$id": "#include",
       "type": "array",
       "items": {
         "$ref": "#includeItem"
@@ -17,27 +19,18 @@
       "description": "The project tools want add"
     },
     "cwd": {
-      "$id": "#cwd",
       "type": "string",
-      "default": ".",
       "description": "Specify the schematic execute cwd relative to current cwd"
     },
     "interactive": {
-      "$id": "#interactive",
-      "type": "boolean"
-    }
-  },
-  "type": "object",
-  "properties": {
-    "include": {
-      "$ref": "#include"
+      "type": "boolean",
+      "default": true,
+      "description": "Ask some option interactively"
     },
-    "cwd": {
-      "$ref": "#cwd"
-    },
-    "interactive": {
-      "$ref": "#interactive",
-      "default": true
+    "jest-react": {
+      "type": "boolean",
+      "default": true,
+      "description": "Add react support to jest"
     }
   },
   "required": []

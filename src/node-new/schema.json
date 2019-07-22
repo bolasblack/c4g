@@ -12,10 +12,10 @@
       "type": "string",
       "description": "Author for the new project."
     },
-    "jest": {
+    "interactive": {
       "type": "boolean",
-      "description": "Add jest configs to the new project.",
-      "default": false
+      "description": "Add project tool configs to the new project interactively.",
+      "default": true
     }
   },
   "required": ["name"]
