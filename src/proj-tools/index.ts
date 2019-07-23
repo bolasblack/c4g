@@ -5,7 +5,6 @@ import {
   callRule,
   apply,
   move,
-  schematic,
 } from '@angular-devkit/schematics'
 import { Observable, merge, of, empty, from } from 'rxjs'
 import * as inquirer from 'inquirer'
@@ -17,6 +16,7 @@ import { Schema as Options, IncludeItem } from './schema'
 import { map, mergeMap, reduce } from 'rxjs/operators'
 import { Options as JestInstallOptions } from '../jest-install'
 import { file as fileSource } from '../utils/sources'
+import { schematic } from '../utils/rules'
 
 export { Options, IncludeItem }
 

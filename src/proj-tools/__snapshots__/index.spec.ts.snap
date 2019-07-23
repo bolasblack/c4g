@@ -46,47 +46,22 @@ Array [
 ]
 `;
 
-exports[`proj-tools with option \`include\` works with \`IncludeItem.Jest\`: file content: /jest.config.js 1`] = `
-"module.exports = {
-  transform: {
-    '^.+\\\\\\\\.js$': 'babel-jest',
-    '^.+\\\\\\\\.ts$': 'ts-jest',
-  },
-  testMatch: [
-    '**/?(*.)+(spec|test).ts',
-  ],
-  testPathIgnorePatterns: [
-    '/node_modules/',
-  ],
-  moduleFileExtensions: [
-    'ts',
-    'js',
-    'json',
-    'node',
-  ],
-}
-"
-`;
-
-exports[`proj-tools with option \`include\` works with \`IncludeItem.Jest\`: file structure 1`] = `
-Array [
-  "/jest.config.js",
-]
-`;
+exports[`proj-tools with option \`include\` works with \`IncludeItem.Jest\`: file structure 1`] = `Array []`;
 
 exports[`proj-tools with option \`include\` works with \`IncludeItem.Jest\`: rule tasks 1`] = `
 Array [
   Object {
-    "name": "@c4g/node-package-install-task",
+    "name": "@c4g/effect-collect-task",
     "options": Object {
-      "packageNames": Array [
-        "jest",
-        "jest-cli",
-        "ts-jest",
-        "@types/jest",
-      ],
-      "type": "dev",
-      "workingDirectory": "",
+      "info": Object {
+        "executionOptions": undefined,
+        "options": Object {
+          "cwd": undefined,
+          "react": undefined,
+        },
+        "schematicName": "jest-install",
+      },
+      "name": "rule:schematic",
     },
   },
 ]
@@ -142,60 +117,43 @@ exports[`proj-tools with option \`jestReact\` do nothing if \`jest\` not include
 
 exports[`proj-tools with option \`jestReact\` do nothing if \`jest\` not included: rule tasks 1`] = `Array []`;
 
-exports[`proj-tools with option \`jestReact\` works: file content: /jest.config.js 1`] = `
-"module.exports = {
-  transform: {
-    '^.+\\\\\\\\.jsx?$': 'babel-jest',
-    '^.+\\\\\\\\.tsx?$': 'ts-jest',
-  },
-  snapshotSerializers: [
-    'enzyme-to-json/serializer',
-  ],
-  moduleNameMapper: {
-    '\\\\\\\\.(css|less|scss)$': 'identity-obj-proxy',
-  },
-  testMatch: [
-    '**/?(*.)+(spec|test).ts?(x)',
-  ],
-  testPathIgnorePatterns: [
-    '/node_modules/',
-  ],
-  moduleFileExtensions: [
-    'ts',
-    'tsx',
-    'js',
-    'jsx',
-    'json',
-    'node',
-    'html',
-  ],
-}
-"
-`;
+exports[`proj-tools with option \`jestReact\` proxy \`cwd\` option: file structure 1`] = `Array []`;
 
-exports[`proj-tools with option \`jestReact\` works: file structure 1`] = `
+exports[`proj-tools with option \`jestReact\` proxy \`cwd\` option: rule tasks 1`] = `
 Array [
-  "/jest.config.js",
+  Object {
+    "name": "@c4g/effect-collect-task",
+    "options": Object {
+      "info": Object {
+        "executionOptions": undefined,
+        "options": Object {
+          "cwd": "test",
+          "react": undefined,
+        },
+        "schematicName": "jest-install",
+      },
+      "name": "rule:schematic",
+    },
+  },
 ]
 `;
+
+exports[`proj-tools with option \`jestReact\` works: file structure 1`] = `Array []`;
 
 exports[`proj-tools with option \`jestReact\` works: rule tasks 1`] = `
 Array [
   Object {
-    "name": "@c4g/node-package-install-task",
+    "name": "@c4g/effect-collect-task",
     "options": Object {
-      "packageNames": Array [
-        "jest",
-        "jest-cli",
-        "ts-jest",
-        "@types/jest",
-        "enzyme",
-        "enzyme-to-json",
-        "enzyme-adapter-react-16",
-        "identity-obj-proxy",
-      ],
-      "type": "dev",
-      "workingDirectory": "",
+      "info": Object {
+        "executionOptions": undefined,
+        "options": Object {
+          "cwd": undefined,
+          "react": true,
+        },
+        "schematicName": "jest-install",
+      },
+      "name": "rule:schematic",
     },
   },
 ]

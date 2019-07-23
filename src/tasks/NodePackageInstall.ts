@@ -33,7 +33,8 @@ import { registerInContextFactory } from './utils'
 export const NodePackageInstallTaskExecutorName =
   '@c4g/node-package-install-task'
 
-export class NodePackageInstallTask implements TaskConfigurationGenerator {
+export class NodePackageInstallTask
+  implements TaskConfigurationGenerator<Options> {
   constructor(private _options: NodePackageInstallTask.ConstructOptions) {}
 
   toConfiguration(): TaskConfiguration<Options> {
@@ -75,6 +76,7 @@ export namespace NodePackageInstallTask {
 }
 
 type Options = NodePackageInstallTask.Options
+
 const Type = NodePackageInstallTask.Type
 
 export const NodePackageInstallTaskExecutor = {

@@ -8,7 +8,7 @@
     "build": "tsc -p tsconfig.json",
     "clean-output": "rm -f ./src/**/*{.d.ts,.d.ts.map,.js,.js.map}",
     "prepare": "yarn build-schema-ts",
-    "test": "jest"
+    "test": "NODE_ENV=test jest"
   },
   "prettier": "@c4605/toolconfs/prettierrc",
   "keywords": [
