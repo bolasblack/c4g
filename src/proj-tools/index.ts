@@ -26,8 +26,24 @@ export function main(options: Options): Rule {
       map(opts => ({ ...opts, include: opts.include || [] })),
       mergeMap(opts => merge(...opts.include.map(getRule.bind(null, options)))),
       reduce((acc, r) => acc.concat(r), [] as Rule[]),
-      mergeMap(i => callRule(chain(i), tree.branch(), ctx)),
+      mergeMap(rules => {
+        if (rules.length) {
+          rules = rules.concat(installToolconfsDep(options))
+        }
+
+        return callRule(chain(rules), tree.branch(), ctx)
+      }),
     )
+}
+
+const installToolconfsDep = (options: Options): Rule => (_, ctx) => {
+  NodePackageInstallTaskExecutor.registerInContext(ctx)
+  ctx.addTask(
+    new NodePackageInstallTask({
+      packageName: '@c4605/toolconfs',
+      workingDirectory: options.cwd,
+    }),
+  )
 }
 
 function getRule(options: Options, includeItem: IncludeItem): Observable<Rule> {

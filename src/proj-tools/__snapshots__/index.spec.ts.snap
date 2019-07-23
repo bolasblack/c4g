@@ -26,6 +26,16 @@ Array [
       "workingDirectory": "",
     },
   },
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "@c4605/toolconfs",
+      ],
+      "type": "default",
+      "workingDirectory": "",
+    },
+  },
 ]
 `;
 
@@ -40,6 +50,16 @@ Array [
         "git-hook-pure",
       ],
       "type": "dev",
+      "workingDirectory": "",
+    },
+  },
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "@c4605/toolconfs",
+      ],
+      "type": "default",
       "workingDirectory": "",
     },
   },
@@ -62,6 +82,16 @@ Array [
         "schematicName": "jest-install",
       },
       "name": "rule:schematic",
+    },
+  },
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "@c4605/toolconfs",
+      ],
+      "type": "default",
+      "workingDirectory": "",
     },
   },
 ]
@@ -90,6 +120,16 @@ Array [
       "workingDirectory": "",
     },
   },
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "@c4605/toolconfs",
+      ],
+      "type": "default",
+      "workingDirectory": "",
+    },
+  },
 ]
 `;
 
@@ -107,7 +147,20 @@ Array [
 ]
 `;
 
-exports[`proj-tools with option \`include\` works with \`IncludeItem.Renovate\`: rule tasks 1`] = `Array []`;
+exports[`proj-tools with option \`include\` works with \`IncludeItem.Renovate\`: rule tasks 1`] = `
+Array [
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "@c4605/toolconfs",
+      ],
+      "type": "default",
+      "workingDirectory": "",
+    },
+  },
+]
+`;
 
 exports[`proj-tools with option \`include\` works with empty value: file structure 1`] = `Array []`;
 
@@ -135,6 +188,16 @@ Array [
       "name": "rule:schematic",
     },
   },
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "@c4605/toolconfs",
+      ],
+      "type": "default",
+      "workingDirectory": "test",
+    },
+  },
 ]
 `;
 
@@ -154,6 +217,16 @@ Array [
         "schematicName": "jest-install",
       },
       "name": "rule:schematic",
+    },
+  },
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "@c4605/toolconfs",
+      ],
+      "type": "default",
+      "workingDirectory": "",
     },
   },
 ]

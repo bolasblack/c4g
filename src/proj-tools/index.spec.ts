@@ -17,6 +17,7 @@ describe('proj-tools', () => {
       Tree.empty(),
     )
     assertTreeSnapshot(runner, resultTree)
+    return [runner, resultTree]
   }
 
   describe('with option `include`', () => {
