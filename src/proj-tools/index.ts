@@ -38,6 +38,7 @@ export function main(options: Options): Rule {
 
 const installToolconfsDep = (options: Options): Rule => (_, ctx) => {
   NodePackageInstallTaskExecutor.registerInContext(ctx)
+
   ctx.addTask(
     new NodePackageInstallTask({
       packageName: '@c4605/toolconfs',

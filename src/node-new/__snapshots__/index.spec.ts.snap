@@ -20,7 +20,7 @@ exports[`node-new support \`author\` option: file content: /hello/package.json 1
   \\"author\\": \\"c4605 <bolasblack@gmail.com>\\",
   \\"license\\": \\"MIT\\",
   \\"scripts\\": {
-    \\"prepublish\\": \\"yarn build\\",
+    \\"prepublishOnly\\": \\"yarn build\\",
     \\"build\\": \\"tsc --build .\\",
     \\"watch\\": \\"tsc --watch -p .\\"
   },
@@ -114,7 +114,7 @@ exports[`node-new works: file content: /hello/package.json 1`] = `
   \\"main\\": \\"lib/index.js\\",
   \\"license\\": \\"MIT\\",
   \\"scripts\\": {
-    \\"prepublish\\": \\"yarn build\\",
+    \\"prepublishOnly\\": \\"yarn build\\",
     \\"build\\": \\"tsc --build .\\",
     \\"watch\\": \\"tsc --watch -p .\\"
   },
