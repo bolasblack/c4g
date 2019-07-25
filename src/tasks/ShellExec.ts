@@ -6,8 +6,8 @@ import {
 } from '@angular-devkit/schematics'
 import { SpawnOptions, spawn } from 'child_process'
 import { Observable, Subscriber } from 'rxjs'
-import { registerInContextFactory } from './utils'
 import { catchError } from 'rxjs/operators'
+import { registerInContextFactory } from './utils'
 
 export const ShellExecTaskExecutorName = '@c4g/shell-exec-task'
 

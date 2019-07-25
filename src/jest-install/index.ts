@@ -29,7 +29,10 @@ export function main(_options: Options = {}): Rule {
     return chain([
       addJestDependencies(options),
       mergeWith(
-        apply(url('./files'), [template(templateOpts), move(options.cwd)]),
+        apply(url('./files'), [
+          template(templateOpts),
+          move(options.cwd || ''),
+        ]),
       ),
     ])
   }

@@ -1,0 +1,233 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`proj-tools with option \`include\` works with \`IncludeItem.Commitlint\`: file content: /.commitlintrc.js 1`] = `
+"module.exports = {
+  extends: ['@c4605/toolconfs/commitlintrc'],
+  rules: {},
+}
+"
+`;
+
+exports[`proj-tools with option \`include\` works with \`IncludeItem.Commitlint\`: file structure 1`] = `
+Array [
+  "/.commitlintrc.js",
+]
+`;
+
+exports[`proj-tools with option \`include\` works with \`IncludeItem.Commitlint\`: rule tasks 1`] = `
+Array [
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "commitlint",
+      ],
+      "type": "dev",
+      "workingDirectory": "",
+    },
+  },
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "@c4605/toolconfs",
+      ],
+      "type": "default",
+      "workingDirectory": "",
+    },
+  },
+]
+`;
+
+exports[`proj-tools with option \`include\` works with \`IncludeItem.Githooks\`: file structure 1`] = `Array []`;
+
+exports[`proj-tools with option \`include\` works with \`IncludeItem.Githooks\`: rule tasks 1`] = `
+Array [
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "git-hook-pure",
+      ],
+      "type": "dev",
+      "workingDirectory": "",
+    },
+  },
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "@c4605/toolconfs",
+      ],
+      "type": "default",
+      "workingDirectory": "",
+    },
+  },
+]
+`;
+
+exports[`proj-tools with option \`include\` works with \`IncludeItem.Jest\`: file structure 1`] = `Array []`;
+
+exports[`proj-tools with option \`include\` works with \`IncludeItem.Jest\`: rule tasks 1`] = `
+Array [
+  Object {
+    "name": "@c4g/effect-collect-task",
+    "options": Object {
+      "info": Object {
+        "executionOptions": undefined,
+        "options": Object {
+          "cwd": undefined,
+          "react": undefined,
+        },
+        "schematicName": "jest-install",
+      },
+      "name": "rule:schematic",
+    },
+  },
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "@c4605/toolconfs",
+      ],
+      "type": "default",
+      "workingDirectory": "",
+    },
+  },
+]
+`;
+
+exports[`proj-tools with option \`include\` works with \`IncludeItem.LintStaged\`: file content: /lint-staged.config.js 1`] = `
+"module.exports = require('@c4605/toolconfs/lint-staged.config')
+"
+`;
+
+exports[`proj-tools with option \`include\` works with \`IncludeItem.LintStaged\`: file structure 1`] = `
+Array [
+  "/lint-staged.config.js",
+]
+`;
+
+exports[`proj-tools with option \`include\` works with \`IncludeItem.LintStaged\`: rule tasks 1`] = `
+Array [
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "lint-staged",
+      ],
+      "type": "dev",
+      "workingDirectory": "",
+    },
+  },
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "@c4605/toolconfs",
+      ],
+      "type": "default",
+      "workingDirectory": "",
+    },
+  },
+]
+`;
+
+exports[`proj-tools with option \`include\` works with \`IncludeItem.Renovate\`: file content: /renovate.json 1`] = `
+"{
+  \\"extends\\": [\\"github>bolasblack/js-toolconfs:renovate\\"],
+  \\"baseBranches\\": [\\"develop\\"]
+}
+"
+`;
+
+exports[`proj-tools with option \`include\` works with \`IncludeItem.Renovate\`: file structure 1`] = `
+Array [
+  "/renovate.json",
+]
+`;
+
+exports[`proj-tools with option \`include\` works with \`IncludeItem.Renovate\`: rule tasks 1`] = `
+Array [
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "@c4605/toolconfs",
+      ],
+      "type": "default",
+      "workingDirectory": "",
+    },
+  },
+]
+`;
+
+exports[`proj-tools with option \`include\` works with empty value: file structure 1`] = `Array []`;
+
+exports[`proj-tools with option \`include\` works with empty value: rule tasks 1`] = `Array []`;
+
+exports[`proj-tools with option \`jestReact\` do nothing if \`jest\` not included: file structure 1`] = `Array []`;
+
+exports[`proj-tools with option \`jestReact\` do nothing if \`jest\` not included: rule tasks 1`] = `Array []`;
+
+exports[`proj-tools with option \`jestReact\` proxy \`cwd\` option: file structure 1`] = `Array []`;
+
+exports[`proj-tools with option \`jestReact\` proxy \`cwd\` option: rule tasks 1`] = `
+Array [
+  Object {
+    "name": "@c4g/effect-collect-task",
+    "options": Object {
+      "info": Object {
+        "executionOptions": undefined,
+        "options": Object {
+          "cwd": "test",
+          "react": undefined,
+        },
+        "schematicName": "jest-install",
+      },
+      "name": "rule:schematic",
+    },
+  },
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "@c4605/toolconfs",
+      ],
+      "type": "default",
+      "workingDirectory": "test",
+    },
+  },
+]
+`;
+
+exports[`proj-tools with option \`jestReact\` works: file structure 1`] = `Array []`;
+
+exports[`proj-tools with option \`jestReact\` works: rule tasks 1`] = `
+Array [
+  Object {
+    "name": "@c4g/effect-collect-task",
+    "options": Object {
+      "info": Object {
+        "executionOptions": undefined,
+        "options": Object {
+          "cwd": undefined,
+          "react": true,
+        },
+        "schematicName": "jest-install",
+      },
+      "name": "rule:schematic",
+    },
+  },
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "@c4605/toolconfs",
+      ],
+      "type": "default",
+      "workingDirectory": "",
+    },
+  },
+]
+`;

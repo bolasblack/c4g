@@ -8,7 +8,6 @@ import {
   applyTemplates,
   url,
   chain,
-  noop,
   schematic,
 } from '@angular-devkit/schematics'
 import { Schema as Options } from './schema'
@@ -16,7 +15,7 @@ import {
   NodePackageInstallTask,
   NodePackageInstallTaskExecutor,
 } from '../tasks/NodePackageInstall'
-import { Options as InstallJestOptions } from '../jest-install'
+import { Options as ProjToolsOptions } from '../proj-tools'
 
 export { Options }
 
@@ -27,11 +26,10 @@ export function main(options: Options): Rule {
   }
 
   return chain([
-    options.jest
-      ? schematic('jest-install', {
-          cwd: options.name,
-        } as InstallJestOptions)
-      : noop,
+    schematic<ProjToolsOptions>('proj-tools', {
+      cwd: options.name,
+      interactive: options.interactive,
+    }),
     addDependencies(options),
     mergeWith(
       apply(url('./files'), [
