@@ -12,9 +12,9 @@ import {
 } from '@angular-devkit/schematics'
 import { Schema as Options } from './schema'
 import {
-  NodePackageInstallTask,
-  NodePackageInstallTaskExecutor,
-} from '../tasks/NodePackageInstall'
+  installNodePackage,
+  NodePackageType,
+} from '../utils/rules/installNodePackage'
 import { Options as ProjToolsOptions } from '../proj-tools'
 
 export { Options }
@@ -30,7 +30,15 @@ export function main(options: Options): Rule {
       cwd: options.name,
       interactive: options.interactive,
     }),
-    addDependencies(options),
+    installNodePackage({
+      packageName: '@c4605/toolconfs',
+      workingDirectory: options.name,
+    }),
+    installNodePackage({
+      packageName: ['typescript', '@types/node', 'eslint'],
+      type: NodePackageType.Dev,
+      workingDirectory: options.name,
+    }),
     mergeWith(
       apply(url('./files'), [
         applyTemplates(templateOpts),
@@ -39,25 +47,4 @@ export function main(options: Options): Rule {
       ]),
     ),
   ])
-}
-
-function addDependencies(options: Options): Rule {
-  return (tree, context) => {
-    NodePackageInstallTaskExecutor.registerInContext(context)
-
-    context.addTask(
-      new NodePackageInstallTask({
-        packageName: '@c4605/toolconfs',
-        workingDirectory: options.name,
-      }),
-    )
-
-    context.addTask(
-      new NodePackageInstallTask({
-        packageName: ['typescript', '@types/node'],
-        type: NodePackageInstallTask.Type.Dev,
-        workingDirectory: options.name,
-      }),
-    )
-  }
 }

@@ -9,9 +9,7 @@ export const registerInContextFactory = (
   factory: TaskExecutorFactory<any>,
   options?: any,
 ) => {
-  const _ShellExecTaskExecutorRegisteredHost = new Set<
-    FileSystemEngineHostBase
-  >()
+  const TaskExecutorRegisteredHost = new Set<FileSystemEngineHostBase>()
 
   return (context: TypedSchematicContext<any, any>) => {
     if (
@@ -30,10 +28,10 @@ export const registerInContextFactory = (
 
     const host: FileSystemEngineHostBase = context.engine['_host']
 
-    if (_ShellExecTaskExecutorRegisteredHost.has(host)) return
+    if (TaskExecutorRegisteredHost.has(host)) return
 
     host.registerTaskExecutor(factory, options)
 
-    _ShellExecTaskExecutorRegisteredHost.add(host)
+    TaskExecutorRegisteredHost.add(host)
   }
 }

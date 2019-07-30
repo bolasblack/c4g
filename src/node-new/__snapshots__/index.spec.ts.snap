@@ -90,6 +90,7 @@ Array [
       "packageNames": Array [
         "typescript",
         "@types/node",
+        "eslint",
       ],
       "type": "dev",
       "workingDirectory": "hello",
@@ -187,6 +188,7 @@ Array [
       "packageNames": Array [
         "typescript",
         "@types/node",
+        "eslint",
       ],
       "type": "dev",
       "workingDirectory": "hello",

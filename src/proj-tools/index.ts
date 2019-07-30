@@ -9,14 +9,14 @@ import {
 import { Observable, merge, of, empty, from } from 'rxjs'
 import * as inquirer from 'inquirer'
 import {
-  NodePackageInstallTask,
-  NodePackageInstallTaskExecutor,
-} from '../tasks/NodePackageInstall'
+  installNodePackage,
+  NodePackageType,
+} from '../utils/rules/installNodePackage'
 import { Schema as Options, IncludeItem } from './schema'
 import { map, mergeMap, reduce } from 'rxjs/operators'
 import { Options as JestInstallOptions } from '../jest-install'
-import { file as fileSource } from '../utils/sources'
-import { schematic } from '../utils/rules'
+import { file as fileSource } from '../utils/sources/file'
+import { schematic } from '../utils/rules/schematic'
 
 export { Options, IncludeItem }
 
@@ -28,7 +28,12 @@ export function main(options: Options): Rule {
       reduce((acc, r) => acc.concat(r), [] as Rule[]),
       mergeMap(rules => {
         if (rules.length) {
-          rules = rules.concat(installToolconfsDep(options))
+          rules = rules.concat(
+            installNodePackage({
+              packageName: '@c4605/toolconfs',
+              workingDirectory: options.cwd,
+            }),
+          )
         }
 
         return callRule(chain(rules), tree.branch(), ctx)
@@ -36,22 +41,11 @@ export function main(options: Options): Rule {
     )
 }
 
-const installToolconfsDep = (options: Options): Rule => (_, ctx) => {
-  NodePackageInstallTaskExecutor.registerInContext(ctx)
-
-  ctx.addTask(
-    new NodePackageInstallTask({
-      packageName: '@c4605/toolconfs',
-      workingDirectory: options.cwd,
-    }),
-  )
-}
-
 function getRule(options: Options, includeItem: IncludeItem): Observable<Rule> {
-  const install = (opts: Parameters<typeof installPkg>[0]) =>
-    installPkg({
+  const install = (opts: Parameters<typeof installNodePackage>[0]) =>
+    installNodePackage({
       workingDirectory: options.cwd || '',
-      type: NodePackageInstallTask.Type.Dev,
+      type: NodePackageType.Dev,
       ...opts,
     })
 
@@ -94,14 +88,6 @@ function getRule(options: Options, includeItem: IncludeItem): Observable<Rule> {
 
 const copyConfigFile = (fileName: string, moveTo: string) =>
   mergeWith(apply(fileSource(`./files/${fileName}`), [move(moveTo)]))
-
-const installPkg = (
-  opts: ConstructorParameters<typeof NodePackageInstallTask>[0],
-): Rule => (_, ctx) => {
-  NodePackageInstallTaskExecutor.registerInContext(ctx)
-
-  ctx.addTask(new NodePackageInstallTask(opts))
-}
 
 export const requestOptions = (
   opts: Partial<Options> = {},
