@@ -4,10 +4,14 @@
   "description": "A blank schematics",
   "scripts": {
     "g": "schematics",
-    "build-schema-ts": "./scripts/generate-schema-ts.sh",
-    "build": "tsc -p tsconfig.json",
+    "build-schema-ts": "ts-node ./scripts/generate-schema-ts.ts",
+    "watch-schema-ts": "trap 'exit' INT; while true; do ls src/**/schema.json | entr -d yarn build-schema-ts /_; done",
+    "build-ts": "tsc -p tsconfig.json",
+    "watch-ts": "yarn build-ts --watch",
     "clean-output": "rm -f ./src/**/*{.d.ts,.d.ts.map,.js,.js.map}",
-    "prepublishOnly": "yarn build-schema-ts",
+    "build": "yarn build-schema-ts && build-ts",
+    "watch": "concurrently 'yarn:watch-schema-ts' 'yarn:watch-ts'",
+    "prepublishOnly": "yarn build",
     "test": "NODE_ENV=test jest"
   },
   "prettier": "@c4605/toolconfs/prettierrc",
@@ -32,6 +36,7 @@
     "@types/jasmine": "^3.3.15",
     "@types/jest": "^24.0.15",
     "commitlint": "^8.1.0",
+    "concurrently": "^4.1.1",
     "coveralls": "^3.0.5",
     "eslint": "^6.1.0",
     "git-hook-pure": "^1.2.2",
@@ -39,8 +44,9 @@
     "jest-cli": "^24.8.0",
     "lint-staged": "^9.2.0",
     "prettier": "^1.18.2",
-    "quicktype": "^15.0.197",
-    "ts-jest": "^24.0.2"
+    "quicktype": "^15.0.198",
+    "ts-jest": "^24.0.2",
+    "ts-node": "^8.3.0"
   },
   "resolutions": {
     "**/rxjs": "^6.4.0"
