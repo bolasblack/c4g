@@ -9,9 +9,9 @@
     "build-ts": "tsc -p tsconfig.json",
     "watch-ts": "yarn build-ts --watch",
     "clean-output": "rm -f ./src/**/*{.d.ts,.d.ts.map,.js,.js.map}",
-    "build": "yarn build-schema-ts && build-ts",
+    "build": "yarn build-schema-ts && yarn build-ts",
     "watch": "concurrently 'yarn:watch-schema-ts' 'yarn:watch-ts'",
-    "prepublishOnly": "yarn build",
+    "prepublishOnly": "yarn clean-output && yarn build",
     "test": "NODE_ENV=test jest"
   },
   "prettier": "@c4605/toolconfs/prettierrc",
