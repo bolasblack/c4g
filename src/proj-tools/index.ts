@@ -56,7 +56,9 @@ function getRule(options: Options, includeItem: IncludeItem): Observable<Rule> {
       return of(
         chain([
           file('.commitlintrc.js'),
-          install({ packageName: 'commitlint' }),
+          install({
+            packageName: ['commitlint', '@commitlint/config-conventional'],
+          }),
         ]),
       )
 

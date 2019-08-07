@@ -2,7 +2,10 @@
 
 exports[`node-new support \`author\` option: file content: /hello/.eslintrc.js 1`] = `
 "module.exports = {
-  extends: ['./node_modules/@c4605/toolconfs/eslintrc-ts'],
+  extends: [
+    './node_modules/@c4605/toolconfs/eslintrc.base',
+    './node_modules/@c4605/toolconfs/eslintrc.ts',
+  ],
   parserOptions: {
     project: './tsconfig.json',
   },
@@ -91,6 +94,9 @@ Array [
         "typescript",
         "@types/node",
         "eslint",
+        "eslint-config-prettier",
+        "@typescript-eslint/parser",
+        "@typescript-eslint/eslint-plugin",
       ],
       "type": "dev",
       "workingDirectory": "hello",
@@ -101,7 +107,10 @@ Array [
 
 exports[`node-new works: file content: /hello/.eslintrc.js 1`] = `
 "module.exports = {
-  extends: ['./node_modules/@c4605/toolconfs/eslintrc-ts'],
+  extends: [
+    './node_modules/@c4605/toolconfs/eslintrc.base',
+    './node_modules/@c4605/toolconfs/eslintrc.ts',
+  ],
   parserOptions: {
     project: './tsconfig.json',
   },
@@ -189,6 +198,9 @@ Array [
         "typescript",
         "@types/node",
         "eslint",
+        "eslint-config-prettier",
+        "@typescript-eslint/parser",
+        "@typescript-eslint/eslint-plugin",
       ],
       "type": "dev",
       "workingDirectory": "hello",

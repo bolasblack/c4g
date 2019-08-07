@@ -157,11 +157,11 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@c4605/toolconfs@^3.2.0":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@c4605/toolconfs/-/toolconfs-3.2.0.tgz#6a4641841a3ad4e8c53f45b88b814dd7ab810159"
-  integrity sha512-dIlrzGTuAmp1qkLfLmo6Cz6gepkRGe2dB0C1vGKj+dTrrcojc8NO9EDn3M4W1/7OWAOTy+jjaH5gxHpGKsPF0w==
-  dependencies:
+"@c4605/toolconfs@^4.3.0":
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/@c4605/toolconfs/-/toolconfs-4.3.0.tgz#c9a24f870d9ae137c42993f040b92fd06b6d4717"
+  integrity sha512-3B0ZHtpSyb38Rr0cRXJUa3qxisLl5elxrjO6iqJUAePCdxhPAhLrdZHth+Avj9KD+/4kEh0gdLZm30VTCIMlCQ==
+  optionalDependencies:
     "@commitlint/config-conventional" "^8.1.0"
     "@typescript-eslint/eslint-plugin" "^1.13.0"
     "@typescript-eslint/parser" "^1.13.0"
@@ -5376,9 +5376,9 @@ tslib@^1.8.1, tslib@^1.9.0:
   integrity sha512-qOebF53frne81cf0S9B41ByenJ3/IuH8yJKngAX35CmiZySA0khhkovshKK+jGCaMnVomla7gVlIcc3EvKPbTQ==
 
 tsutils@^3.7.0:
-  version "3.14.1"
-  resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-3.14.1.tgz#f1d2b93d2a0876481f2f1f98c25ba42bbd7ee860"
-  integrity sha512-kiuZzD1uUA5DxGj/uxbde+ymp6VVdAxdzOIlAFbYKrPyla8/uiJ9JLBm1QsPhOm4Muj0/+cWEDP99yoCUcSl6Q==
+  version "3.17.0"
+  resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-3.17.0.tgz#c3ccab927a475aa2beef6a3695c2ff76da13cdf8"
+  integrity sha512-fyveWOtAXfumAxIqkcMHuPaaVyLBKjB8Y00ANZkqh+HITBAQscCbQIHwwBTJdvQq7RykLEbOPcUUnJ16X4NA0g==
   dependencies:
     tslib "^1.8.1"
 

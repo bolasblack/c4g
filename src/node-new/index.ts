@@ -35,7 +35,14 @@ export function main(options: Options): Rule {
       workingDirectory: options.name,
     }),
     installNodePackage({
-      packageName: ['typescript', '@types/node', 'eslint'],
+      packageName: [
+        'typescript',
+        '@types/node',
+        'eslint',
+        'eslint-config-prettier',
+        '@typescript-eslint/parser',
+        '@typescript-eslint/eslint-plugin',
+      ],
       type: NodePackageType.Dev,
       workingDirectory: options.name,
     }),
