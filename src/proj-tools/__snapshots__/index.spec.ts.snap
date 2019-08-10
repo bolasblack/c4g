@@ -21,6 +21,7 @@ Array [
     "options": Object {
       "packageNames": Array [
         "commitlint",
+        "@commitlint/config-conventional",
       ],
       "type": "dev",
       "workingDirectory": "",

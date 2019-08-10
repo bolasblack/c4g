@@ -10,9 +10,9 @@ import {
 } from '@angular-devkit/schematics'
 import { Schema as Options } from './schema'
 import {
-  NodePackageInstallTask,
-  NodePackageInstallTaskExecutor,
-} from '../tasks/NodePackageInstall'
+  installNodePackage,
+  NodePackageType,
+} from '../utils/rules/installNodePackage'
 
 export { Options }
 
@@ -43,28 +43,22 @@ function transformOptions(options: Options): CompletedOptions {
 }
 
 function addJestDependencies(options: CompletedOptions): Rule {
-  return (tree, context) => {
-    const { react } = options
+  const { react } = options
 
-    NodePackageInstallTaskExecutor.registerInContext(context)
+  const deps = ['jest', 'jest-cli', 'ts-jest', '@types/jest']
 
-    const deps = ['jest', 'jest-cli', 'ts-jest', '@types/jest']
-
-    if (react) {
-      deps.push(
-        'enzyme',
-        'enzyme-to-json',
-        'enzyme-adapter-react-16',
-        'identity-obj-proxy',
-      )
-    }
-
-    context.addTask(
-      new NodePackageInstallTask({
-        type: NodePackageInstallTask.Type.Dev,
-        packageName: deps,
-        workingDirectory: options.cwd,
-      }),
+  if (react) {
+    deps.push(
+      'enzyme',
+      'enzyme-to-json',
+      'enzyme-adapter-react-16',
+      'identity-obj-proxy',
     )
   }
+
+  return installNodePackage({
+    type: NodePackageType.Dev,
+    packageName: deps,
+    workingDirectory: options.cwd,
+  })
 }

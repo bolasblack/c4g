@@ -11,7 +11,7 @@ import {
   SchematicsException,
 } from '@angular-devkit/schematics'
 import { Schema as Options } from './schema'
-import { ShellExecTaskExecutor, ShellExecTask } from '../tasks/ShellExec'
+import { execShell } from '../utils/rules/execShell'
 
 export { Options }
 
@@ -28,15 +28,8 @@ export function main(options: Options): Rule {
           move(path.join('src', strings.dasherize(options.name))),
         ]),
       ),
-      runYarn(),
+      execShell('yarn', ['build-schema-ts']),
     ])
-  }
-}
-
-function runYarn(): Rule {
-  return (_, context) => {
-    ShellExecTaskExecutor.registerInContext(context)
-    context.addTask(new ShellExecTask('yarn', ['build-schema-ts']))
   }
 }
 

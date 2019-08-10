@@ -47,6 +47,10 @@ schematics @c4/g:schematic --name=
 
 `yarn test` will run the unit tests, using Jest as a runner and test framework.
 
+## Development
+
+Install [`entr`](https://github.com/eradman/entr/) at first, then run `yarn watch`.
+
 ## Publishing
 
 To publish, simply do:

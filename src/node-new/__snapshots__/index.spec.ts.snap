@@ -1,5 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`node-new support \`author\` option: file content: /hello/.eslintrc.js 1`] = `
+"module.exports = {
+  extends: [
+    './node_modules/@c4605/toolconfs/eslintrc.base',
+    './node_modules/@c4605/toolconfs/eslintrc.ts',
+  ],
+  parserOptions: {
+    project: './tsconfig.json',
+  },
+}
+"
+`;
+
 exports[`node-new support \`author\` option: file content: /hello/README.md 1`] = `
 "# hello
 
@@ -52,19 +65,12 @@ exports[`node-new support \`author\` option: file content: /hello/tsconfig.json 
 "
 `;
 
-exports[`node-new support \`author\` option: file content: /hello/tslint.json 1`] = `
-"{
-  \\"extends\\": \\"@c4605/toolconfs/tslint\\"
-}
-"
-`;
-
 exports[`node-new support \`author\` option: file structure 1`] = `
 Array [
   "/hello/README.md",
+  "/hello/.eslintrc.js",
   "/hello/package.json",
   "/hello/tsconfig.json",
-  "/hello/tslint.json",
   "/hello/src/index.ts",
 ]
 `;
@@ -87,12 +93,29 @@ Array [
       "packageNames": Array [
         "typescript",
         "@types/node",
+        "eslint",
+        "eslint-config-prettier",
+        "@typescript-eslint/parser",
+        "@typescript-eslint/eslint-plugin",
       ],
       "type": "dev",
       "workingDirectory": "hello",
     },
   },
 ]
+`;
+
+exports[`node-new works: file content: /hello/.eslintrc.js 1`] = `
+"module.exports = {
+  extends: [
+    './node_modules/@c4605/toolconfs/eslintrc.base',
+    './node_modules/@c4605/toolconfs/eslintrc.ts',
+  ],
+  parserOptions: {
+    project: './tsconfig.json',
+  },
+}
+"
 `;
 
 exports[`node-new works: file content: /hello/README.md 1`] = `
@@ -146,19 +169,12 @@ exports[`node-new works: file content: /hello/tsconfig.json 1`] = `
 "
 `;
 
-exports[`node-new works: file content: /hello/tslint.json 1`] = `
-"{
-  \\"extends\\": \\"@c4605/toolconfs/tslint\\"
-}
-"
-`;
-
 exports[`node-new works: file structure 1`] = `
 Array [
   "/hello/README.md",
+  "/hello/.eslintrc.js",
   "/hello/package.json",
   "/hello/tsconfig.json",
-  "/hello/tslint.json",
   "/hello/src/index.ts",
 ]
 `;
@@ -181,6 +197,10 @@ Array [
       "packageNames": Array [
         "typescript",
         "@types/node",
+        "eslint",
+        "eslint-config-prettier",
+        "@typescript-eslint/parser",
+        "@typescript-eslint/eslint-plugin",
       ],
       "type": "dev",
       "workingDirectory": "hello",
