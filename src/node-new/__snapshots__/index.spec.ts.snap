@@ -38,9 +38,9 @@ exports[`node-new support \`author\` option: file content: /hello/package.json 1
     \\"watch\\": \\"tsc --watch -p .\\"
   },
   \\"devDependencies\\": {},
-  \\"dependencies\\": {}
-}
-"
+  \\"dependencies\\": {},
+  \\"prettier\\": \\"@c4605/toolconfs/prettierrc\\"
+}"
 `;
 
 exports[`node-new support \`author\` option: file content: /hello/src/index.ts 1`] = `
@@ -77,6 +77,26 @@ Array [
 
 exports[`node-new support \`author\` option: rule tasks 1`] = `
 Array [
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "prettier",
+      ],
+      "type": "dev",
+      "workingDirectory": "hello",
+    },
+  },
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "@c4605/toolconfs",
+      ],
+      "type": "default",
+      "workingDirectory": "hello",
+    },
+  },
   Object {
     "name": "@c4g/node-package-install-task",
     "options": Object {
@@ -142,9 +162,9 @@ exports[`node-new works: file content: /hello/package.json 1`] = `
     \\"watch\\": \\"tsc --watch -p .\\"
   },
   \\"devDependencies\\": {},
-  \\"dependencies\\": {}
-}
-"
+  \\"dependencies\\": {},
+  \\"prettier\\": \\"@c4605/toolconfs/prettierrc\\"
+}"
 `;
 
 exports[`node-new works: file content: /hello/src/index.ts 1`] = `
@@ -181,6 +201,26 @@ Array [
 
 exports[`node-new works: rule tasks 1`] = `
 Array [
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "prettier",
+      ],
+      "type": "dev",
+      "workingDirectory": "hello",
+    },
+  },
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "@c4605/toolconfs",
+      ],
+      "type": "default",
+      "workingDirectory": "hello",
+    },
+  },
   Object {
     "name": "@c4g/node-package-install-task",
     "options": Object {

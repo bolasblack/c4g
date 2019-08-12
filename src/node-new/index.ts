@@ -15,7 +15,7 @@ import {
   installNodePackage,
   NodePackageType,
 } from '../utils/rules/installNodePackage'
-import { Options as ProjToolsOptions } from '../proj-tools'
+import { Options as ProjToolsOptions, IncludeItem } from '../proj-tools'
 
 export { Options }
 
@@ -26,7 +26,15 @@ export function main(options: Options): Rule {
   }
 
   return chain([
+    mergeWith(
+      apply(url('./files'), [
+        applyTemplates(templateOpts),
+        template(templateOpts),
+        move(options.name),
+      ]),
+    ),
     schematic<ProjToolsOptions>('proj-tools', {
+      include: [IncludeItem.Prettier],
       cwd: options.name,
       interactive: options.interactive,
     }),
@@ -46,12 +54,5 @@ export function main(options: Options): Rule {
       type: NodePackageType.Dev,
       workingDirectory: options.name,
     }),
-    mergeWith(
-      apply(url('./files'), [
-        applyTemplates(templateOpts),
-        template(templateOpts),
-        move(options.name),
-      ]),
-    ),
   ])
 }
