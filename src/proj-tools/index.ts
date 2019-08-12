@@ -8,6 +8,7 @@ import {
 } from '@angular-devkit/schematics'
 import { Observable, merge, of, empty, from } from 'rxjs'
 import * as inquirer from 'inquirer'
+import * as path from 'path'
 import {
   installNodePackage,
   NodePackageType,
@@ -16,6 +17,7 @@ import { Schema as Options, IncludeItem } from './schema'
 import { map, mergeMap, reduce } from 'rxjs/operators'
 import { Options as JestInstallOptions } from '../jest-install'
 import { file as fileSource } from '../utils/sources/file'
+import { file as fileRule } from '../utils/rules/file'
 import { schematic } from '../utils/rules/schematic'
 
 export { Options, IncludeItem }
@@ -52,6 +54,22 @@ function getRule(options: Options, includeItem: IncludeItem): Observable<Rule> {
   const file = (name: string): Rule => copyConfigFile(name, options.cwd || '')
 
   switch (includeItem) {
+    case IncludeItem.Prettier:
+      return of(
+        chain([
+          fileRule(
+            path.join(options.cwd || '', 'package.json'),
+            (content: object) => ({
+              ...content,
+              prettier: '@c4605/toolconfs/prettierrc',
+            }),
+          ),
+          install({
+            packageName: ['prettier'],
+          }),
+        ]),
+      )
+
     case IncludeItem.Commitlint:
       return of(
         chain([

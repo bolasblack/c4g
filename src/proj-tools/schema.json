@@ -6,7 +6,14 @@
     "includeItem": {
       "$id": "#includeItem",
       "type": "string",
-      "enum": ["lint-staged", "commitlint", "githooks", "renovate", "jest"]
+      "enum": [
+        "lint-staged",
+        "commitlint",
+        "githooks",
+        "renovate",
+        "jest",
+        "prettier"
+      ]
     }
   },
   "type": "object",
