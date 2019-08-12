@@ -8,11 +8,15 @@ import {
   chain,
   move,
 } from '@angular-devkit/schematics'
+import { produce } from 'immer'
+import * as path from 'path'
 import { Schema as Options } from './schema'
+import { file as fileRule } from '../utils/rules/file'
 import {
   installNodePackage,
   NodePackageType,
 } from '../utils/rules/installNodePackage'
+import { when } from '../utils/rules/when'
 
 export { Options }
 
@@ -25,17 +29,28 @@ export function main(_options: Options = {}): Rule {
     dasherize: strings.dasherize,
   }
 
-  return tree => {
-    return chain([
-      addJestDependencies(options),
-      mergeWith(
-        apply(url('./files'), [
-          template(templateOpts),
-          move(options.cwd || ''),
-        ]),
+  const pkgJsonPath = path.join(options.cwd || '', 'package.json')
+
+  return chain([
+    when(
+      tree => tree.exists(pkgJsonPath),
+      fileRule(
+        pkgJsonPath,
+        produce((content: any) => {
+          content.scripts = content.scripts || {}
+          if (content.scripts.test) {
+            content.scripts.test += '&& jest ./src'
+          } else {
+            content.scripts.test = 'jest ./src'
+          }
+        }),
       ),
-    ])
-  }
+    ),
+    addJestDependencies(options),
+    mergeWith(
+      apply(url('./files'), [template(templateOpts), move(options.cwd || '')]),
+    ),
+  ])
 }
 
 function transformOptions(options: Options): CompletedOptions {

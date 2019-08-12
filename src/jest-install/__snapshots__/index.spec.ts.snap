@@ -127,13 +127,68 @@ exports[`jest-install works: file content: /jest.config.js 1`] = `
 "
 `;
 
+exports[`jest-install works: file content: /jest.config.js 2`] = `
+"module.exports = {
+  transform: {
+    '^.+\\\\\\\\.js$': 'babel-jest',
+    '^.+\\\\\\\\.ts$': 'ts-jest',
+  },
+  testMatch: [
+    '**/?(*.)+(spec|test).ts',
+  ],
+  testPathIgnorePatterns: [
+    '/node_modules/',
+  ],
+  moduleFileExtensions: [
+    'ts',
+    'js',
+    'json',
+    'node',
+  ],
+}
+"
+`;
+
+exports[`jest-install works: file content: /package.json 1`] = `
+"{
+  \\"scripts\\": {
+    \\"test\\": \\"jest ./src\\"
+  }
+}"
+`;
+
 exports[`jest-install works: file structure 1`] = `
 Array [
   "/jest.config.js",
 ]
 `;
 
+exports[`jest-install works: file structure 2`] = `
+Array [
+  "/package.json",
+  "/jest.config.js",
+]
+`;
+
 exports[`jest-install works: rule tasks 1`] = `
+Array [
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "jest",
+        "jest-cli",
+        "ts-jest",
+        "@types/jest",
+      ],
+      "type": "dev",
+      "workingDirectory": ".",
+    },
+  },
+]
+`;
+
+exports[`jest-install works: rule tasks 2`] = `
 Array [
   Object {
     "name": "@c4g/node-package-install-task",
