@@ -1,11 +1,11 @@
 {
   "name": "@c4/g",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "A blank schematics",
   "scripts": {
     "g": "schematics",
-    "build-schema-ts": "ts-node ./scripts/generate-schema-ts.ts",
-    "watch-schema-ts": "trap 'exit' INT; while true; do ls src/**/schema.json | entr -d yarn build-schema-ts /_; done",
+    "build-schema-ts": "ts-node ./scripts/generate-schema-ts.ts src/**/schema.json",
+    "watch-schema-ts": "yarn build-schema-ts && trap 'exit' INT; while true; do ls src/**/schema.json | entr -d yarn build-schema-ts /_; done",
     "build-ts": "tsc -p tsconfig.json",
     "watch-ts": "yarn build-ts --watch",
     "clean-output": "rm -f ./src/**/*{.d.ts,.d.ts.map,.js,.js.map}",
@@ -24,11 +24,13 @@
   "dependencies": {
     "@angular-devkit/core": "^8.1.2",
     "@angular-devkit/schematics": "^8.1.2",
-    "@c4605/toolconfs": "^4.3.0",
+    "@c4605/toolconfs": "^4.4.0",
     "@types/inquirer": "^6.0.3",
     "@types/node": "^12.6.8",
     "chalk": "^2.4.2",
+    "immer": "^3.2.0",
     "inquirer": "^6.5.0",
+    "js-yaml": "^3.13.1",
     "typescript": "~3.5.3"
   },
   "devDependencies": {
@@ -36,6 +38,7 @@
     "@types/chalk": "^2.2.0",
     "@types/jasmine": "^3.3.15",
     "@types/jest": "^24.0.15",
+    "@types/js-yaml": "^3.12.1",
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.13.0",
     "commitlint": "^8.1.0",

@@ -17,6 +17,7 @@ if (require.main === module) {
       dedent`yarn create @c4/node projectName [@c4/g:node-new options, ...]`,
     )
   } else {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     main(args[0], args.slice(1)).then(exitCode => (process.exitCode = exitCode))
   }
 }

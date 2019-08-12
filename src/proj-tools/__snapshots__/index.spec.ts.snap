@@ -134,6 +134,43 @@ Array [
 ]
 `;
 
+exports[`proj-tools with option \`include\` works with \`IncludeItem.Prettier\`: file content: /package.json 1`] = `
+"{
+  \\"prettier\\": \\"@c4605/toolconfs/prettierrc\\"
+}"
+`;
+
+exports[`proj-tools with option \`include\` works with \`IncludeItem.Prettier\`: file structure 1`] = `
+Array [
+  "/package.json",
+]
+`;
+
+exports[`proj-tools with option \`include\` works with \`IncludeItem.Prettier\`: rule tasks 1`] = `
+Array [
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "prettier",
+      ],
+      "type": "dev",
+      "workingDirectory": "",
+    },
+  },
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "@c4605/toolconfs",
+      ],
+      "type": "default",
+      "workingDirectory": "",
+    },
+  },
+]
+`;
+
 exports[`proj-tools with option \`include\` works with \`IncludeItem.Renovate\`: file content: /renovate.json 1`] = `
 "{
   \\"extends\\": [\\"github>bolasblack/js-toolconfs:renovate\\"],

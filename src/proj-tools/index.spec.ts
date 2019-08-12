@@ -9,12 +9,12 @@ const collectionPath = path.join(__dirname, '../collection.json')
 const toolNames = Object.keys(IncludeItem)
 
 describe('proj-tools', () => {
-  const test = (options: Options) => {
+  const test = (options: Options, tree = Tree.empty()) => {
     const runner = new SchematicTestRunner('schematics', collectionPath)
     const resultTree = runner.runSchematic(
       'proj-tools',
       { ...options, interactive: false },
-      Tree.empty(),
+      tree,
     )
     assertTreeSnapshot(runner, resultTree)
     return [runner, resultTree]
@@ -26,9 +26,17 @@ describe('proj-tools', () => {
     })
 
     toolNames.forEach(toolName => {
+      if (IncludeItem[toolName] === IncludeItem.Prettier) return
+
       it(`works with \`IncludeItem.${toolName}\``, () => {
         test({ include: [IncludeItem[toolName]] })
       })
+    })
+
+    it(`works with \`IncludeItem.Prettier\``, () => {
+      const tree = Tree.empty()
+      tree.create('package.json', '{}')
+      test({ include: [IncludeItem.Prettier] }, tree)
     })
   })
 
