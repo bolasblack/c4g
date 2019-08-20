@@ -34,7 +34,7 @@ export function main(options: Options): Rule {
       ]),
     ),
     schematic<ProjToolsOptions>('proj-tools', {
-      include: [IncludeItem.Prettier],
+      include: [IncludeItem.Prettier, IncludeItem.Eslint],
       cwd: options.name,
       interactive: options.interactive,
     }),
@@ -43,14 +43,7 @@ export function main(options: Options): Rule {
       workingDirectory: options.name,
     }),
     installNodePackage({
-      packageName: [
-        'typescript',
-        '@types/node',
-        'eslint',
-        'eslint-config-prettier',
-        '@typescript-eslint/parser',
-        '@typescript-eslint/eslint-plugin',
-      ],
+      packageName: ['typescript', '@types/node'],
       type: NodePackageType.Dev,
       workingDirectory: options.name,
     }),
