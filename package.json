@@ -26,7 +26,7 @@
     "@angular-devkit/schematics": "^8.2.2",
     "@c4605/toolconfs": "^4.4.0",
     "@types/inquirer": "^6.0.3",
-    "@types/node": "^12.6.8",
+    "@types/node": "^12.7.2",
     "chalk": "^2.4.2",
     "immer": "^3.2.0",
     "inquirer": "^6.5.0",
