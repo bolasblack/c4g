@@ -19,6 +19,7 @@ import { Options as JestInstallOptions } from '../jest-install'
 import { file as fileSource } from '../utils/sources/file'
 import { file as fileRule } from '../utils/rules/file'
 import { schematic } from '../utils/rules/schematic'
+import { when } from '../utils/rules/when'
 
 export { Options, IncludeItem }
 
@@ -51,19 +52,20 @@ function getRule(options: Options, includeItem: IncludeItem): Observable<Rule> {
       ...opts,
     })
 
-  const file = (name: string): Rule => copyConfigFile(name, options.cwd || '')
+  const configFile = (name: string): Rule =>
+    mergeWith(apply(fileSource(`./files/${name}`), [move(options.cwd || '')]))
+
+  const filePath = (relativePath: string) =>
+    path.join(options.cwd || '', relativePath)
 
   switch (includeItem) {
     case IncludeItem.Prettier:
       return of(
         chain([
-          fileRule(
-            path.join(options.cwd || '', 'package.json'),
-            (content: object) => ({
-              ...content,
-              prettier: '@c4605/toolconfs/prettierrc',
-            }),
-          ),
+          fileRule(filePath('package.json'), (content: object) => ({
+            ...content,
+            prettier: '@c4605/toolconfs/prettierrc',
+          })),
           install({
             packageName: ['prettier'],
           }),
@@ -73,7 +75,7 @@ function getRule(options: Options, includeItem: IncludeItem): Observable<Rule> {
     case IncludeItem.Commitlint:
       return of(
         chain([
-          file('.commitlintrc.js'),
+          configFile('.commitlintrc.js'),
           install({
             packageName: ['commitlint', '@commitlint/config-conventional'],
           }),
@@ -83,7 +85,7 @@ function getRule(options: Options, includeItem: IncludeItem): Observable<Rule> {
     case IncludeItem.LintStaged:
       return of(
         chain([
-          file('lint-staged.config.js'),
+          configFile('lint-staged.config.js'),
           install({ packageName: 'lint-staged' }),
         ]),
       )
@@ -92,7 +94,37 @@ function getRule(options: Options, includeItem: IncludeItem): Observable<Rule> {
       return of(install({ packageName: 'git-hook-pure' }))
 
     case IncludeItem.Renovate:
-      return of(file('renovate.json'))
+      return of(configFile('renovate.json'))
+
+    case IncludeItem.Eslint:
+      return of(
+        chain([
+          configFile('.eslintrc.json'),
+          when(
+            () => options.include!.includes(IncludeItem.Prettier),
+            fileRule(
+              filePath('.eslintrc.json'),
+              (content: Record<string, any>) => ({
+                ...content,
+                extends: [
+                  ...content.extends,
+                  './node_modules/@c4605/toolconfs/eslintrc.prettier',
+                ],
+              }),
+            ),
+          ),
+          install({
+            packageName: [
+              'eslint',
+              options.include!.includes(IncludeItem.Prettier)
+                ? 'eslint-config-prettier'
+                : null,
+              '@typescript-eslint/parser',
+              '@typescript-eslint/eslint-plugin',
+            ].filter((s): s is string => Boolean(s)),
+          }),
+        ]),
+      )
 
     case IncludeItem.Jest:
       return of(
@@ -105,9 +137,6 @@ function getRule(options: Options, includeItem: IncludeItem): Observable<Rule> {
 
   return empty()
 }
-
-const copyConfigFile = (fileName: string, moveTo: string) =>
-  mergeWith(apply(fileSource(`./files/${fileName}`), [move(moveTo)]))
 
 export const requestOptions = (
   opts: Partial<Options> = {},

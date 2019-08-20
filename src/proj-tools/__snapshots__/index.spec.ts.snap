@@ -1,5 +1,154 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`proj-tools with option \`include\` with \`IncludeItem.Eslint\` install eslint-plugin-prettier when including prettier: file content: /.eslintrc.json 1`] = `
+"{
+  \\"extends\\": [
+    \\"./node_modules/@c4605/toolconfs/eslintrc.base\\",
+    \\"./node_modules/@c4605/toolconfs/eslintrc.ts\\",
+    \\"./node_modules/@c4605/toolconfs/eslintrc.prettier\\"
+  ],
+  \\"parserOptions\\": {
+    \\"project\\": \\"./tsconfig.json\\"
+  },
+  \\"rules\\": {}
+}"
+`;
+
+exports[`proj-tools with option \`include\` with \`IncludeItem.Eslint\` install eslint-plugin-prettier when including prettier: file content: /package.json 1`] = `
+"{
+  \\"prettier\\": \\"@c4605/toolconfs/prettierrc\\"
+}"
+`;
+
+exports[`proj-tools with option \`include\` with \`IncludeItem.Eslint\` install eslint-plugin-prettier when including prettier: file structure 1`] = `
+Array [
+  "/package.json",
+  "/.eslintrc.json",
+]
+`;
+
+exports[`proj-tools with option \`include\` with \`IncludeItem.Eslint\` install eslint-plugin-prettier when including prettier: rule tasks 1`] = `
+Array [
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "eslint",
+        "eslint-config-prettier",
+        "@typescript-eslint/parser",
+        "@typescript-eslint/eslint-plugin",
+      ],
+      "type": "dev",
+      "workingDirectory": "",
+    },
+  },
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "prettier",
+      ],
+      "type": "dev",
+      "workingDirectory": "",
+    },
+  },
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "@c4605/toolconfs",
+      ],
+      "type": "default",
+      "workingDirectory": "",
+    },
+  },
+]
+`;
+
+exports[`proj-tools with option \`include\` with \`IncludeItem.Eslint\` works: file content: /.eslintrc.json 1`] = `
+"{
+  \\"extends\\": [
+    \\"./node_modules/@c4605/toolconfs/eslintrc.base\\",
+    \\"./node_modules/@c4605/toolconfs/eslintrc.ts\\"
+  ],
+  \\"parserOptions\\": {
+    \\"project\\": \\"./tsconfig.json\\"
+  },
+  \\"rules\\": {}
+}
+"
+`;
+
+exports[`proj-tools with option \`include\` with \`IncludeItem.Eslint\` works: file structure 1`] = `
+Array [
+  "/.eslintrc.json",
+]
+`;
+
+exports[`proj-tools with option \`include\` with \`IncludeItem.Eslint\` works: rule tasks 1`] = `
+Array [
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "eslint",
+        "@typescript-eslint/parser",
+        "@typescript-eslint/eslint-plugin",
+      ],
+      "type": "dev",
+      "workingDirectory": "",
+    },
+  },
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "@c4605/toolconfs",
+      ],
+      "type": "default",
+      "workingDirectory": "",
+    },
+  },
+]
+`;
+
+exports[`proj-tools with option \`include\` with \`IncludeItem.Prettier\` works: file content: /package.json 1`] = `
+"{
+  \\"prettier\\": \\"@c4605/toolconfs/prettierrc\\"
+}"
+`;
+
+exports[`proj-tools with option \`include\` with \`IncludeItem.Prettier\` works: file structure 1`] = `
+Array [
+  "/package.json",
+]
+`;
+
+exports[`proj-tools with option \`include\` with \`IncludeItem.Prettier\` works: rule tasks 1`] = `
+Array [
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "prettier",
+      ],
+      "type": "dev",
+      "workingDirectory": "",
+    },
+  },
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "@c4605/toolconfs",
+      ],
+      "type": "default",
+      "workingDirectory": "",
+    },
+  },
+]
+`;
+
 exports[`proj-tools with option \`include\` works with \`IncludeItem.Commitlint\`: file content: /.commitlintrc.js 1`] = `
 "module.exports = {
   extends: ['@c4605/toolconfs/commitlintrc'],
@@ -116,43 +265,6 @@ Array [
     "options": Object {
       "packageNames": Array [
         "lint-staged",
-      ],
-      "type": "dev",
-      "workingDirectory": "",
-    },
-  },
-  Object {
-    "name": "@c4g/node-package-install-task",
-    "options": Object {
-      "packageNames": Array [
-        "@c4605/toolconfs",
-      ],
-      "type": "default",
-      "workingDirectory": "",
-    },
-  },
-]
-`;
-
-exports[`proj-tools with option \`include\` works with \`IncludeItem.Prettier\`: file content: /package.json 1`] = `
-"{
-  \\"prettier\\": \\"@c4605/toolconfs/prettierrc\\"
-}"
-`;
-
-exports[`proj-tools with option \`include\` works with \`IncludeItem.Prettier\`: file structure 1`] = `
-Array [
-  "/package.json",
-]
-`;
-
-exports[`proj-tools with option \`include\` works with \`IncludeItem.Prettier\`: rule tasks 1`] = `
-Array [
-  Object {
-    "name": "@c4g/node-package-install-task",
-    "options": Object {
-      "packageNames": Array [
-        "prettier",
       ],
       "type": "dev",
       "workingDirectory": "",

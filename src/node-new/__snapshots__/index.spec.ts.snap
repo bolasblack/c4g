@@ -1,16 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`node-new support \`author\` option: file content: /hello/.eslintrc.js 1`] = `
-"module.exports = {
-  extends: [
-    './node_modules/@c4605/toolconfs/eslintrc.base',
-    './node_modules/@c4605/toolconfs/eslintrc.ts',
+exports[`node-new support \`author\` option: file content: /hello/.eslintrc.json 1`] = `
+"{
+  \\"extends\\": [
+    \\"./node_modules/@c4605/toolconfs/eslintrc.base\\",
+    \\"./node_modules/@c4605/toolconfs/eslintrc.ts\\",
+    \\"./node_modules/@c4605/toolconfs/eslintrc.prettier\\"
   ],
-  parserOptions: {
-    project: './tsconfig.json',
+  \\"parserOptions\\": {
+    \\"project\\": \\"./tsconfig.json\\"
   },
-}
-"
+  \\"rules\\": {}
+}"
 `;
 
 exports[`node-new support \`author\` option: file content: /hello/README.md 1`] = `
@@ -68,9 +69,9 @@ exports[`node-new support \`author\` option: file content: /hello/tsconfig.json 
 exports[`node-new support \`author\` option: file structure 1`] = `
 Array [
   "/hello/README.md",
-  "/hello/.eslintrc.js",
   "/hello/package.json",
   "/hello/tsconfig.json",
+  "/hello/.eslintrc.json",
   "/hello/src/index.ts",
 ]
 `;
@@ -82,6 +83,19 @@ Array [
     "options": Object {
       "packageNames": Array [
         "prettier",
+      ],
+      "type": "dev",
+      "workingDirectory": "hello",
+    },
+  },
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "eslint",
+        "eslint-config-prettier",
+        "@typescript-eslint/parser",
+        "@typescript-eslint/eslint-plugin",
       ],
       "type": "dev",
       "workingDirectory": "hello",
@@ -113,10 +127,6 @@ Array [
       "packageNames": Array [
         "typescript",
         "@types/node",
-        "eslint",
-        "eslint-config-prettier",
-        "@typescript-eslint/parser",
-        "@typescript-eslint/eslint-plugin",
       ],
       "type": "dev",
       "workingDirectory": "hello",
@@ -125,17 +135,18 @@ Array [
 ]
 `;
 
-exports[`node-new works: file content: /hello/.eslintrc.js 1`] = `
-"module.exports = {
-  extends: [
-    './node_modules/@c4605/toolconfs/eslintrc.base',
-    './node_modules/@c4605/toolconfs/eslintrc.ts',
+exports[`node-new works: file content: /hello/.eslintrc.json 1`] = `
+"{
+  \\"extends\\": [
+    \\"./node_modules/@c4605/toolconfs/eslintrc.base\\",
+    \\"./node_modules/@c4605/toolconfs/eslintrc.ts\\",
+    \\"./node_modules/@c4605/toolconfs/eslintrc.prettier\\"
   ],
-  parserOptions: {
-    project: './tsconfig.json',
+  \\"parserOptions\\": {
+    \\"project\\": \\"./tsconfig.json\\"
   },
-}
-"
+  \\"rules\\": {}
+}"
 `;
 
 exports[`node-new works: file content: /hello/README.md 1`] = `
@@ -192,9 +203,9 @@ exports[`node-new works: file content: /hello/tsconfig.json 1`] = `
 exports[`node-new works: file structure 1`] = `
 Array [
   "/hello/README.md",
-  "/hello/.eslintrc.js",
   "/hello/package.json",
   "/hello/tsconfig.json",
+  "/hello/.eslintrc.json",
   "/hello/src/index.ts",
 ]
 `;
@@ -206,6 +217,19 @@ Array [
     "options": Object {
       "packageNames": Array [
         "prettier",
+      ],
+      "type": "dev",
+      "workingDirectory": "hello",
+    },
+  },
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "eslint",
+        "eslint-config-prettier",
+        "@typescript-eslint/parser",
+        "@typescript-eslint/eslint-plugin",
       ],
       "type": "dev",
       "workingDirectory": "hello",
@@ -237,10 +261,6 @@ Array [
       "packageNames": Array [
         "typescript",
         "@types/node",
-        "eslint",
-        "eslint-config-prettier",
-        "@typescript-eslint/parser",
-        "@typescript-eslint/eslint-plugin",
       ],
       "type": "dev",
       "workingDirectory": "hello",

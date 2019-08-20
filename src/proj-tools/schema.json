@@ -12,7 +12,8 @@
         "githooks",
         "renovate",
         "jest",
-        "prettier"
+        "prettier",
+        "eslint"
       ]
     }
   },

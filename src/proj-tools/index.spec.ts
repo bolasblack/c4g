@@ -6,8 +6,6 @@ import { Options, IncludeItem } from './index'
 
 const collectionPath = path.join(__dirname, '../collection.json')
 
-const toolNames = Object.keys(IncludeItem)
-
 describe('proj-tools', () => {
   const test = (options: Options, tree = Tree.empty()) => {
     const runner = new SchematicTestRunner('schematics', collectionPath)
@@ -25,18 +23,34 @@ describe('proj-tools', () => {
       test({})
     })
 
-    toolNames.forEach(toolName => {
-      if (IncludeItem[toolName] === IncludeItem.Prettier) return
+    const includeItemNames = Object.keys(IncludeItem)
+    const includeItemSpecialCase = [IncludeItem.Prettier, IncludeItem.Eslint]
+    includeItemNames.forEach(toolName => {
+      if (includeItemSpecialCase.includes(IncludeItem[toolName])) return
 
       it(`works with \`IncludeItem.${toolName}\``, () => {
         test({ include: [IncludeItem[toolName]] })
       })
     })
 
-    it(`works with \`IncludeItem.Prettier\``, () => {
-      const tree = Tree.empty()
-      tree.create('package.json', '{}')
-      test({ include: [IncludeItem.Prettier] }, tree)
+    describe('with `IncludeItem.Prettier`', () => {
+      it('works', () => {
+        const tree = Tree.empty()
+        tree.create('package.json', '{}')
+        test({ include: [IncludeItem.Prettier] }, tree)
+      })
+    })
+
+    describe('with `IncludeItem.Eslint`', () => {
+      it('works', () => {
+        test({ include: [IncludeItem.Eslint] })
+      })
+
+      it('install eslint-plugin-prettier when including prettier', () => {
+        const tree = Tree.empty()
+        tree.create('package.json', '{}')
+        test({ include: [IncludeItem.Eslint, IncludeItem.Prettier] }, tree)
+      })
     })
   })
 
