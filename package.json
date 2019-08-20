@@ -25,11 +25,11 @@
     "@angular-devkit/core": "^8.2.2",
     "@angular-devkit/schematics": "^8.2.2",
     "@c4605/toolconfs": "^4.4.0",
-    "@types/inquirer": "^6.0.3",
+    "@types/inquirer": "^6.5.0",
     "@types/node": "^12.7.2",
     "chalk": "^2.4.2",
     "immer": "^3.2.0",
-    "inquirer": "^6.5.0",
+    "inquirer": "^6.5.1",
     "js-yaml": "^3.13.1",
     "typescript": "~3.5.3"
   },
