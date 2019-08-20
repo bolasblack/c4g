@@ -12,7 +12,7 @@
     "build": "yarn build-schema-ts && yarn build-ts",
     "watch": "concurrently 'yarn:watch-schema-ts' 'yarn:watch-ts'",
     "prepublishOnly": "yarn clean-output && yarn build",
-    "test": "NODE_ENV=test jest"
+    "test": "yarn build-schema-ts && NODE_ENV=test jest"
   },
   "prettier": "@c4605/toolconfs/prettierrc",
   "keywords": [
