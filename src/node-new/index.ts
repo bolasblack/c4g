@@ -15,7 +15,11 @@ import {
   installNodePackage,
   NodePackageType,
 } from '../utils/rules/installNodePackage'
-import { Options as ProjToolsOptions, IncludeItem } from '../proj-tools'
+import {
+  Options as ProjToolsOptions,
+  IncludeItem,
+  ProjToolsTypedSchematicContext,
+} from '../proj-tools'
 
 export { Options }
 
@@ -38,6 +42,7 @@ export function main(options: Options): Rule {
       cwd: options.name,
       interactive: options.interactive,
     }),
+    cleanupSpecFiles(),
     installNodePackage({
       packageName: '@c4605/toolconfs',
       workingDirectory: options.name,
@@ -48,4 +53,18 @@ export function main(options: Options): Rule {
       workingDirectory: options.name,
     }),
   ])
+}
+
+function cleanupSpecFiles(): Rule {
+  return (tree, ctx: ProjToolsTypedSchematicContext<any, any>) => {
+    if (ctx.projTools && ctx.projTools.includes.includes(IncludeItem.Jest)) {
+      return
+    }
+
+    tree.visit(f => {
+      if (f.endsWith('.spec.ts')) {
+        tree.delete(f)
+      }
+    })
+  }
 }

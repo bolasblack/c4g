@@ -5,29 +5,47 @@ import {
   callRule,
   apply,
   move,
+  TypedSchematicContext,
 } from '@angular-devkit/schematics'
 import { Observable, merge, of, empty, from } from 'rxjs'
+import { map, mergeMap, reduce } from 'rxjs/operators'
 import * as inquirer from 'inquirer'
 import * as path from 'path'
+import { Schema as Options, IncludeItem } from './schema'
+import { Options as JestInstallOptions } from '../jest-install'
+import { file as fileSource } from '../utils/sources/file'
 import {
   installNodePackage,
   NodePackageType,
 } from '../utils/rules/installNodePackage'
-import { Schema as Options, IncludeItem } from './schema'
-import { map, mergeMap, reduce } from 'rxjs/operators'
-import { Options as JestInstallOptions } from '../jest-install'
-import { file as fileSource } from '../utils/sources/file'
 import { file as fileRule } from '../utils/rules/file'
 import { schematic } from '../utils/rules/schematic'
 import { when } from '../utils/rules/when'
 
 export { Options, IncludeItem }
 
+export interface ProjToolsTypedSchematicContext<
+  C extends object,
+  S extends object
+> extends TypedSchematicContext<C, S> {
+  projTools?: {
+    includes: IncludeItem[]
+  }
+}
+
 export function main(options: Options): Rule {
   return (tree, ctx) =>
     (options.interactive ? requestOptions(options) : of(options)).pipe(
-      map(opts => ({ ...opts, include: opts.include || [] })),
-      mergeMap(opts => merge(...opts.include.map(getRule.bind(null, options)))),
+      map(opts => {
+        const includes = opts.include || []
+        ;(ctx as ProjToolsTypedSchematicContext<any, any>).projTools = {
+          includes,
+        }
+        return { ...opts, includes }
+      }),
+      mergeMap(opts =>
+        merge(...opts.includes.map(getRule.bind(null, options))),
+      ),
       reduce((acc, r) => acc.concat(r), [] as Rule[]),
       mergeMap(rules => {
         if (rules.length) {

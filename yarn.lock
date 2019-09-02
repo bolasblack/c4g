@@ -157,10 +157,10 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@c4605/toolconfs@^4.6.0":
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/@c4605/toolconfs/-/toolconfs-4.6.0.tgz#12da54e05004d1b56f2b36700cf087dfd93e2926"
-  integrity sha512-ogdl82aKIEIlkBGMv8z4H4g1O7YItquOjSOYbGd7WZ0bIqZDbhkVF2Yx7f0peZqQEwXIHeuNzNponQ4jjUUEwg==
+"@c4605/toolconfs@^4.7.0":
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/@c4605/toolconfs/-/toolconfs-4.7.0.tgz#87d14a6c4151d832e4700e00a48e58873312e236"
+  integrity sha512-TmTSSkGDfLHVXCc07DkEURHlFxY5hx3yrHdNorsgK8iGXySheWV8af4zjMem1/xJUcUcu42E/gQvCYJdp+fL+Q==
   optionalDependencies:
     "@commitlint/config-conventional" "^8.1.0"
     "@typescript-eslint/eslint-plugin" "^2.0.0"
