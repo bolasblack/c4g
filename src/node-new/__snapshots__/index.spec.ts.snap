@@ -1,5 +1,154 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`node-new add spec files if user added proj-tool jest: file content: /hello/.eslintrc.json 1`] = `
+"{
+  \\"extends\\": [
+    \\"./node_modules/@c4605/toolconfs/eslintrc.base\\",
+    \\"./node_modules/@c4605/toolconfs/eslintrc.ts\\",
+    \\"./node_modules/@c4605/toolconfs/eslintrc.prettier\\"
+  ],
+  \\"parserOptions\\": {
+    \\"project\\": \\"./tsconfig.json\\"
+  },
+  \\"rules\\": {}
+}"
+`;
+
+exports[`node-new add spec files if user added proj-tool jest: file content: /hello/README.md 1`] = `
+"# hello
+
+## Usage
+
+\`\`\`bash
+yarn build # build code
+yarn watch # build and watch code
+\`\`\`
+"
+`;
+
+exports[`node-new add spec files if user added proj-tool jest: file content: /hello/package.json 1`] = `
+"{
+  \\"name\\": \\"hello\\",
+  \\"version\\": \\"0.1.0\\",
+  \\"main\\": \\"lib/index.js\\",
+  \\"author\\": \\"c4605 <bolasblack@gmail.com>\\",
+  \\"license\\": \\"MIT\\",
+  \\"scripts\\": {
+    \\"prepublishOnly\\": \\"yarn build\\",
+    \\"build\\": \\"tsc --build .\\",
+    \\"watch\\": \\"tsc --watch -p .\\"
+  },
+  \\"devDependencies\\": {},
+  \\"dependencies\\": {},
+  \\"prettier\\": \\"@c4605/toolconfs/prettierrc\\"
+}"
+`;
+
+exports[`node-new add spec files if user added proj-tool jest: file content: /hello/src/index.spec.ts 1`] = `
+"import { main } from './index'
+
+describe('index', () => {
+  describe('main', () => {
+    it('works', () => {
+      expect(main()).toBe('hello from hello')
+    })
+  })
+})
+"
+`;
+
+exports[`node-new add spec files if user added proj-tool jest: file content: /hello/src/index.ts 1`] = `
+"export function main() {
+  return 'hello from hello'
+}
+
+if (require.main === module) {
+  console.log(main())
+}
+"
+`;
+
+exports[`node-new add spec files if user added proj-tool jest: file content: /hello/tsconfig.json 1`] = `
+"{
+  \\"extends\\": \\"@c4605/toolconfs/tsconfig-node\\",
+  \\"compilerOptions\\": {
+    \\"outDir\\": \\"lib\\"
+  },
+  \\"exclude\\": [\\"./lib\\"]
+}
+"
+`;
+
+exports[`node-new add spec files if user added proj-tool jest: file structure 1`] = `
+Array [
+  "/hello/README.md",
+  "/hello/package.json",
+  "/hello/tsconfig.json",
+  "/hello/.eslintrc.json",
+  "/hello/src/index.spec.ts",
+  "/hello/src/index.ts",
+]
+`;
+
+exports[`node-new add spec files if user added proj-tool jest: rule tasks 1`] = `
+Array [
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "prettier",
+      ],
+      "type": "dev",
+      "workingDirectory": "hello",
+    },
+  },
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "eslint",
+        "eslint-config-prettier",
+        "@typescript-eslint/parser",
+        "@typescript-eslint/eslint-plugin",
+      ],
+      "type": "dev",
+      "workingDirectory": "hello",
+    },
+  },
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "@c4605/toolconfs",
+      ],
+      "type": "default",
+      "workingDirectory": "hello",
+    },
+  },
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "@c4605/toolconfs",
+      ],
+      "type": "default",
+      "workingDirectory": "hello",
+    },
+  },
+  Object {
+    "name": "@c4g/node-package-install-task",
+    "options": Object {
+      "packageNames": Array [
+        "typescript",
+        "@types/node",
+      ],
+      "type": "dev",
+      "workingDirectory": "hello",
+    },
+  },
+]
+`;
+
 exports[`node-new support \`author\` option: file content: /hello/.eslintrc.json 1`] = `
 "{
   \\"extends\\": [
@@ -46,11 +195,11 @@ exports[`node-new support \`author\` option: file content: /hello/package.json 1
 
 exports[`node-new support \`author\` option: file content: /hello/src/index.ts 1`] = `
 "export function main() {
-  console.log('hello from hello')
+  return 'hello from hello'
 }
 
 if (require.main === module) {
-  main()
+  console.log(main())
 }
 "
 `;
@@ -180,11 +329,11 @@ exports[`node-new works: file content: /hello/package.json 1`] = `
 
 exports[`node-new works: file content: /hello/src/index.ts 1`] = `
 "export function main() {
-  console.log('hello from hello')
+  return 'hello from hello'
 }
 
 if (require.main === module) {
-  main()
+  console.log(main())
 }
 "
 `;
