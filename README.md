@@ -2,9 +2,9 @@
 
 ## Plans
 
-- `react` schematic
-  - [ ] Create `react` schematic
-  - [ ] Add `proj-tools` schematic
+- `react-new` schematic
+  - [x] Create `react-new` schematic
+  - [x] Add `proj-tools` schematic
   - [ ] Publish `@c4/create-react` (`yarn create @c4/react`)
 
 Related:

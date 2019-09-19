@@ -6,7 +6,8 @@ exports[`schematic works: file content: /src/collection.json 1`] = `
   \\"schematics\\": {
     \\"hello-schematic\\": {
       \\"factory\\": \\"./helloSchematic/index#main\\",
-      \\"schema\\": \\"./helloSchematic/schema.json\\"
+      \\"schema\\": \\"./helloSchematic/schema.json\\",
+      \\"description\\": \\"\\"
     }
   }
 }"
