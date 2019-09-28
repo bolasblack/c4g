@@ -1,0 +1,8 @@
+{
+  "extends": "@c4605/toolconfs/tsconfig-node",
+  "compilerOptions": {
+    "typeRoots": ["./node_modules/@types"],
+    "outDir": "lib"
+  },
+  "exclude": ["./lib"]
+}
