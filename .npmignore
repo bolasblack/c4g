@@ -5,7 +5,9 @@ lint-staged.config.js
 jest.config.js
 tslint.yml
 .commitlintrc.js
+__snapshots__
 
-# Ignores TypeScript files, but keeps definitions.
+# Ignores TypeScript files, but keeps definitions and `files` folder files.
 *.ts
 !*.d.ts
+!**/files/**/*.ts
