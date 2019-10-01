@@ -1,6 +1,6 @@
 {
   "name": "@c4/g",
-  "version": "0.4.3",
+  "version": "0.4.23",
   "description": "A blank schematics",
   "scripts": {
     "g": "schematics",
@@ -27,16 +27,18 @@
     "@c4605/toolconfs": "^4.7.1",
     "@types/inquirer": "^6.5.0",
     "@types/node": "^12.7.2",
+    "@types/semver": "^6.0.2",
     "chalk": "^2.4.2",
     "immer": "^4.0.0",
     "inquirer": "^7.0.0",
     "js-yaml": "^3.13.1",
+    "package-json": "^6.5.0",
+    "semver": "^6.3.0",
     "typescript": "~3.6.2"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^8.1.0",
     "@types/chalk": "^2.2.0",
-    "@types/jasmine": "^3.4.0",
     "@types/jest": "^24.0.18",
     "@types/js-yaml": "^3.12.1",
     "@typescript-eslint/eslint-plugin": "^2.3.1",

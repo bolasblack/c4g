@@ -1,71 +1,58 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`proj-tools with option \`include\` with \`IncludeItem.Eslint\` install eslint-plugin-prettier when including prettier: file content: /.eslintrc.json 1`] = `
+exports[`proj-tools with option \`include\` with \`IncludeItem.Commitlint\` match file content snapshot: file content: /.commitlintrc.js 1`] = `
+"module.exports = {
+  extends: ['@c4605/toolconfs/commitlintrc'],
+  rules: {},
+}
+"
+`;
+
+exports[`proj-tools with option \`include\` with \`IncludeItem.Commitlint\` match file content snapshot: file content: /package.json 1`] = `
 "{
-  \\"extends\\": [
-    \\"./node_modules/@c4605/toolconfs/eslintrc.base\\",
-    \\"./node_modules/@c4605/toolconfs/eslintrc.ts\\",
-    \\"./node_modules/@c4605/toolconfs/eslintrc.prettier\\"
-  ],
-  \\"parserOptions\\": {
-    \\"project\\": \\"./tsconfig.json\\"
+  \\"devDependencies\\": {
+    \\"commitlint\\": \\"^1.0.0\\",
+    \\"@commitlint/config-conventional\\": \\"^1.0.0\\"
   },
-  \\"rules\\": {}
+  \\"dependencies\\": {
+    \\"@c4605/toolconfs\\": \\"^1.0.0\\"
+  }
 }"
 `;
 
-exports[`proj-tools with option \`include\` with \`IncludeItem.Eslint\` install eslint-plugin-prettier when including prettier: file content: /package.json 1`] = `
-"{
-  \\"prettier\\": \\"@c4605/toolconfs/prettierrc\\"
-}"
-`;
-
-exports[`proj-tools with option \`include\` with \`IncludeItem.Eslint\` install eslint-plugin-prettier when including prettier: file structure 1`] = `
+exports[`proj-tools with option \`include\` with \`IncludeItem.Commitlint\` match file structure snapshot: file structure 1`] = `
 Array [
   "/package.json",
-  "/.eslintrc.json",
+  "/.commitlintrc.js",
 ]
 `;
 
-exports[`proj-tools with option \`include\` with \`IncludeItem.Eslint\` install eslint-plugin-prettier when including prettier: rule tasks 1`] = `
+exports[`proj-tools with option \`include\` with \`IncludeItem.Commitlint\` match tasks snapshot: rule tasks 1`] = `
 Array [
   Object {
-    "name": "@c4g/node-package-install-task",
+    "name": "@c4g/shell-exec-task",
     "options": Object {
-      "packageNames": Array [
-        "eslint",
-        "eslint-config-prettier",
-        "@typescript-eslint/parser",
-        "@typescript-eslint/eslint-plugin",
-      ],
-      "type": "dev",
-      "workingDirectory": "",
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": undefined,
+      },
     },
   },
   Object {
-    "name": "@c4g/node-package-install-task",
+    "name": "@c4g/shell-exec-task",
     "options": Object {
-      "packageNames": Array [
-        "prettier",
-      ],
-      "type": "dev",
-      "workingDirectory": "",
-    },
-  },
-  Object {
-    "name": "@c4g/node-package-install-task",
-    "options": Object {
-      "packageNames": Array [
-        "@c4605/toolconfs",
-      ],
-      "type": "default",
-      "workingDirectory": "",
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": undefined,
+      },
     },
   },
 ]
 `;
 
-exports[`proj-tools with option \`include\` with \`IncludeItem.Eslint\` works: file content: /.eslintrc.json 1`] = `
+exports[`proj-tools with option \`include\` with \`IncludeItem.Eslint\` in common case match file content snapshot: file content: /.eslintrc.json 1`] = `
 "{
   \\"extends\\": [
     \\"./node_modules/@c4605/toolconfs/eslintrc.base\\",
@@ -79,211 +66,336 @@ exports[`proj-tools with option \`include\` with \`IncludeItem.Eslint\` works: f
 "
 `;
 
-exports[`proj-tools with option \`include\` with \`IncludeItem.Eslint\` works: file structure 1`] = `
-Array [
-  "/.eslintrc.json",
-]
-`;
-
-exports[`proj-tools with option \`include\` with \`IncludeItem.Eslint\` works: rule tasks 1`] = `
-Array [
-  Object {
-    "name": "@c4g/node-package-install-task",
-    "options": Object {
-      "packageNames": Array [
-        "eslint",
-        "@typescript-eslint/parser",
-        "@typescript-eslint/eslint-plugin",
-      ],
-      "type": "dev",
-      "workingDirectory": "",
-    },
-  },
-  Object {
-    "name": "@c4g/node-package-install-task",
-    "options": Object {
-      "packageNames": Array [
-        "@c4605/toolconfs",
-      ],
-      "type": "default",
-      "workingDirectory": "",
-    },
-  },
-]
-`;
-
-exports[`proj-tools with option \`include\` with \`IncludeItem.Prettier\` works: file content: /package.json 1`] = `
+exports[`proj-tools with option \`include\` with \`IncludeItem.Eslint\` in common case match file content snapshot: file content: /package.json 1`] = `
 "{
-  \\"prettier\\": \\"@c4605/toolconfs/prettierrc\\"
+  \\"devDependencies\\": {
+    \\"eslint\\": \\"^1.0.0\\",
+    \\"@typescript-eslint/parser\\": \\"^1.0.0\\",
+    \\"@typescript-eslint/eslint-plugin\\": \\"^1.0.0\\"
+  },
+  \\"dependencies\\": {
+    \\"@c4605/toolconfs\\": \\"^1.0.0\\"
+  }
 }"
 `;
 
-exports[`proj-tools with option \`include\` with \`IncludeItem.Prettier\` works: file structure 1`] = `
+exports[`proj-tools with option \`include\` with \`IncludeItem.Eslint\` in common case match file structure snapshot: file structure 1`] = `
+Array [
+  "/.eslintrc.json",
+  "/package.json",
+]
+`;
+
+exports[`proj-tools with option \`include\` with \`IncludeItem.Eslint\` in common case match tasks snapshot: rule tasks 1`] = `
+Array [
+  Object {
+    "name": "@c4g/shell-exec-task",
+    "options": Object {
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": undefined,
+      },
+    },
+  },
+  Object {
+    "name": "@c4g/shell-exec-task",
+    "options": Object {
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": undefined,
+      },
+    },
+  },
+]
+`;
+
+exports[`proj-tools with option \`include\` with \`IncludeItem.Eslint\` install eslint-plugin-prettier when including prettier match file content snapshot: file content: /.eslintrc.json 1`] = `
+"{
+  \\"extends\\": [
+    \\"./node_modules/@c4605/toolconfs/eslintrc.base\\",
+    \\"./node_modules/@c4605/toolconfs/eslintrc.ts\\",
+    \\"./node_modules/@c4605/toolconfs/eslintrc.prettier\\"
+  ],
+  \\"parserOptions\\": {
+    \\"project\\": \\"./tsconfig.json\\"
+  },
+  \\"rules\\": {}
+}"
+`;
+
+exports[`proj-tools with option \`include\` with \`IncludeItem.Eslint\` install eslint-plugin-prettier when including prettier match file content snapshot: file content: /package.json 1`] = `
+"{
+  \\"devDependencies\\": {
+    \\"eslint\\": \\"^1.0.0\\",
+    \\"eslint-config-prettier\\": \\"^1.0.0\\",
+    \\"@typescript-eslint/parser\\": \\"^1.0.0\\",
+    \\"@typescript-eslint/eslint-plugin\\": \\"^1.0.0\\",
+    \\"prettier\\": \\"^1.0.0\\"
+  },
+  \\"prettier\\": \\"@c4605/toolconfs/prettierrc\\",
+  \\"dependencies\\": {
+    \\"@c4605/toolconfs\\": \\"^1.0.0\\"
+  }
+}"
+`;
+
+exports[`proj-tools with option \`include\` with \`IncludeItem.Eslint\` install eslint-plugin-prettier when including prettier match file structure snapshot: file structure 1`] = `
+Array [
+  "/.eslintrc.json",
+  "/package.json",
+]
+`;
+
+exports[`proj-tools with option \`include\` with \`IncludeItem.Eslint\` install eslint-plugin-prettier when including prettier match tasks snapshot: rule tasks 1`] = `
+Array [
+  Object {
+    "name": "@c4g/shell-exec-task",
+    "options": Object {
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": undefined,
+      },
+    },
+  },
+  Object {
+    "name": "@c4g/shell-exec-task",
+    "options": Object {
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": undefined,
+      },
+    },
+  },
+  Object {
+    "name": "@c4g/shell-exec-task",
+    "options": Object {
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": undefined,
+      },
+    },
+  },
+]
+`;
+
+exports[`proj-tools with option \`include\` with \`IncludeItem.Githooks\` match file content snapshot: file content: /package.json 1`] = `
+"{
+  \\"devDependencies\\": {
+    \\"git-hook-pure\\": \\"^1.0.0\\"
+  },
+  \\"dependencies\\": {
+    \\"@c4605/toolconfs\\": \\"^1.0.0\\"
+  }
+}"
+`;
+
+exports[`proj-tools with option \`include\` with \`IncludeItem.Githooks\` match file structure snapshot: file structure 1`] = `
 Array [
   "/package.json",
 ]
 `;
 
-exports[`proj-tools with option \`include\` with \`IncludeItem.Prettier\` works: rule tasks 1`] = `
+exports[`proj-tools with option \`include\` with \`IncludeItem.Githooks\` match tasks snapshot: rule tasks 1`] = `
 Array [
   Object {
-    "name": "@c4g/node-package-install-task",
+    "name": "@c4g/shell-exec-task",
     "options": Object {
-      "packageNames": Array [
-        "prettier",
-      ],
-      "type": "dev",
-      "workingDirectory": "",
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": undefined,
+      },
     },
   },
   Object {
-    "name": "@c4g/node-package-install-task",
+    "name": "@c4g/shell-exec-task",
     "options": Object {
-      "packageNames": Array [
-        "@c4605/toolconfs",
-      ],
-      "type": "default",
-      "workingDirectory": "",
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": undefined,
+      },
     },
   },
 ]
 `;
 
-exports[`proj-tools with option \`include\` works with \`IncludeItem.Commitlint\`: file content: /.commitlintrc.js 1`] = `
+exports[`proj-tools with option \`include\` with \`IncludeItem.Jest\` match file content snapshot: file content: /jest.config.js 1`] = `
 "module.exports = {
-  extends: ['@c4605/toolconfs/commitlintrc'],
-  rules: {},
+  transform: {
+    '^.+\\\\\\\\.js$': 'babel-jest',
+    '^.+\\\\\\\\.ts$': 'ts-jest',
+  },
+  testMatch: [
+    '**/?(*.)+(spec|test).ts',
+  ],
+  testPathIgnorePatterns: [
+    '/node_modules/',
+  ],
+  moduleFileExtensions: [
+    'ts',
+    'js',
+    'json',
+    'node',
+  ],
 }
 "
 `;
 
-exports[`proj-tools with option \`include\` works with \`IncludeItem.Commitlint\`: file structure 1`] = `
+exports[`proj-tools with option \`include\` with \`IncludeItem.Jest\` match file content snapshot: file content: /package.json 1`] = `
+"{
+  \\"devDependencies\\": {
+    \\"jest\\": \\"^1.0.0\\",
+    \\"jest-cli\\": \\"^1.0.0\\",
+    \\"ts-jest\\": \\"^1.0.0\\",
+    \\"@types/jest\\": \\"^1.0.0\\"
+  },
+  \\"scripts\\": {
+    \\"test\\": \\"jest ./src\\"
+  },
+  \\"dependencies\\": {
+    \\"@c4605/toolconfs\\": \\"^1.0.0\\"
+  }
+}"
+`;
+
+exports[`proj-tools with option \`include\` with \`IncludeItem.Jest\` match file structure snapshot: file structure 1`] = `
 Array [
-  "/.commitlintrc.js",
+  "/package.json",
+  "/jest.config.js",
 ]
 `;
 
-exports[`proj-tools with option \`include\` works with \`IncludeItem.Commitlint\`: rule tasks 1`] = `
+exports[`proj-tools with option \`include\` with \`IncludeItem.Jest\` match tasks snapshot: rule tasks 1`] = `
 Array [
   Object {
-    "name": "@c4g/node-package-install-task",
+    "name": "@c4g/shell-exec-task",
     "options": Object {
-      "packageNames": Array [
-        "commitlint",
-        "@commitlint/config-conventional",
-      ],
-      "type": "dev",
-      "workingDirectory": "",
-    },
-  },
-  Object {
-    "name": "@c4g/node-package-install-task",
-    "options": Object {
-      "packageNames": Array [
-        "@c4605/toolconfs",
-      ],
-      "type": "default",
-      "workingDirectory": "",
-    },
-  },
-]
-`;
-
-exports[`proj-tools with option \`include\` works with \`IncludeItem.Githooks\`: file structure 1`] = `Array []`;
-
-exports[`proj-tools with option \`include\` works with \`IncludeItem.Githooks\`: rule tasks 1`] = `
-Array [
-  Object {
-    "name": "@c4g/node-package-install-task",
-    "options": Object {
-      "packageNames": Array [
-        "git-hook-pure",
-      ],
-      "type": "dev",
-      "workingDirectory": "",
-    },
-  },
-  Object {
-    "name": "@c4g/node-package-install-task",
-    "options": Object {
-      "packageNames": Array [
-        "@c4605/toolconfs",
-      ],
-      "type": "default",
-      "workingDirectory": "",
-    },
-  },
-]
-`;
-
-exports[`proj-tools with option \`include\` works with \`IncludeItem.Jest\`: file structure 1`] = `Array []`;
-
-exports[`proj-tools with option \`include\` works with \`IncludeItem.Jest\`: rule tasks 1`] = `
-Array [
-  Object {
-    "name": "@c4g/effect-collect-task",
-    "options": Object {
-      "info": Object {
-        "executionOptions": undefined,
-        "options": Object {
-          "cwd": undefined,
-          "react": undefined,
-        },
-        "schematicName": "jest-install",
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": undefined,
       },
-      "name": "rule:schematic",
     },
   },
   Object {
-    "name": "@c4g/node-package-install-task",
+    "name": "@c4g/shell-exec-task",
     "options": Object {
-      "packageNames": Array [
-        "@c4605/toolconfs",
-      ],
-      "type": "default",
-      "workingDirectory": "",
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": undefined,
+      },
     },
   },
 ]
 `;
 
-exports[`proj-tools with option \`include\` works with \`IncludeItem.LintStaged\`: file content: /lint-staged.config.js 1`] = `
+exports[`proj-tools with option \`include\` with \`IncludeItem.LintStaged\` match file content snapshot: file content: /lint-staged.config.js 1`] = `
 "module.exports = require('@c4605/toolconfs/lint-staged.config')
 "
 `;
 
-exports[`proj-tools with option \`include\` works with \`IncludeItem.LintStaged\`: file structure 1`] = `
+exports[`proj-tools with option \`include\` with \`IncludeItem.LintStaged\` match file content snapshot: file content: /package.json 1`] = `
+"{
+  \\"devDependencies\\": {
+    \\"lint-staged\\": \\"^1.0.0\\"
+  },
+  \\"dependencies\\": {
+    \\"@c4605/toolconfs\\": \\"^1.0.0\\"
+  }
+}"
+`;
+
+exports[`proj-tools with option \`include\` with \`IncludeItem.LintStaged\` match file structure snapshot: file structure 1`] = `
 Array [
+  "/package.json",
   "/lint-staged.config.js",
 ]
 `;
 
-exports[`proj-tools with option \`include\` works with \`IncludeItem.LintStaged\`: rule tasks 1`] = `
+exports[`proj-tools with option \`include\` with \`IncludeItem.LintStaged\` match tasks snapshot: rule tasks 1`] = `
 Array [
   Object {
-    "name": "@c4g/node-package-install-task",
+    "name": "@c4g/shell-exec-task",
     "options": Object {
-      "packageNames": Array [
-        "lint-staged",
-      ],
-      "type": "dev",
-      "workingDirectory": "",
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": undefined,
+      },
     },
   },
   Object {
-    "name": "@c4g/node-package-install-task",
+    "name": "@c4g/shell-exec-task",
     "options": Object {
-      "packageNames": Array [
-        "@c4605/toolconfs",
-      ],
-      "type": "default",
-      "workingDirectory": "",
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": undefined,
+      },
     },
   },
 ]
 `;
 
-exports[`proj-tools with option \`include\` works with \`IncludeItem.Renovate\`: file content: /renovate.json 1`] = `
+exports[`proj-tools with option \`include\` with \`IncludeItem.Prettier\` match file content snapshot: file content: /package.json 1`] = `
+"{
+  \\"devDependencies\\": {
+    \\"prettier\\": \\"^1.0.0\\"
+  },
+  \\"prettier\\": \\"@c4605/toolconfs/prettierrc\\",
+  \\"dependencies\\": {
+    \\"@c4605/toolconfs\\": \\"^1.0.0\\"
+  }
+}"
+`;
+
+exports[`proj-tools with option \`include\` with \`IncludeItem.Prettier\` match file structure snapshot: file structure 1`] = `
+Array [
+  "/package.json",
+]
+`;
+
+exports[`proj-tools with option \`include\` with \`IncludeItem.Prettier\` match tasks snapshot: rule tasks 1`] = `
+Array [
+  Object {
+    "name": "@c4g/shell-exec-task",
+    "options": Object {
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": undefined,
+      },
+    },
+  },
+  Object {
+    "name": "@c4g/shell-exec-task",
+    "options": Object {
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": undefined,
+      },
+    },
+  },
+]
+`;
+
+exports[`proj-tools with option \`include\` with \`IncludeItem.Renovate\` match file content snapshot: file content: /package.json 1`] = `
+"{
+  \\"dependencies\\": {
+    \\"@c4605/toolconfs\\": \\"^1.0.0\\"
+  }
+}"
+`;
+
+exports[`proj-tools with option \`include\` with \`IncludeItem.Renovate\` match file content snapshot: file content: /renovate.json 1`] = `
 "{
   \\"extends\\": [\\"github>bolasblack/js-toolconfs:renovate\\"],
   \\"baseBranches\\": [\\"develop\\"]
@@ -291,92 +403,186 @@ exports[`proj-tools with option \`include\` works with \`IncludeItem.Renovate\`:
 "
 `;
 
-exports[`proj-tools with option \`include\` works with \`IncludeItem.Renovate\`: file structure 1`] = `
+exports[`proj-tools with option \`include\` with \`IncludeItem.Renovate\` match file structure snapshot: file structure 1`] = `
 Array [
   "/renovate.json",
+  "/package.json",
 ]
 `;
 
-exports[`proj-tools with option \`include\` works with \`IncludeItem.Renovate\`: rule tasks 1`] = `
+exports[`proj-tools with option \`include\` with \`IncludeItem.Renovate\` match tasks snapshot: rule tasks 1`] = `
 Array [
   Object {
-    "name": "@c4g/node-package-install-task",
+    "name": "@c4g/shell-exec-task",
     "options": Object {
-      "packageNames": Array [
-        "@c4605/toolconfs",
-      ],
-      "type": "default",
-      "workingDirectory": "",
-    },
-  },
-]
-`;
-
-exports[`proj-tools with option \`include\` works with empty value: file structure 1`] = `Array []`;
-
-exports[`proj-tools with option \`include\` works with empty value: rule tasks 1`] = `Array []`;
-
-exports[`proj-tools with option \`jestReact\` do nothing if \`jest\` not included: file structure 1`] = `Array []`;
-
-exports[`proj-tools with option \`jestReact\` do nothing if \`jest\` not included: rule tasks 1`] = `Array []`;
-
-exports[`proj-tools with option \`jestReact\` proxy \`cwd\` option: file structure 1`] = `Array []`;
-
-exports[`proj-tools with option \`jestReact\` proxy \`cwd\` option: rule tasks 1`] = `
-Array [
-  Object {
-    "name": "@c4g/effect-collect-task",
-    "options": Object {
-      "info": Object {
-        "executionOptions": undefined,
-        "options": Object {
-          "cwd": "test",
-          "react": undefined,
-        },
-        "schematicName": "jest-install",
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": undefined,
       },
-      "name": "rule:schematic",
-    },
-  },
-  Object {
-    "name": "@c4g/node-package-install-task",
-    "options": Object {
-      "packageNames": Array [
-        "@c4605/toolconfs",
-      ],
-      "type": "default",
-      "workingDirectory": "test",
     },
   },
 ]
 `;
 
-exports[`proj-tools with option \`jestReact\` works: file structure 1`] = `Array []`;
+exports[`proj-tools with option \`include\` works with empty value match file structure snapshot: file structure 1`] = `Array []`;
 
-exports[`proj-tools with option \`jestReact\` works: rule tasks 1`] = `
+exports[`proj-tools with option \`include\` works with empty value match tasks snapshot: rule tasks 1`] = `Array []`;
+
+exports[`proj-tools with option \`jestReact\` do nothing if \`jest\` not included match file structure snapshot: file structure 1`] = `Array []`;
+
+exports[`proj-tools with option \`jestReact\` do nothing if \`jest\` not included match tasks snapshot: rule tasks 1`] = `Array []`;
+
+exports[`proj-tools with option \`jestReact\` in common case match file content snapshot: file content: /jest.config.js 1`] = `
+"module.exports = {
+  transform: {
+    '^.+\\\\\\\\.jsx?$': 'babel-jest',
+    '^.+\\\\\\\\.tsx?$': 'ts-jest',
+  },
+  snapshotSerializers: [
+    'enzyme-to-json/serializer',
+  ],
+  moduleNameMapper: {
+    '\\\\\\\\.(css|less|scss)$': 'identity-obj-proxy',
+  },
+  testMatch: [
+    '**/?(*.)+(spec|test).ts?(x)',
+  ],
+  testPathIgnorePatterns: [
+    '/node_modules/',
+  ],
+  moduleFileExtensions: [
+    'ts',
+    'tsx',
+    'js',
+    'jsx',
+    'json',
+    'node',
+    'html',
+  ],
+}
+"
+`;
+
+exports[`proj-tools with option \`jestReact\` in common case match file content snapshot: file content: /package.json 1`] = `
+"{
+  \\"devDependencies\\": {
+    \\"jest\\": \\"^1.0.0\\",
+    \\"jest-cli\\": \\"^1.0.0\\",
+    \\"ts-jest\\": \\"^1.0.0\\",
+    \\"@types/jest\\": \\"^1.0.0\\",
+    \\"enzyme\\": \\"^1.0.0\\",
+    \\"enzyme-to-json\\": \\"^1.0.0\\",
+    \\"enzyme-adapter-react-16\\": \\"^1.0.0\\",
+    \\"identity-obj-proxy\\": \\"^1.0.0\\"
+  },
+  \\"scripts\\": {
+    \\"test\\": \\"jest ./src\\"
+  },
+  \\"dependencies\\": {
+    \\"@c4605/toolconfs\\": \\"^1.0.0\\"
+  }
+}"
+`;
+
+exports[`proj-tools with option \`jestReact\` in common case match file structure snapshot: file structure 1`] = `
+Array [
+  "/package.json",
+  "/jest.config.js",
+]
+`;
+
+exports[`proj-tools with option \`jestReact\` in common case match tasks snapshot: rule tasks 1`] = `
 Array [
   Object {
-    "name": "@c4g/effect-collect-task",
+    "name": "@c4g/shell-exec-task",
     "options": Object {
-      "info": Object {
-        "executionOptions": undefined,
-        "options": Object {
-          "cwd": undefined,
-          "react": true,
-        },
-        "schematicName": "jest-install",
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": undefined,
       },
-      "name": "rule:schematic",
     },
   },
   Object {
-    "name": "@c4g/node-package-install-task",
+    "name": "@c4g/shell-exec-task",
     "options": Object {
-      "packageNames": Array [
-        "@c4605/toolconfs",
-      ],
-      "type": "default",
-      "workingDirectory": "",
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": undefined,
+      },
+    },
+  },
+]
+`;
+
+exports[`proj-tools with option \`jestReact\` support \`cwd\` option match file content snapshot: file content: /test/jest.config.js 1`] = `
+"module.exports = {
+  transform: {
+    '^.+\\\\\\\\.js$': 'babel-jest',
+    '^.+\\\\\\\\.ts$': 'ts-jest',
+  },
+  testMatch: [
+    '**/?(*.)+(spec|test).ts',
+  ],
+  testPathIgnorePatterns: [
+    '/node_modules/',
+  ],
+  moduleFileExtensions: [
+    'ts',
+    'js',
+    'json',
+    'node',
+  ],
+}
+"
+`;
+
+exports[`proj-tools with option \`jestReact\` support \`cwd\` option match file content snapshot: file content: /test/package.json 1`] = `
+"{
+  \\"devDependencies\\": {
+    \\"jest\\": \\"^1.0.0\\",
+    \\"jest-cli\\": \\"^1.0.0\\",
+    \\"ts-jest\\": \\"^1.0.0\\",
+    \\"@types/jest\\": \\"^1.0.0\\"
+  },
+  \\"scripts\\": {
+    \\"test\\": \\"jest ./src\\"
+  },
+  \\"dependencies\\": {
+    \\"@c4605/toolconfs\\": \\"^1.0.0\\"
+  }
+}"
+`;
+
+exports[`proj-tools with option \`jestReact\` support \`cwd\` option match file structure snapshot: file structure 1`] = `
+Array [
+  "/test/package.json",
+  "/test/jest.config.js",
+]
+`;
+
+exports[`proj-tools with option \`jestReact\` support \`cwd\` option match tasks snapshot: rule tasks 1`] = `
+Array [
+  Object {
+    "name": "@c4g/shell-exec-task",
+    "options": Object {
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": "test",
+      },
+    },
+  },
+  Object {
+    "name": "@c4g/shell-exec-task",
+    "options": Object {
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": "test",
+      },
     },
   },
 ]

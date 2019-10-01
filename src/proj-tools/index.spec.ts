@@ -1,13 +1,9 @@
 import * as path from 'path'
-import { Tree, callRule } from '@angular-devkit/schematics'
+import { Tree, callRule, chain, schematic } from '@angular-devkit/schematics'
 import { SchematicTestRunner } from '../test-utils/SchematicTestRunner'
-import { assertTreeSnapshot } from '../test-utils/TreeAssertHelpers'
-import {
-  Options,
-  IncludeItem,
-  main as projToolsRuleFactory,
-  ProjToolsTypedSchematicContext,
-} from './index'
+import { matchRunResult } from '../test-utils/TreeAssertHelpers'
+import { Options, IncludeItem, main as projToolsRuleFactory } from './index'
+import { featuresEnabled } from './featureEnabled'
 
 const collectionPath = path.join(__dirname, '../collection.json')
 
@@ -15,118 +11,153 @@ describe('proj-tools', () => {
   const run = async (schematicOptions: Options, inputTree = Tree.empty()) => {
     const runner = new SchematicTestRunner('schematics', collectionPath)
 
-    const ctx: ProjToolsTypedSchematicContext<{}, {}> = runner.createContext(
-      'proj-tools',
-    )
+    const ctx = runner.createContext('proj-tools')
 
-    const tree = runner.runSchematic(
-      'proj-tools',
-      { ...schematicOptions, interactive: false },
-      inputTree,
-      (schematic, opts, tree, oriCtx) => {
-        return callRule(projToolsRuleFactory(opts), tree, ctx)
-      },
-    )
+    const tree = await runner
+      .runSchematicAsync(
+        'proj-tools',
+        { ...schematicOptions, interactive: false },
+        inputTree,
+        (schematic, opts, tree, oriCtx) => {
+          return callRule(projToolsRuleFactory(opts), tree, ctx)
+        },
+      )
+      .toPromise()
 
-    return [runner, tree, ctx] as const
+    return { runner, tree, ctx }
   }
 
   describe('with option `include`', () => {
-    it('works with empty value', async () => {
-      const [runner, tree, ctx] = await run({})
-      assertTreeSnapshot(runner, tree)
-      expect(ctx.projTools).toEqual({
-        includes: [],
-      })
+    describe('works with empty value', () => {
+      matchRunResult(() => run({}))
     })
 
-    const includeItemNames = Object.keys(IncludeItem)
+    const includeItemNames = Object.keys(
+      IncludeItem,
+    ) as (keyof typeof IncludeItem)[]
     const includeItemSpecialCase = [IncludeItem.Prettier, IncludeItem.Eslint]
     includeItemNames.forEach(toolName => {
       if (includeItemSpecialCase.includes(IncludeItem[toolName])) return
 
-      it(`works with \`IncludeItem.${toolName}\``, async () => {
+      describe(`with \`IncludeItem.${toolName}\``, () => {
         const factoryOptions = { include: [IncludeItem[toolName]] }
-        const [runner, tree, ctx] = await run(factoryOptions)
-        assertTreeSnapshot(runner, tree)
-        expect(ctx.projTools).toEqual({
-          includes: [IncludeItem[toolName]],
-        })
+        matchRunResult(() => run(factoryOptions))
       })
     })
 
     describe('with `IncludeItem.Prettier`', () => {
-      it('works', async () => {
-        const factoryOptions = { include: [IncludeItem.Prettier] }
-
-        const inputTree = Tree.empty()
-        inputTree.create('package.json', '{}')
-
-        const [runner, tree, ctx] = await run(factoryOptions, inputTree)
-
-        assertTreeSnapshot(runner, tree)
-        expect(ctx.projTools).toEqual({
-          includes: [IncludeItem.Prettier],
-        })
-      })
+      const factoryOptions = { include: [IncludeItem.Prettier] }
+      matchRunResult(() => run(factoryOptions))
     })
 
     describe('with `IncludeItem.Eslint`', () => {
-      it('works', async () => {
-        const factoryOptions = {
-          include: [IncludeItem.Eslint],
-        }
-        const [runner, tree, ctx] = await run(factoryOptions)
-        assertTreeSnapshot(runner, tree)
-        expect(ctx.projTools).toEqual({
-          includes: [IncludeItem.Eslint],
-        })
+      describe('in common case', () => {
+        const factoryOptions = { include: [IncludeItem.Eslint] }
+        matchRunResult(() => run(factoryOptions))
       })
 
-      it('install eslint-plugin-prettier when including prettier', async () => {
+      describe('install eslint-plugin-prettier when including prettier', () => {
         const factoryOptions = {
           include: [IncludeItem.Eslint, IncludeItem.Prettier],
         }
-
-        const inputTree = Tree.empty()
-        inputTree.create('package.json', '{}')
-
-        const [runner, tree, ctx] = await run(factoryOptions, inputTree)
-
-        assertTreeSnapshot(runner, tree)
-        expect(ctx.projTools).toEqual({
-          includes: [IncludeItem.Eslint, IncludeItem.Prettier],
-        })
+        matchRunResult(() => run(factoryOptions))
       })
     })
   })
 
   describe('with option `jestReact`', () => {
-    it('works', async () => {
-      const [runner, tree] = await run({
+    describe('in common case', () => {
+      const factoryOptions = {
         include: [IncludeItem.Jest],
         interactive: false,
         jestReact: true,
-      })
-      assertTreeSnapshot(runner, tree)
+      }
+      matchRunResult(() => run(factoryOptions))
     })
 
-    it('proxy `cwd` option', async () => {
-      const [runner, tree] = await run({
+    describe('support `cwd` option', () => {
+      const factoryOptions = {
         include: [IncludeItem.Jest],
         interactive: false,
         cwd: 'test',
-      })
-      assertTreeSnapshot(runner, tree)
+      }
+      matchRunResult(() => run(factoryOptions))
     })
 
-    it('do nothing if `jest` not included', async () => {
-      const [runner, tree] = await run({
+    describe('do nothing if `jest` not included', () => {
+      const factoryOptions = {
         include: [],
         interactive: false,
         jestReact: true,
+      }
+      matchRunResult(() => run(factoryOptions))
+    })
+  })
+
+  describe('`featuresEnabled` function', () => {
+    const includeItemNames = Object.keys(
+      IncludeItem,
+    ) as (keyof typeof IncludeItem)[]
+    includeItemNames.forEach(toolName => {
+      it(`works with \`IncludeItem.${toolName}\``, async () => {
+        const factoryOptions: Options = {
+          include: [IncludeItem[toolName]],
+          interactive: false,
+        }
+
+        const runner = new SchematicTestRunner('schematics', collectionPath)
+
+        const ctx = runner.createContext('proj-tools')
+
+        await callRule(
+          chain([
+            schematic<Options>('proj-tools', factoryOptions),
+            (tree, ctx) => {
+              expect(
+                featuresEnabled([IncludeItem[toolName]])(tree.root, ctx),
+              ).toBe(true)
+              includeItemNames.forEach(otherToolName => {
+                if (otherToolName === toolName) return
+                expect(
+                  featuresEnabled([IncludeItem[otherToolName]])(tree.root, ctx),
+                ).toBe(false)
+              })
+            },
+          ]),
+          Tree.empty(),
+          ctx,
+        ).toPromise()
       })
-      assertTreeSnapshot(runner, tree)
+    })
+
+    it('works with multiple inclusions', async () => {
+      const factoryOptions = {
+        include: [IncludeItem.Commitlint, IncludeItem.Eslint],
+      }
+      const { tree, ctx } = await run(factoryOptions)
+      expect(
+        featuresEnabled([IncludeItem.Commitlint, IncludeItem.Eslint])(
+          tree.root,
+          ctx,
+        ),
+      ).toBe(true)
+      expect(featuresEnabled([IncludeItem.Commitlint])(tree.root, ctx)).toBe(
+        true,
+      )
+      expect(featuresEnabled([IncludeItem.Eslint])(tree.root, ctx)).toBe(true)
+      expect(featuresEnabled([IncludeItem.Githooks])(tree.root, ctx)).toBe(
+        false,
+      )
+      expect(featuresEnabled([IncludeItem.Jest])(tree.root, ctx)).toBe(false)
+      expect(featuresEnabled([IncludeItem.LintStaged])(tree.root, ctx)).toBe(
+        false,
+      )
+      expect(featuresEnabled([IncludeItem.Prettier])(tree.root, ctx)).toBe(
+        false,
+      )
+      expect(featuresEnabled([IncludeItem.Renovate])(tree.root, ctx)).toBe(
+        false,
+      )
     })
   })
 })

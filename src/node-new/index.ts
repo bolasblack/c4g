@@ -18,7 +18,7 @@ import {
 import {
   Options as ProjToolsOptions,
   IncludeItem,
-  ProjToolsTypedSchematicContext,
+  featuresEnabled,
 } from '../proj-tools'
 
 export { Options }
@@ -42,26 +42,24 @@ export function main(options: Options): Rule {
       cwd: options.name,
       interactive: options.interactive,
     }),
-    cleanupSpecFiles(),
+    cleanupSpecFiles(options),
     installNodePackage({
-      packageName: '@c4605/toolconfs',
+      packageNames: ['@c4605/toolconfs'],
       workingDirectory: options.name,
     }),
     installNodePackage({
-      packageName: ['typescript', '@types/node'],
+      packageNames: ['typescript', '@types/node'],
       type: NodePackageType.Dev,
       workingDirectory: options.name,
     }),
   ])
 }
 
-function cleanupSpecFiles(): Rule {
-  return (tree, ctx: ProjToolsTypedSchematicContext<any, any>) => {
-    if (ctx.projTools && ctx.projTools.includes.includes(IncludeItem.Jest)) {
-      return
-    }
-
-    tree.visit(f => {
+function cleanupSpecFiles(options: Options): Rule {
+  return (tree, ctx) => {
+    const walkTree = options.name ? tree.getDir(options.name) : tree.root
+    if (featuresEnabled([IncludeItem.Jest])(walkTree, ctx)) return
+    walkTree.visit(f => {
       if (f.endsWith('.spec.ts')) {
         tree.delete(f)
       }

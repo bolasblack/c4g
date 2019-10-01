@@ -11,11 +11,6 @@
       "factory": "./node-new/index#main",
       "schema": "./node-new/schema.json"
     },
-    "jest-install": {
-      "description": "Add jest support to project",
-      "factory": "./jest-install/index#main",
-      "schema": "./jest-install/schema.json"
-    },
     "schematic": {
       "description": "Add new schematic to c4g",
       "factory": "./schematic/index#main",

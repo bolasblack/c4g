@@ -3,7 +3,8 @@ import { Tree, callRule } from '@angular-devkit/schematics'
 import { SchematicTestRunner } from '../test-utils/SchematicTestRunner'
 import { assertTreeSnapshot } from '../test-utils/TreeAssertHelpers'
 import { Options, main as nodeNewRuleFactory } from './index'
-import { ProjToolsTypedSchematicContext, IncludeItem } from '../proj-tools'
+import { FeaturesEnabledTypedSchematicContext } from '../proj-tools/featureEnabled'
+import { IncludeItem } from '../proj-tools'
 
 const collectionPath = path.join(__dirname, '../collection.json')
 
@@ -49,12 +50,11 @@ describe('node-new', () => {
         },
         undefined,
         (schematic, opts, tree, oriCtx) => {
-          const ctx: ProjToolsTypedSchematicContext<
-            {},
-            {}
-          > = runner.createContext('node-new', oriCtx)
-          ctx.projTools = { includes: [IncludeItem.Jest] }
-
+          const ctx: FeaturesEnabledTypedSchematicContext = runner.createContext(
+            'node-new',
+            oriCtx,
+          )
+          ctx.enabledFeatures = [IncludeItem.Jest]
           return callRule(nodeNewRuleFactory(opts), tree, ctx)
         },
       )
