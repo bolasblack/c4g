@@ -1,16 +1,5 @@
-# ignores TypeScript files, but keeps definitions and `files` folder files.
-src/**/*.ts
-!src/**/*.d.ts
-!src/**/files/**/*.ts
-
-# tests
-__snapshots__
-
-# others
 /renovate.json
 /lint-staged.config.js
-/jest.config.js
-/tslint.yml
 /.commitlintrc.js
 /.eslintrc.js
 /.githooks
@@ -19,6 +8,4 @@ __snapshots__
 /.nvmrc
 /packages
 /tsconfig.*
-/coverage
-/scripts
 /*.tgz
