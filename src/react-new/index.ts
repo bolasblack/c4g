@@ -3,23 +3,25 @@ import {
   Rule,
   apply,
   mergeWith,
-  move,
   template,
-  applyTemplates,
   url,
   chain,
   schematic,
+  applyTemplates,
+  move,
+  filter,
 } from '@angular-devkit/schematics'
 import { Schema as Options } from './schema'
-import {
-  installNodePackage,
-  NodePackageType,
-} from '../utils/rules/installNodePackage'
 import {
   Options as ProjToolsOptions,
   IncludeItem,
   featuresEnabled,
 } from '../proj-tools'
+import {
+  installNodePackage,
+  NodePackageType,
+} from '../utils/rules/installNodePackage'
+import { file as fileSource } from '../utils/sources/file'
 
 export { Options }
 
@@ -31,9 +33,8 @@ export function main(options: Options): Rule {
 
   return chain([
     mergeWith(
-      apply(url('./files'), [
+      apply(fileSource('./files/package.json.template'), [
         applyTemplates(templateOpts),
-        template(templateOpts),
         move(options.name),
       ]),
     ),
@@ -41,14 +42,41 @@ export function main(options: Options): Rule {
       include: [IncludeItem.Prettier, IncludeItem.Eslint],
       cwd: options.name,
       interactive: options.interactive,
+      jestReact: true,
     }),
+    mergeWith(
+      apply(url('./files'), [
+        filter(path => !path.endsWith('/package.json.template')),
+        applyTemplates(templateOpts),
+        template(templateOpts),
+        move(options.name),
+      ]),
+    ),
     cleanupSpecFiles(options),
     installNodePackage({
-      packageNames: ['@c4605/toolconfs'],
+      packageNames: [
+        '@c4605/toolconfs',
+        'react',
+        '@types/react',
+        'react-dom',
+        '@types/react-dom',
+        'astroturf',
+      ],
       workingDirectory: options.name,
     }),
     installNodePackage({
-      packageNames: ['typescript', '@types/node'],
+      packageNames: [
+        'typescript',
+        'ts-node',
+        '@types/node',
+        'poi',
+        '@types/poi',
+        '@poi/plugin-typescript',
+        '@poi/plugin-astroturf',
+        'sass',
+        'sass-loader',
+        'react-hot-loader',
+      ],
       type: NodePackageType.Dev,
       workingDirectory: options.name,
     }),

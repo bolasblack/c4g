@@ -1,0 +1,13 @@
+{
+  "name": "<%= name %>",
+  "version": "0.1.0",
+  "main": null,<% if (author) { %>
+  "author": "<%= author %>",<% } %>
+  "license": "MIT",
+  "scripts": {
+    "start": "poi -r ts-node/register --parallel --serve ./src",
+    "build": "poi -r ts-node/register --parallel ./src"
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}

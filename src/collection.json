@@ -1,15 +1,15 @@
 {
   "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
+    "react-new": {
+      "description": "Create a new react project",
+      "factory": "./react-new/index#main",
+      "schema": "./react-new/schema.json"
+    },
     "node-new": {
       "description": "Create a new node project",
       "factory": "./node-new/index#main",
       "schema": "./node-new/schema.json"
-    },
-    "jest-install": {
-      "description": "Add jest support to project",
-      "factory": "./jest-install/index#main",
-      "schema": "./jest-install/schema.json"
     },
     "schematic": {
       "description": "Add new schematic to c4g",

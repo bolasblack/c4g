@@ -4,8 +4,9 @@ src/**/*.js.map
 src/**/*.d.ts
 src/**/*.d.ts.map
 src/**/schema.ts
-!src/**/files/**/*.js
 packages/**/lib
+!src/.*
+!src/**/files/**/*
 
 # IDEs
 .idea/
@@ -16,6 +17,7 @@ jsconfig.json
 node_modules/
 npm-debug.log*
 yarn-error.log*
+/*.tgz
 
 # Mac OSX Finder files.
 **/.DS_Store

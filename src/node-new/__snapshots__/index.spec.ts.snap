@@ -1,16 +1,172 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`node-new support \`author\` option: file content: /hello/.eslintrc.js 1`] = `
-"module.exports = {
-  extends: [
-    './node_modules/@c4605/toolconfs/eslintrc.base',
-    './node_modules/@c4605/toolconfs/eslintrc.ts',
+exports[`node-new add spec files if user added proj-tool jest: file content: /hello/.eslintrc.json 1`] = `
+"{
+  \\"extends\\": [
+    \\"./node_modules/@c4605/toolconfs/eslintrc.base\\",
+    \\"./node_modules/@c4605/toolconfs/eslintrc.ts\\",
+    \\"./node_modules/@c4605/toolconfs/eslintrc.prettier\\"
   ],
-  parserOptions: {
-    project: './tsconfig.json',
+  \\"parserOptions\\": {
+    \\"project\\": \\"./tsconfig.json\\"
   },
+  \\"rules\\": {}
+}"
+`;
+
+exports[`node-new add spec files if user added proj-tool jest: file content: /hello/README.md 1`] = `
+"# hello
+
+## Usage
+
+\`\`\`bash
+yarn build # build code
+yarn watch # build and watch code
+\`\`\`
+"
+`;
+
+exports[`node-new add spec files if user added proj-tool jest: file content: /hello/package.json 1`] = `
+"{
+  \\"name\\": \\"hello\\",
+  \\"version\\": \\"0.1.0\\",
+  \\"main\\": \\"lib/index.js\\",
+  \\"author\\": \\"c4605 <bolasblack@gmail.com>\\",
+  \\"license\\": \\"MIT\\",
+  \\"scripts\\": {
+    \\"prepublishOnly\\": \\"yarn build\\",
+    \\"build\\": \\"tsc --build .\\",
+    \\"watch\\": \\"tsc --watch -p .\\"
+  },
+  \\"devDependencies\\": {
+    \\"prettier\\": \\"^1.0.0\\",
+    \\"eslint\\": \\"^1.0.0\\",
+    \\"eslint-config-prettier\\": \\"^1.0.0\\",
+    \\"@typescript-eslint/parser\\": \\"^1.0.0\\",
+    \\"@typescript-eslint/eslint-plugin\\": \\"^1.0.0\\",
+    \\"typescript\\": \\"^1.0.0\\",
+    \\"@types/node\\": \\"^1.0.0\\"
+  },
+  \\"dependencies\\": {
+    \\"@c4605/toolconfs\\": \\"^1.0.0\\"
+  },
+  \\"prettier\\": \\"@c4605/toolconfs/prettierrc\\"
+}"
+`;
+
+exports[`node-new add spec files if user added proj-tool jest: file content: /hello/src/index.spec.ts 1`] = `
+"import { main } from './index'
+
+describe('index', () => {
+  describe('main', () => {
+    it('works', () => {
+      expect(main()).toBe('hello from hello')
+    })
+  })
+})
+"
+`;
+
+exports[`node-new add spec files if user added proj-tool jest: file content: /hello/src/index.ts 1`] = `
+"export function main() {
+  return 'hello from hello'
+}
+
+if (require.main === module) {
+  console.log(main())
 }
 "
+`;
+
+exports[`node-new add spec files if user added proj-tool jest: file content: /hello/tsconfig.json 1`] = `
+"{
+  \\"extends\\": \\"@c4605/toolconfs/tsconfig-node\\",
+  \\"compilerOptions\\": {
+    \\"outDir\\": \\"lib\\"
+  },
+  \\"exclude\\": [\\"./lib\\"]
+}
+"
+`;
+
+exports[`node-new add spec files if user added proj-tool jest: file structure 1`] = `
+Array [
+  "/hello/README.md",
+  "/hello/package.json",
+  "/hello/tsconfig.json",
+  "/hello/.eslintrc.json",
+  "/hello/src/index.spec.ts",
+  "/hello/src/index.ts",
+]
+`;
+
+exports[`node-new add spec files if user added proj-tool jest: rule tasks 1`] = `
+Array [
+  Object {
+    "name": "@c4g/shell-exec-task",
+    "options": Object {
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": "hello",
+      },
+    },
+  },
+  Object {
+    "name": "@c4g/shell-exec-task",
+    "options": Object {
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": "hello",
+      },
+    },
+  },
+  Object {
+    "name": "@c4g/shell-exec-task",
+    "options": Object {
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": "hello",
+      },
+    },
+  },
+  Object {
+    "name": "@c4g/shell-exec-task",
+    "options": Object {
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": "hello",
+      },
+    },
+  },
+  Object {
+    "name": "@c4g/shell-exec-task",
+    "options": Object {
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": "hello",
+      },
+    },
+  },
+]
+`;
+
+exports[`node-new support \`author\` option: file content: /hello/.eslintrc.json 1`] = `
+"{
+  \\"extends\\": [
+    \\"./node_modules/@c4605/toolconfs/eslintrc.base\\",
+    \\"./node_modules/@c4605/toolconfs/eslintrc.ts\\",
+    \\"./node_modules/@c4605/toolconfs/eslintrc.prettier\\"
+  ],
+  \\"parserOptions\\": {
+    \\"project\\": \\"./tsconfig.json\\"
+  },
+  \\"rules\\": {}
+}"
 `;
 
 exports[`node-new support \`author\` option: file content: /hello/README.md 1`] = `
@@ -37,19 +193,29 @@ exports[`node-new support \`author\` option: file content: /hello/package.json 1
     \\"build\\": \\"tsc --build .\\",
     \\"watch\\": \\"tsc --watch -p .\\"
   },
-  \\"devDependencies\\": {},
-  \\"dependencies\\": {},
+  \\"devDependencies\\": {
+    \\"prettier\\": \\"^1.0.0\\",
+    \\"eslint\\": \\"^1.0.0\\",
+    \\"eslint-config-prettier\\": \\"^1.0.0\\",
+    \\"@typescript-eslint/parser\\": \\"^1.0.0\\",
+    \\"@typescript-eslint/eslint-plugin\\": \\"^1.0.0\\",
+    \\"typescript\\": \\"^1.0.0\\",
+    \\"@types/node\\": \\"^1.0.0\\"
+  },
+  \\"dependencies\\": {
+    \\"@c4605/toolconfs\\": \\"^1.0.0\\"
+  },
   \\"prettier\\": \\"@c4605/toolconfs/prettierrc\\"
 }"
 `;
 
 exports[`node-new support \`author\` option: file content: /hello/src/index.ts 1`] = `
 "export function main() {
-  console.log('hello from hello')
+  return 'hello from hello'
 }
 
 if (require.main === module) {
-  main()
+  console.log(main())
 }
 "
 `;
@@ -68,9 +234,9 @@ exports[`node-new support \`author\` option: file content: /hello/tsconfig.json 
 exports[`node-new support \`author\` option: file structure 1`] = `
 Array [
   "/hello/README.md",
-  "/hello/.eslintrc.js",
   "/hello/package.json",
   "/hello/tsconfig.json",
+  "/hello/.eslintrc.json",
   "/hello/src/index.ts",
 ]
 `;
@@ -78,64 +244,70 @@ Array [
 exports[`node-new support \`author\` option: rule tasks 1`] = `
 Array [
   Object {
-    "name": "@c4g/node-package-install-task",
+    "name": "@c4g/shell-exec-task",
     "options": Object {
-      "packageNames": Array [
-        "prettier",
-      ],
-      "type": "dev",
-      "workingDirectory": "hello",
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": "hello",
+      },
     },
   },
   Object {
-    "name": "@c4g/node-package-install-task",
+    "name": "@c4g/shell-exec-task",
     "options": Object {
-      "packageNames": Array [
-        "@c4605/toolconfs",
-      ],
-      "type": "default",
-      "workingDirectory": "hello",
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": "hello",
+      },
     },
   },
   Object {
-    "name": "@c4g/node-package-install-task",
+    "name": "@c4g/shell-exec-task",
     "options": Object {
-      "packageNames": Array [
-        "@c4605/toolconfs",
-      ],
-      "type": "default",
-      "workingDirectory": "hello",
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": "hello",
+      },
     },
   },
   Object {
-    "name": "@c4g/node-package-install-task",
+    "name": "@c4g/shell-exec-task",
     "options": Object {
-      "packageNames": Array [
-        "typescript",
-        "@types/node",
-        "eslint",
-        "eslint-config-prettier",
-        "@typescript-eslint/parser",
-        "@typescript-eslint/eslint-plugin",
-      ],
-      "type": "dev",
-      "workingDirectory": "hello",
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": "hello",
+      },
+    },
+  },
+  Object {
+    "name": "@c4g/shell-exec-task",
+    "options": Object {
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": "hello",
+      },
     },
   },
 ]
 `;
 
-exports[`node-new works: file content: /hello/.eslintrc.js 1`] = `
-"module.exports = {
-  extends: [
-    './node_modules/@c4605/toolconfs/eslintrc.base',
-    './node_modules/@c4605/toolconfs/eslintrc.ts',
+exports[`node-new works: file content: /hello/.eslintrc.json 1`] = `
+"{
+  \\"extends\\": [
+    \\"./node_modules/@c4605/toolconfs/eslintrc.base\\",
+    \\"./node_modules/@c4605/toolconfs/eslintrc.ts\\",
+    \\"./node_modules/@c4605/toolconfs/eslintrc.prettier\\"
   ],
-  parserOptions: {
-    project: './tsconfig.json',
+  \\"parserOptions\\": {
+    \\"project\\": \\"./tsconfig.json\\"
   },
-}
-"
+  \\"rules\\": {}
+}"
 `;
 
 exports[`node-new works: file content: /hello/README.md 1`] = `
@@ -161,19 +333,29 @@ exports[`node-new works: file content: /hello/package.json 1`] = `
     \\"build\\": \\"tsc --build .\\",
     \\"watch\\": \\"tsc --watch -p .\\"
   },
-  \\"devDependencies\\": {},
-  \\"dependencies\\": {},
+  \\"devDependencies\\": {
+    \\"prettier\\": \\"^1.0.0\\",
+    \\"eslint\\": \\"^1.0.0\\",
+    \\"eslint-config-prettier\\": \\"^1.0.0\\",
+    \\"@typescript-eslint/parser\\": \\"^1.0.0\\",
+    \\"@typescript-eslint/eslint-plugin\\": \\"^1.0.0\\",
+    \\"typescript\\": \\"^1.0.0\\",
+    \\"@types/node\\": \\"^1.0.0\\"
+  },
+  \\"dependencies\\": {
+    \\"@c4605/toolconfs\\": \\"^1.0.0\\"
+  },
   \\"prettier\\": \\"@c4605/toolconfs/prettierrc\\"
 }"
 `;
 
 exports[`node-new works: file content: /hello/src/index.ts 1`] = `
 "export function main() {
-  console.log('hello from hello')
+  return 'hello from hello'
 }
 
 if (require.main === module) {
-  main()
+  console.log(main())
 }
 "
 `;
@@ -192,9 +374,9 @@ exports[`node-new works: file content: /hello/tsconfig.json 1`] = `
 exports[`node-new works: file structure 1`] = `
 Array [
   "/hello/README.md",
-  "/hello/.eslintrc.js",
   "/hello/package.json",
   "/hello/tsconfig.json",
+  "/hello/.eslintrc.json",
   "/hello/src/index.ts",
 ]
 `;
@@ -202,48 +384,53 @@ Array [
 exports[`node-new works: rule tasks 1`] = `
 Array [
   Object {
-    "name": "@c4g/node-package-install-task",
+    "name": "@c4g/shell-exec-task",
     "options": Object {
-      "packageNames": Array [
-        "prettier",
-      ],
-      "type": "dev",
-      "workingDirectory": "hello",
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": "hello",
+      },
     },
   },
   Object {
-    "name": "@c4g/node-package-install-task",
+    "name": "@c4g/shell-exec-task",
     "options": Object {
-      "packageNames": Array [
-        "@c4605/toolconfs",
-      ],
-      "type": "default",
-      "workingDirectory": "hello",
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": "hello",
+      },
     },
   },
   Object {
-    "name": "@c4g/node-package-install-task",
+    "name": "@c4g/shell-exec-task",
     "options": Object {
-      "packageNames": Array [
-        "@c4605/toolconfs",
-      ],
-      "type": "default",
-      "workingDirectory": "hello",
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": "hello",
+      },
     },
   },
   Object {
-    "name": "@c4g/node-package-install-task",
+    "name": "@c4g/shell-exec-task",
     "options": Object {
-      "packageNames": Array [
-        "typescript",
-        "@types/node",
-        "eslint",
-        "eslint-config-prettier",
-        "@typescript-eslint/parser",
-        "@typescript-eslint/eslint-plugin",
-      ],
-      "type": "dev",
-      "workingDirectory": "hello",
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": "hello",
+      },
+    },
+  },
+  Object {
+    "name": "@c4g/shell-exec-task",
+    "options": Object {
+      "args": Array [],
+      "command": "yarn",
+      "options": Object {
+        "cwd": "hello",
+      },
     },
   },
 ]

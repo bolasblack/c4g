@@ -1,11 +1,24 @@
-packages
-scripts
-renovate.json
-lint-staged.config.js
-jest.config.js
-tslint.yml
-.commitlintrc.js
+# ignores TypeScript files, but keeps definitions and `files` folder files.
+src/**/*.ts
+!src/**/*.d.ts
+!src/**/files/**/*.ts
 
-# Ignores TypeScript files, but keeps definitions.
-*.ts
-!*.d.ts
+# tests
+__snapshots__
+
+# others
+/renovate.json
+/lint-staged.config.js
+/jest.config.js
+/tslint.yml
+/.commitlintrc.js
+/.eslintrc.js
+/.githooks
+/.prettierignore
+/.travis.yml
+/.nvmrc
+/packages
+/tsconfig.*
+/coverage
+/scripts
+/*.tgz

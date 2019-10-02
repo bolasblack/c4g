@@ -1,4 +1,4 @@
-module.exports = {<% if (react) { %>
+module.exports = {<% if (jestReact) { %>
   transform: {
     '^.+\\.jsx?$': 'babel-jest',
     '^.+\\.tsx?$': 'ts-jest',

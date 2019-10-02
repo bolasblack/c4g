@@ -61,7 +61,7 @@ function addSchematicInfo(options: Options): Rule {
             [strings.dasherize(options.name)]: {
               factory: `./${options.name}/index#main`,
               schema: `./${options.name}/schema.json`,
-              description: options.desc,
+              description: options.desc || '',
             },
           },
         },
