@@ -5,11 +5,11 @@ import { main as schematicsCliMain } from '@angular-devkit/schematics-cli/bin/sc
 
 export function main(name: string, opts: string[]) {
   // @angular-devkit/schematics-cli may be hoisted, but we don't want use hoisted @c4/g
-  const c4gPath = require.resolve('@c4/g')
+  const c4gCollJsonPath = require.resolve('@c4/g/src/collection.json')
 
   return schematicsCliMain({
     args: [
-      `${c4gPath}/src/collection.json:node-new`,
+      `${c4gCollJsonPath}:node-new`,
       `--debug=false`,
       `--name=${name}`,
       ...opts,
