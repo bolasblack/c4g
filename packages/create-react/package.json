@@ -1,6 +1,6 @@
 {
   "name": "@c4/create-react",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "main": "lib/index.js",
   "bin": "lib/index.js",
   "license": "MIT",
