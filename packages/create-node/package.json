@@ -5,6 +5,7 @@
   "bin": "lib/index.js",
   "license": "MIT",
   "scripts": {
+    "test": "exit 0",
     "prepublishOnly": "yarn build",
     "build": "tsc --build .",
     "watch": "tsc --watch -p ."

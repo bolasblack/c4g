@@ -2,4 +2,9 @@ language: node_js
 node_js:
   - lts/*
 script:
-  - yarn test --coverage && cat ./coverage/lcov.info | yarn coveralls && rm -rf ./coverage
+  - >
+    yarn lerna exec "
+    yarn test --coverage &&
+    if [ -d coverage ]; then
+      cat ./coverage/lcov.info | yarn coveralls && rm -rf ./coverage;
+    fi"
