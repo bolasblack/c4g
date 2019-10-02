@@ -1,0 +1,12 @@
+# outputs
+src/**/*.js
+src/**/*.js.map
+src/**/*.d.ts
+src/**/*.d.ts.map
+src/**/schema.ts
+!src/.*
+!src/**/files/**/*
+
+# tests
+/test*
+/coverage
