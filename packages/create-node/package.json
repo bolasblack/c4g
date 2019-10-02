@@ -1,6 +1,6 @@
 {
   "name": "@c4/create-node",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "main": "lib/index.js",
   "bin": "lib/index.js",
   "license": "MIT",
@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@angular-devkit/schematics-cli": "^0.803.2",
-    "@c4/g": "^0.4.25",
+    "@c4/g": "^0.4.26",
     "dedent": "^0.7.0"
   }
 }
