@@ -72,7 +72,6 @@ export function main(options: Options): Rule {
         'poi',
         '@types/poi',
         '@poi/plugin-typescript',
-        '@poi/plugin-astroturf',
         'sass',
         'sass-loader',
         'react-hot-loader',

@@ -5,14 +5,8 @@ const config: Config = {
   plugins: [
     {
       resolve: '@poi/plugin-typescript',
-      options: {},
-    },
-    {
-      resolve: '@poi/plugin-astroturf',
       options: {
-        loaderOptions: {
-          extension: '.scss',
-        },
+        babel: true,
       },
     },
   ],
