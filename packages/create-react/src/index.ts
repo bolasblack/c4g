@@ -4,8 +4,16 @@ import * as dedent from 'dedent'
 import { main as schematicsCliMain } from '@angular-devkit/schematics-cli/bin/schematics'
 
 export function main(name: string, opts: string[]) {
+  // @angular-devkit/schematics-cli may be hoisted, but we don't want use hoisted @c4/g
+  const c4gCollJsonPath = require.resolve('@c4/g/src/collection.json')
+
   return schematicsCliMain({
-    args: ['@c4/g:react-new', `--name=${name}`, ...opts],
+    args: [
+      `${c4gCollJsonPath}:react-new`,
+      `--debug=false`,
+      `--name=${name}`,
+      ...opts,
+    ],
   })
 }
 

@@ -1,61 +1,27 @@
 {
-  "name": "@c4/g",
+  "name": "@c4/g-root",
   "version": "0.4.24",
-  "description": "A blank schematics",
-  "scripts": {
-    "g": "schematics",
-    "build-schema-ts": "ts-node ./scripts/generate-schema-ts.ts src/**/schema.json",
-    "watch-schema-ts": "yarn build-schema-ts && trap 'exit' INT; while true; do ls src/**/schema.json | entr -d yarn build-schema-ts /_; done",
-    "build-ts": "tsc -p tsconfig.json",
-    "watch-ts": "yarn build-ts --watch",
-    "clean-output": "rm -f ./src/**/*{.d.ts,.d.ts.map,.js,.js.map}",
-    "build": "yarn build-schema-ts && yarn build-ts",
-    "watch": "concurrently 'yarn:watch-schema-ts' 'yarn:watch-ts'",
-    "prepublishOnly": "yarn clean-output && yarn build",
-    "test": "yarn build-schema-ts && NODE_ENV=test jest"
-  },
+  "description": "My schematics",
+  "scripts": {},
   "prettier": "@c4605/toolconfs/prettierrc",
-  "keywords": [
-    "schematics"
-  ],
   "author": "c4605 <bolasblack@gmail.com>",
   "license": "MIT",
-  "schematics": "./src/collection.json",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "dependencies": {
-    "@angular-devkit/core": "^8.3.2",
-    "@angular-devkit/schematics": "^8.3.2",
-    "@c4605/toolconfs": "^4.7.1",
-    "@types/inquirer": "^6.5.0",
-    "@types/node": "^12.7.2",
-    "@types/semver": "^6.0.2",
-    "chalk": "^2.4.2",
-    "immer": "^4.0.0",
-    "inquirer": "^7.0.0",
-    "js-yaml": "^3.13.1",
-    "package-json": "^6.5.0",
-    "semver": "^6.3.0",
-    "typescript": "~3.6.2"
-  },
-  "devDependencies": {
+    "@c4605/toolconfs": "^4.7.2",
     "@commitlint/config-conventional": "^8.1.0",
-    "@types/chalk": "^2.2.0",
-    "@types/jest": "^24.0.18",
-    "@types/js-yaml": "^3.12.1",
     "@typescript-eslint/eslint-plugin": "^2.3.1",
     "@typescript-eslint/parser": "^2.3.1",
     "commitlint": "^8.1.0",
-    "concurrently": "^4.1.2",
-    "coveralls": "^3.0.6",
     "eslint": "^6.3.0",
     "eslint-config-prettier": "^6.2.0",
     "git-hook-pure": "^1.2.2",
-    "jest": "^24.9.0",
-    "jest-cli": "^24.9.0",
+    "lerna": "^3.16.4",
     "lint-staged": "^9.2.3",
-    "prettier": "^1.18.2",
-    "quicktype": "^15.0.199",
-    "ts-jest": "^24.0.2",
-    "ts-node": "^8.3.0"
+    "prettier": "^1.18.2"
   },
   "resolutions": {
     "**/rxjs": "^6.4.0"

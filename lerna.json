@@ -1,0 +1,12 @@
+{
+  "packages": ["packages/*"],
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "version": "independent",
+  "ignoreChanges": ["**/*.test.ts", "**/*.test.tsx", "**/*.md", "**/*.mdx"],
+  "command": {
+    "version": {
+      "message": "chore(release): bump version"
+    }
+  }
+}

@@ -1,0 +1,5 @@
+src/**/*
+
+# others
+/tsconfig.*
+/*.tgz
