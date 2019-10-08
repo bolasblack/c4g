@@ -1,6 +1,6 @@
 {
   "name": "@c4/create-react",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "main": "lib/index.js",
   "bin": "lib/index.js",
   "license": "MIT",
@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@angular-devkit/schematics-cli": "^0.803.2",
-    "@c4/g": "^0.4.26",
+    "@c4/g": "^0.4.27",
     "dedent": "^0.7.0"
   }
 }
