@@ -2,10 +2,11 @@ language: node_js
 node_js:
   - lts/*
 script:
+  - yarn lerna run prepublishOnly
   - yarn lerna run test:ci
   - >
     yarn lerna exec "
-    if [ -d coverage ]; then
-      cat ./coverage/lcov.info | yarn coveralls && rm -rf ./coverage;
+    if [ -d coverage -a -s coverage/lcov.info ]; then
+      cat coverage/lcov.info | yarn coveralls && rm -rf coverage;
     fi
     "
