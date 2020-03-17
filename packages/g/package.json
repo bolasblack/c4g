@@ -29,13 +29,13 @@
     "@c4605/toolconfs": "^4.7.1",
     "@types/inquirer": "^6.5.0",
     "@types/node": "^12.7.2",
-    "@types/semver": "^6.0.2",
+    "@types/semver": "^7.0.0",
     "chalk": "^2.4.2",
     "immer": "^4.0.0",
     "inquirer": "^7.0.0",
     "js-yaml": "^3.13.1",
     "package-json": "^6.5.0",
-    "semver": "^6.3.0",
+    "semver": "^7.0.0",
     "typescript": "~3.6.2"
   },
   "devDependencies": {
