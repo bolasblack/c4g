@@ -4,6 +4,7 @@
   "description": "Some schematic utils",
   "scripts": {
     "test": "NODE_ENV=test jest",
+    "test:ci": "yarn test --coverage --passWithNoTests",
     "prepublishOnly": "yarn build",
     "build": "tsc --build .",
     "watch": "tsc --watch -p ."

@@ -1,6 +1,6 @@
 import * as path from 'path'
 import { Tree, callRule, chain, schematic } from '@angular-devkit/schematics'
-import { SchematicTestRunner } from '../test-utils/SchematicTestRunner'
+import { SchematicTestRunner } from '@c4605/schematic-utils/lib/testing/SchematicTestRunner'
 import { matchRunResult } from '../test-utils/TreeAssertHelpers'
 import { Options, IncludeItem, main as projToolsRuleFactory } from './index'
 import { featuresEnabled } from './featureEnabled'

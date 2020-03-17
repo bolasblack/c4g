@@ -12,7 +12,8 @@
     "build": "yarn build-schema-ts && yarn build-ts",
     "watch": "concurrently 'yarn:watch-schema-ts' 'yarn:watch-ts'",
     "prepublishOnly": "yarn clean-output && yarn build",
-    "test": "yarn build-schema-ts && NODE_ENV=test jest"
+    "test": "yarn build-schema-ts && NODE_ENV=test jest",
+    "test:ci": "yarn test --coverage --passWithNoTests"
   },
   "prettier": "@c4605/toolconfs/prettierrc",
   "keywords": [
@@ -24,6 +25,7 @@
   "dependencies": {
     "@angular-devkit/core": "^8.3.2",
     "@angular-devkit/schematics": "^8.3.2",
+    "@c4605/schematic-utils": "^0.1.0",
     "@c4605/toolconfs": "^4.7.1",
     "@types/inquirer": "^6.5.0",
     "@types/node": "^12.7.2",
