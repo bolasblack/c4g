@@ -36,7 +36,7 @@
     "@types/semver": "^6.0.2",
     "jest": "^25.0.0",
     "jest-cli": "^25.0.0",
-    "ts-jest": "^24.0.2",
+    "ts-jest": "^25.0.0",
     "ts-node": "^8.3.0",
     "typescript": "^3.6.2"
   }
