@@ -11,7 +11,7 @@
     "packages/*"
   ],
   "dependencies": {
-    "@c4605/toolconfs": "^4.7.2",
+    "@c4605/toolconfs": "^5.0.0",
     "@commitlint/config-conventional": "^8.1.0",
     "@typescript-eslint/eslint-plugin": "^2.24.0",
     "@typescript-eslint/parser": "^2.24.0",
