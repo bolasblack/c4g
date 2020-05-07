@@ -3,7 +3,7 @@ import {
   TaskExecutorFactory,
 } from '@angular-devkit/schematics'
 import { FileSystemEngineHostBase } from '@angular-devkit/schematics/tools'
-import chalk from 'chalk'
+import * as chalk from 'chalk'
 
 export const registerInContextFactory = (
   factory: TaskExecutorFactory<any>,

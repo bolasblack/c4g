@@ -3,7 +3,7 @@ import {
   TaskExecutorFactory,
 } from '@angular-devkit/schematics'
 import { FileSystemEngineHostBase } from '@angular-devkit/schematics/tools'
-import chalk from 'chalk'
+import * as chalk from 'chalk'
 
 export const registerInContextFactory = (
   factory: TaskExecutorFactory<any>,
@@ -11,7 +11,7 @@ export const registerInContextFactory = (
 ): ((context: TypedSchematicContext<any, any>) => void) => {
   const TaskExecutorRegisteredHost = new Set<FileSystemEngineHostBase>()
 
-  return context => {
+  return (context) => {
     if (
       !context.engine ||
       !context.engine['_host'] ||
