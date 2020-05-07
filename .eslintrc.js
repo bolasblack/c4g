@@ -13,6 +13,9 @@ module.exports = {
         project: './tsconfig.eslint.json',
       },
       extends: ['./node_modules/@c4605/toolconfs/eslintrc.ts'],
+      rules: {
+        '@typescript-eslint/ban-ts-ignore': 'off',
+      },
     },
   ],
 }
