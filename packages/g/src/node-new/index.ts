@@ -27,6 +27,7 @@ export function main(options: Options): Rule {
   const templateOpts = {
     ...options,
     dasherize: strings.dasherize,
+    dot: '.',
   }
 
   return chain([
