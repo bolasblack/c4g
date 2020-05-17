@@ -10,11 +10,11 @@ import {
   chain,
   schematic,
 } from '@angular-devkit/schematics'
-import { Schema as Options } from './schema'
 import {
   installNodePackage,
   NodePackageType,
-} from '../utils/rules/installNodePackage'
+} from '@c4605/schematic-utils/lib/rules/installNodePackage'
+import { Schema as Options } from './schema'
 import {
   Options as ProjToolsOptions,
   IncludeItem,
@@ -27,6 +27,7 @@ export function main(options: Options): Rule {
   const templateOpts = {
     ...options,
     dasherize: strings.dasherize,
+    dot: '.',
   }
 
   return chain([
@@ -59,7 +60,7 @@ function cleanupSpecFiles(options: Options): Rule {
   return (tree, ctx) => {
     const walkTree = options.name ? tree.getDir(options.name) : tree.root
     if (featuresEnabled([IncludeItem.Jest])(walkTree, ctx)) return
-    walkTree.visit(f => {
+    walkTree.visit((f) => {
       if (f.endsWith('.spec.ts')) {
         tree.delete(f)
       }

@@ -12,15 +12,15 @@ import { Observable, of, empty, from } from 'rxjs'
 import { mergeMap, toArray } from 'rxjs/operators'
 import * as inquirer from 'inquirer'
 import * as path from 'path'
-import { Schema as Options, IncludeItem } from './schema'
 import { produce } from 'immer'
-import { file as fileSource } from '../utils/sources/file'
+import { file as fileSource } from '@c4605/schematic-utils/lib/sources/file'
 import {
   installNodePackage,
   NodePackageType,
-} from '../utils/rules/installNodePackage'
-import { file as fileRule } from '../utils/rules/file'
-import { when } from '../utils/rules/when'
+} from '@c4605/schematic-utils/lib/rules/installNodePackage'
+import { file as fileRule } from '@c4605/schematic-utils/lib/rules/file'
+import { when } from '@c4605/schematic-utils/lib/rules/when'
+import { Schema as Options, IncludeItem } from './schema'
 
 export { featuresEnabled } from './featureEnabled'
 
@@ -29,13 +29,13 @@ export { Options, IncludeItem }
 export function main(options: Options): Rule {
   return (tree, ctx) =>
     (options.interactive ? requestOptions(options) : of(options)).pipe(
-      mergeMap(opts => {
+      mergeMap((opts) => {
         opts.include = opts.include || []
         return from(opts.include)
       }),
       mergeMap(getRule.bind(null, options)),
       toArray(),
-      mergeMap(rules => {
+      mergeMap((rules) => {
         if (rules.length) {
           rules = rules.concat(
             installNodePackage({
@@ -167,7 +167,7 @@ export function jestRule(options: Options = {}): Rule {
     addJestDependencies(options),
     configFile(options, 'jest.config.js', [template(templateOpts)]),
     when(
-      tree => tree.exists(pkgJsonPath),
+      (tree) => tree.exists(pkgJsonPath),
       fileRule(
         pkgJsonPath,
         produce((content: any) => {

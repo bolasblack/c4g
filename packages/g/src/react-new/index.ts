@@ -1,3 +1,4 @@
+import * as path from 'path'
 import { strings } from '@angular-devkit/core'
 import {
   Rule,
@@ -11,17 +12,18 @@ import {
   move,
   filter,
 } from '@angular-devkit/schematics'
+import {
+  installNodePackage,
+  NodePackageType,
+} from '@c4605/schematic-utils/lib/rules/installNodePackage'
+import { file as fileSource } from '@c4605/schematic-utils/lib/sources/file'
 import { Schema as Options } from './schema'
 import {
   Options as ProjToolsOptions,
   IncludeItem,
   featuresEnabled,
 } from '../proj-tools'
-import {
-  installNodePackage,
-  NodePackageType,
-} from '../utils/rules/installNodePackage'
-import { file as fileSource } from '../utils/sources/file'
+import { file } from '@c4605/schematic-utils/lib/rules/file'
 
 export { Options }
 
@@ -29,6 +31,7 @@ export function main(options: Options): Rule {
   const templateOpts = {
     ...options,
     dasherize: strings.dasherize,
+    dot: '.',
   }
 
   return chain([
@@ -46,11 +49,18 @@ export function main(options: Options): Rule {
     }),
     mergeWith(
       apply(url('./files'), [
-        filter(path => !path.endsWith('/package.json.template')),
+        filter((path) => !path.endsWith('/package.json.template')),
         applyTemplates(templateOpts),
         template(templateOpts),
         move(options.name),
       ]),
+    ),
+    file(
+      path.join(options.name, '.eslintrc.json'),
+      (content: Record<string, any>) => {
+        content.extends.push('./node_modules/@c4605/toolconfs/eslintrc.react')
+        return content
+      },
     ),
     cleanupSpecFiles(options),
     installNodePackage({
@@ -86,7 +96,7 @@ function cleanupSpecFiles(options: Options): Rule {
   return (tree, ctx) => {
     const walkTree = options.name ? tree.getDir(options.name) : tree.root
     if (featuresEnabled([IncludeItem.Jest])(walkTree, ctx)) return
-    walkTree.visit(f => {
+    walkTree.visit((f) => {
       if (f.endsWith('.spec.ts')) {
         tree.delete(f)
       }

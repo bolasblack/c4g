@@ -11,12 +11,12 @@ import {
   SchematicsException,
 } from '@angular-devkit/schematics'
 import { Schema as Options } from './schema'
-import { execShell } from '../utils/rules/execShell'
+import { execShell } from '@c4605/schematic-utils/lib/rules/execShell'
 
 export { Options }
 
 export function main(options: Options): Rule {
-  return tree => {
+  return (tree) => {
     return chain([
       addSchematicInfo(options),
       mergeWith(
@@ -36,7 +36,7 @@ export function main(options: Options): Rule {
 function addSchematicInfo(options: Options): Rule {
   const infoFilePath = '/src/collection.json'
 
-  return tree => {
+  return (tree) => {
     const rawCollection = tree.read(infoFilePath)
 
     if (!rawCollection) {

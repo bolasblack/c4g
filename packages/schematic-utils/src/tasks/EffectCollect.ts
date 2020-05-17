@@ -35,13 +35,15 @@ type Options = EffectCollectTask.Options
 
 export const EffectCollectTaskExecutor = {
   name: EffectCollectExecutorName,
-  create: async () => createEffectCollectTaskExecutor(),
+  create: createEffectCollectTaskExecutor,
   registerInContext: (context: TypedSchematicContext<any, any>) => {
     registerInContext(context)
   },
 }
 const registerInContext = registerInContextFactory(EffectCollectTaskExecutor)
 
-function createEffectCollectTaskExecutor(): TaskExecutor<Options> {
-  return (options: Options, context: SchematicContext) => empty()
+async function createEffectCollectTaskExecutor<T extends Options>(
+  options?: T,
+): Promise<TaskExecutor<T>> {
+  return (options: Options | undefined, context: SchematicContext) => empty()
 }

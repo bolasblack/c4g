@@ -1,10 +1,11 @@
 {
   "name": "@c4/create-node",
-  "version": "0.1.7",
+  "version": "0.1.9",
   "main": "lib/index.js",
   "bin": "lib/index.js",
   "license": "MIT",
   "scripts": {
+    "test": "exit 0",
     "prepublishOnly": "yarn build",
     "build": "tsc --build .",
     "watch": "tsc --watch -p ."
@@ -15,8 +16,8 @@
     "typescript": "^3.6.2"
   },
   "dependencies": {
-    "@angular-devkit/schematics-cli": "^0.803.2",
-    "@c4/g": "^0.4.26",
+    "@angular-devkit/schematics-cli": "^0.901.0",
+    "@c4/g": "^0.4.28",
     "dedent": "^0.7.0"
   }
 }

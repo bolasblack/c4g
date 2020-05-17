@@ -29,7 +29,7 @@ export class SchematicTestRunner extends SchematicTestRunnerBase {
     schematicName: string,
     parent?: Partial<TypedSchematicContext<{}, {}>>,
     executionOptions?: Partial<ExecutionOptions>,
-  ) {
+  ): TypedSchematicContext<any, any> {
     const _collection: Collection<{}, {}> = this['_collection']
     const _logger: logging.Logger = this['_logger']
     const { engine } = this
@@ -106,7 +106,7 @@ export class SchematicTestRunner extends SchematicTestRunnerBase {
     options: SchematicSchemaT | undefined,
     tree: Observable<Tree>,
     parentContext: Partial<TypedSchematicContext<{}, {}>>,
-  ) {
+  ): Observable<Tree> {
     return schematic.call(options || {}, tree, parentContext)
   }
 }

@@ -50,29 +50,34 @@ export namespace ShellExecTask {
 
 export const ShellExecTaskExecutor = {
   name: ShellExecTaskExecutorName,
-  create: async () => createShellExecTaskExecutor(),
+  create: createShellExecTaskExecutor,
   registerInContext: (context: TypedSchematicContext<any, any>) => {
     registerInContext(context)
   },
 }
 const registerInContext = registerInContextFactory(ShellExecTaskExecutor)
 
-function createShellExecTaskExecutor(): TaskExecutor<Options> {
-  return (options: Options) =>
-    runShell(options.command, options.args, options.options).pipe(
+async function createShellExecTaskExecutor<T extends Options>(
+  options?: T,
+): Promise<TaskExecutor<T>> {
+  return (options: Options | undefined) => {
+    if (!options) throw new Error('Options is required')
+
+    return runShell(options.command, options.args, options.options).pipe(
       catchError(_ => {
         const rawCommand = `${options.command} ${options.args.join(' ')}`
         const message = `Command \`${rawCommand}\` execute failed:`
         throw new Error(message)
       }),
     )
+  }
 }
 
 export function runShell(
   command: string,
   args: string[] = [],
   options: SpawnOptions = {},
-) {
+): Observable<void> {
   const outputStream = process.stdout
   const errorStream = process.stderr
   const spawnOptions: SpawnOptions = {
@@ -81,7 +86,7 @@ export function runShell(
     ...options,
   }
 
-  return new Observable<void>(obs => {
+  return new Observable(obs => {
     spawn(command, args, spawnOptions).on('close', (code, signal) => {
       if (code === 0) {
         obs.next()

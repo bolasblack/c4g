@@ -8,7 +8,9 @@ export type TreePredicate = (tree: Tree) => boolean | Observable<boolean>
 export function when(predicate: TreePredicate, rule: Rule): Rule {
   return (tree, ctx) => {
     return ensureObservable(predicate(tree)).pipe(
-      mergeMap(available => (available ? callRule(rule, tree, ctx) : of(tree))),
+      mergeMap((available) =>
+        available ? callRule(rule, tree, ctx) : of(tree),
+      ),
     )
   }
 }
