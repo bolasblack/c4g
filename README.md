@@ -2,15 +2,6 @@
 
 ## Plans
 
-- `react-new` schematic
-  - [x] Create `react-new` schematic
-  - [x] Add `proj-tools` schematic
-  - [ ] Publish `@c4/create-react` (`yarn create @c4/react`)
-
-Related:
-
-- https://yarnpkg.com/blog/2017/05/12/introducing-yarn/
-
 ## Testing
 
 To test locally:
