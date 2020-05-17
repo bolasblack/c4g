@@ -1,3 +1,4 @@
+import * as path from 'path'
 import { strings } from '@angular-devkit/core'
 import {
   Rule,
@@ -22,6 +23,7 @@ import {
   IncludeItem,
   featuresEnabled,
 } from '../proj-tools'
+import { file } from '@c4605/schematic-utils/lib/rules/file'
 
 export { Options }
 
@@ -52,6 +54,13 @@ export function main(options: Options): Rule {
         template(templateOpts),
         move(options.name),
       ]),
+    ),
+    file(
+      path.join(options.name, '.eslintrc.json'),
+      (content: Record<string, any>) => {
+        content.extends.push('./node_modules/@c4605/toolconfs/eslintrc.react')
+        return content
+      },
     ),
     cleanupSpecFiles(options),
     installNodePackage({
