@@ -11,6 +11,11 @@
       "factory": "./node-new/index#main",
       "schema": "./node-new/schema.json"
     },
+    "lib-new": {
+      "description": "Create a new library project",
+      "factory": "./lib-new/index#main",
+      "schema": "./lib-new/schema.json"
+    },
     "schematic": {
       "description": "Add new schematic to c4g",
       "factory": "./schematic/index#main",

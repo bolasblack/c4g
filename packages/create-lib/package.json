@@ -1,6 +1,6 @@
 {
-  "name": "@c4/create-react",
-  "version": "0.2.0",
+  "name": "@c4/create-lib",
+  "version": "0.1.0",
   "main": "lib/index.js",
   "bin": "lib/index.js",
   "license": "MIT",
@@ -11,9 +11,7 @@
     "watch": "tsc --watch -p ."
   },
   "devDependencies": {
-    "@types/dedent": "^0.7.0",
-    "@types/node": "^12.7.2",
-    "typescript": "^3.6.2"
+    "@types/dedent": "^0.7.0"
   },
   "dependencies": {
     "@angular-devkit/schematics-cli": "^0.901.0",

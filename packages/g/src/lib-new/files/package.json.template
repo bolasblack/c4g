@@ -1,0 +1,14 @@
+{
+  "name": "<%= name %>",
+  "version": "0.0.0",
+  "main": "lib/index.js",<% if (author) { %>
+  "author": "<%= author %>",<% } %>
+  "license": "MIT",
+  "scripts": {
+    "prepublishOnly": "yarn build",
+    "build": "start build",
+    "watch": "start watch"
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}
