@@ -1,0 +1,21 @@
+{
+  "name": "@c4/create-lib",
+  "version": "0.0.0",
+  "main": "lib/index.js",
+  "bin": "lib/index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "exit 0",
+    "prepublishOnly": "yarn build",
+    "build": "tsc --build .",
+    "watch": "tsc --watch -p ."
+  },
+  "devDependencies": {
+    "@types/dedent": "^0.7.0"
+  },
+  "dependencies": {
+    "@angular-devkit/schematics-cli": "^0.901.0",
+    "@c4/g": "^0.4.28",
+    "dedent": "^0.7.0"
+  }
+}
