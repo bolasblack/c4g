@@ -9,7 +9,6 @@
     "build": "tsc --build .",
     "watch": "tsc --watch -p ."
   },
-  "prettier": "@c4605/toolconfs/prettierrc",
   "keywords": [
     "schematics"
   ],
@@ -20,7 +19,6 @@
     "@angular-devkit/schematics": "^8.3.2 || ^9.0.0"
   },
   "dependencies": {
-    "@c4605/toolconfs": "^5.0.0",
     "chalk": "^4.0.0",
     "js-yaml": "^3.13.1",
     "package-json": "^6.5.0",
