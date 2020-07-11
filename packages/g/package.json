@@ -1,6 +1,6 @@
 {
   "name": "@c4/g",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "A blank schematics",
   "scripts": {
     "g": "schematics",
@@ -24,7 +24,7 @@
   "dependencies": {
     "@angular-devkit/core": "^9.0.0",
     "@angular-devkit/schematics": "^9.0.0",
-    "@c4605/schematic-utils": "^0.1.1",
+    "@c4605/schematic-utils": "^0.1.2",
     "immer": "^6.0.0",
     "inquirer": "^7.0.0"
   },
