@@ -15,7 +15,6 @@
     "test": "yarn build-schema-ts && NODE_ENV=test jest",
     "test:ci": "yarn test --coverage --passWithNoTests"
   },
-  "prettier": "@c4605/toolconfs/prettierrc",
   "keywords": [
     "schematics"
   ],
@@ -26,28 +25,13 @@
     "@angular-devkit/core": "^9.0.0",
     "@angular-devkit/schematics": "^9.0.0",
     "@c4605/schematic-utils": "^0.1.1",
-    "@c4605/toolconfs": "^5.0.0",
-    "@types/inquirer": "^6.5.0",
-    "@types/node": "^12.7.2",
-    "@types/semver": "^7.0.0",
-    "chalk": "^4.0.0",
     "immer": "^6.0.0",
-    "inquirer": "^7.0.0",
-    "js-yaml": "^3.13.1",
-    "package-json": "^6.5.0",
-    "semver": "^7.0.0",
-    "typescript": "~3.9.0"
+    "inquirer": "^7.0.0"
   },
   "devDependencies": {
-    "@types/chalk": "^2.2.0",
-    "@types/jest": "^25.0.0",
-    "@types/js-yaml": "^3.12.1",
+    "@types/inquirer": "^6.5.0",
     "concurrently": "^5.0.0",
     "coveralls": "^3.0.6",
-    "jest": "^26.0.0",
-    "jest-cli": "^26.0.0",
-    "quicktype": "^15.0.199",
-    "ts-jest": "^26.0.0",
-    "ts-node": "^8.3.0"
+    "quicktype": "^15.0.199"
   }
 }

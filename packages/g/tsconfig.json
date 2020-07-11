@@ -1,7 +1,6 @@
 {
-  "extends": "@c4605/toolconfs/tsconfig-node",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "target": "es6",
     // some angular-cli function type not strict matched
     "strictFunctionTypes": false
   },

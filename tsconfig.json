@@ -1,0 +1,6 @@
+{
+  "extends": "@c4605/toolconfs/tsconfig-node",
+  "compilerOptions": {
+    "target": "es6"
+  }
+}
