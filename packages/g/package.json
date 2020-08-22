@@ -29,7 +29,7 @@
     "inquirer": "^7.0.0"
   },
   "devDependencies": {
-    "@types/inquirer": "^6.5.0",
+    "@types/inquirer": "^7.0.0",
     "concurrently": "^5.0.0",
     "coveralls": "^3.0.6",
     "quicktype": "^15.0.199"
