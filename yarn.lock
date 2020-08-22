@@ -2,6 +2,17 @@
 # yarn lockfile v1
 
 
+"@angular-devkit/core@10.0.7":
+  version "10.0.7"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-10.0.7.tgz#f88c1fe316e83049703c658ec82b2d1f811b1e36"
+  integrity sha512-pXaZgsQ8LHpRx4QGAUYDE8GwBQLAtoqPh6oUCwRJwBExm5rl13OGPTBWewHiq0ysV/SnFXvOjxwAaHQvC1AgZw==
+  dependencies:
+    ajv "6.12.3"
+    fast-json-stable-stringify "2.1.0"
+    magic-string "0.25.7"
+    rxjs "6.5.5"
+    source-map "0.7.3"
+
 "@angular-devkit/core@9.1.11", "@angular-devkit/core@^9.0.0":
   version "9.1.11"
   resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-9.1.11.tgz#a2de3de721488164297bfccefcb08f28a7a9108e"
@@ -13,20 +24,29 @@
     rxjs "6.5.4"
     source-map "0.7.3"
 
-"@angular-devkit/schematics-cli@^0.901.0":
-  version "0.901.11"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics-cli/-/schematics-cli-0.901.11.tgz#518f15059f0ab38e23b8496494cff734c36ea002"
-  integrity sha512-ijzpqcIIMHwCtBpTd260FflAVCaYquJL3fRv7en9CPd6oyiVd2vISikG5YOTN/qSOG9g5ZtaN/iwNCxtlGBEgA==
+"@angular-devkit/schematics-cli@^0.1000.0":
+  version "0.1000.7"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics-cli/-/schematics-cli-0.1000.7.tgz#e0ee3f62eb4497208ea61e69681082aa693ed9ed"
+  integrity sha512-5zXO0WfyRySZudv2/EEC/UVfG75y7TGrdMfVZNc1WP0SB54psA0U3Z3jT+6Y9VjdjmXdxjVfybhuOzZ4I1fs0Q==
   dependencies:
-    "@angular-devkit/core" "9.1.11"
-    "@angular-devkit/schematics" "9.1.11"
-    "@schematics/schematics" "0.901.11"
+    "@angular-devkit/core" "10.0.7"
+    "@angular-devkit/schematics" "10.0.7"
+    "@schematics/schematics" "0.1000.7"
     inquirer "7.1.0"
     minimist "1.2.5"
-    rxjs "6.5.4"
+    rxjs "6.5.5"
     symbol-observable "1.2.0"
 
-"@angular-devkit/schematics@9.1.11", "@angular-devkit/schematics@^9.0.0":
+"@angular-devkit/schematics@10.0.7":
+  version "10.0.7"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-10.0.7.tgz#460272c3fa4a4838d2da65a0e3f512c557d486f1"
+  integrity sha512-eyyYPgpjtr3h7WbnNbkDubJ/p+8TgKU6abWd+NmBfTvyeHrpVFUYZabNRcdXwUDSVzfTQKdmLynIkESj/KROrg==
+  dependencies:
+    "@angular-devkit/core" "10.0.7"
+    ora "4.0.4"
+    rxjs "6.5.5"
+
+"@angular-devkit/schematics@^9.0.0":
   version "9.1.11"
   resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-9.1.11.tgz#a6357236bed2417fd3dcb96f7a741fe3bcab4b12"
   integrity sha512-1A3Oryhl8hpibJK2J5j2FYNzjfvBJcR4wuNRKzl27kBvVsdRXLQzMD3aAgqFvlMgUWhloQs4tZwuinu0E2VP1A==
@@ -1544,13 +1564,13 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@schematics/schematics@0.901.11":
-  version "0.901.11"
-  resolved "https://registry.yarnpkg.com/@schematics/schematics/-/schematics-0.901.11.tgz#8496ccc75d927a5abb654df3ecfce621a82a998b"
-  integrity sha512-1+IkphOrYTTJUfJdyLAqAUn+sodXCDpxbu+0DXskj8CZK/OMh08+y8LqILsxceE0eKGTlWTK+ntzDxIu7ViXJg==
+"@schematics/schematics@0.1000.7":
+  version "0.1000.7"
+  resolved "https://registry.yarnpkg.com/@schematics/schematics/-/schematics-0.1000.7.tgz#febdc9bd2ef81a46f825af392c95c1354a59b47a"
+  integrity sha512-mucBf5EkhME9O0TvxPeiUTEuudRvEOSjhF/YFHEp/9NZB1JH9lXtBQ60IN6xtCLEbxJmAzhZSns9QPPrHaZRrw==
   dependencies:
-    "@angular-devkit/core" "9.1.11"
-    "@angular-devkit/schematics" "9.1.11"
+    "@angular-devkit/core" "10.0.7"
+    "@angular-devkit/schematics" "10.0.7"
 
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
@@ -1902,7 +1922,7 @@ ajv@6.12.0:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-ajv@^6.10.0, ajv@^6.10.2, ajv@^6.5.5:
+ajv@6.12.3, ajv@^6.10.0, ajv@^6.10.2, ajv@^6.5.5:
   version "6.12.3"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.12.3.tgz#18c5af38a111ddeb4f2697bd78d68abc1cabd706"
   integrity sha512-4K0cK3L1hsqk9xIb2z9vs/XU+PGJZ9PNpJRDS9YLzmNdX6jmVPfamLvTJr0aDAusnHyCHO6MjzlkAsgtqp9teA==
@@ -6401,6 +6421,20 @@ ora@4.0.3:
     strip-ansi "^6.0.0"
     wcwidth "^1.0.1"
 
+ora@4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/ora/-/ora-4.0.4.tgz#e8da697cc5b6a47266655bf68e0fb588d29a545d"
+  integrity sha512-77iGeVU1cIdRhgFzCK8aw1fbtT1B/iZAvWjS+l/o1x0RShMgxHUZaD2yDpWsNCPwXg9z1ZA78Kbdvr8kBmG/Ww==
+  dependencies:
+    chalk "^3.0.0"
+    cli-cursor "^3.1.0"
+    cli-spinners "^2.2.0"
+    is-interactive "^1.0.0"
+    log-symbols "^3.0.0"
+    mute-stream "0.0.8"
+    strip-ansi "^6.0.0"
+    wcwidth "^1.0.1"
+
 os-homedir@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/os-homedir/-/os-homedir-1.0.2.tgz#ffbc4988336e0e833de0c168c7ef152121aa7fb3"
@@ -7399,7 +7433,7 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   dependencies:
     aproba "^1.1.1"
 
-rxjs@6.5.4, rxjs@6.6.2, rxjs@^6.4.0, rxjs@^6.5.2, rxjs@^6.5.3, rxjs@^6.5.5, rxjs@^6.6.0:
+rxjs@6.5.4, rxjs@6.5.5, rxjs@6.6.2, rxjs@^6.4.0, rxjs@^6.5.2, rxjs@^6.5.3, rxjs@^6.5.5, rxjs@^6.6.0:
   version "6.6.2"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.6.2.tgz#8096a7ac03f2cc4fe5860ef6e572810d9e01c0d2"
   integrity sha512-BHdBMVoWC2sL26w//BCu3YzKT4s2jip/WhwsGEDmeKYBhKDZeYezVUnHatYB7L85v5xs0BAQmg6BEYJEKxBabg==
