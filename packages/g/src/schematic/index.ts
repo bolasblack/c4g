@@ -16,7 +16,7 @@ import { execShell } from '@c4605/schematic-utils/lib/rules/execShell'
 export { Options }
 
 export function main(options: Options): Rule {
-  return (tree) => {
+  return () => {
     return chain([
       addSchematicInfo(options),
       mergeWith(
@@ -28,7 +28,7 @@ export function main(options: Options): Rule {
           move(path.join('src', strings.dasherize(options.name))),
         ]),
       ),
-      execShell('yarn', ['build-schema-ts']),
+      execShell('yarn', ['build:schema-ts']),
     ])
   }
 }

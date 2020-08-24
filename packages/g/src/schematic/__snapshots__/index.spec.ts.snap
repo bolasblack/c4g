@@ -82,7 +82,7 @@ Array [
     "name": "@c4g/shell-exec-task",
     "options": Object {
       "args": Array [
-        "build-schema-ts",
+        "build:schema-ts",
       ],
       "command": "yarn",
       "options": Object {},
