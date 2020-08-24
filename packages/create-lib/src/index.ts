@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import * as dedent from 'dedent'
 import { main as schematicsCliMain } from '@angular-devkit/schematics-cli/bin/schematics'
 

@@ -1,5 +1,6 @@
 # Outputs
 packages/**/lib
+packages/**/dist
 
 # IDEs
 .idea/

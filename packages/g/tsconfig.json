@@ -3,7 +3,5 @@
   "compilerOptions": {
     // some angular-cli function type not strict matched
     "strictFunctionTypes": false
-  },
-  "include": ["src/**/*"],
-  "exclude": ["src/*/files/**/*"]
+  }
 }

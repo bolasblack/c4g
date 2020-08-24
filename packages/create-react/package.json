@@ -12,12 +12,9 @@
   },
   "devDependencies": {
     "@types/dedent": "^0.7.0",
-    "@types/node": "^12.7.2",
-    "typescript": "^4.0.0"
+    "dedent": "^0.7.0"
   },
   "dependencies": {
-    "@angular-devkit/schematics-cli": "^0.1000.0",
-    "@c4/g": "^0.5.2",
-    "dedent": "^0.7.0"
+    "@c4/g": "^0.5.2"
   }
 }
