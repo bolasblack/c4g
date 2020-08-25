@@ -41,7 +41,6 @@ const config: RollupOptions = {
         { src: '**/files/**/*', dest: 'dist' },
         { src: '**/+(collection|schema).json', dest: 'dist' },
       ],
-      verbose: true,
       flatten: false,
       cwd: './src',
     }),

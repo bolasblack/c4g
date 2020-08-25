@@ -134,7 +134,7 @@ export function eslintRule(options: Options): Rule {
       () => options.include!.includes(IncludeItem.Prettier),
       fileRule(
         path.join(options.cwd || '', '.eslintrc.json'),
-        (content: Record<string, unknown>) => ({
+        (content: Record<string, any>) => ({
           ...content,
           extends: [
             ...content.extends,

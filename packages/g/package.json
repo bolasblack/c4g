@@ -10,7 +10,7 @@
     "watch": "concurrently 'yarn:watch:schema-ts' 'yarn:watch-ts'",
     "watch:ts": "rollup -cw",
     "watch:schema-ts": "yarn build:schema-ts && trap 'exit' INT; while true; do ls src/**/schema.json | entr -d yarn build:schema-ts /_; done",
-    "prepublishOnly": "yarn clean-output && yarn build",
+    "prepublishOnly": "rm -rf dist && yarn build",
     "test": "yarn build:schema-ts && NODE_ENV=test jest",
     "test:ci": "yarn test --coverage --passWithNoTests"
   },
@@ -20,9 +20,7 @@
   "author": "c4605 <bolasblack@gmail.com>",
   "license": "MIT",
   "schematics": "./dist/collection.json",
-  "dependencies": {
-    "chokidar": "^3.4.2"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/inquirer": "^7.0.0",
     "concurrently": "^5.0.0",
