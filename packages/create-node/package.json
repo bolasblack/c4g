@@ -1,6 +1,6 @@
 {
   "name": "@c4/create-node",
-  "version": "0.2.2",
+  "version": "0.3.0-alpha.0",
   "main": "lib/index.js",
   "bin": "lib/index.js",
   "license": "MIT",
@@ -15,6 +15,6 @@
     "dedent": "^0.7.0"
   },
   "dependencies": {
-    "@c4/g": "^0.5.2"
+    "@c4/g": "^0.6.0-alpha.0"
   }
 }
