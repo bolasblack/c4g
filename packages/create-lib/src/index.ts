@@ -5,7 +5,7 @@ import { main as schematicsCliMain } from '@angular-devkit/schematics-cli/bin/sc
 
 export function main(name: string, opts: string[]): Promise<number> {
   // @angular-devkit/schematics-cli may be hoisted, but we don't want use hoisted @c4/g
-  const c4gCollJsonPath = require.resolve('@c4/g/src/collection.json')
+  const c4gCollJsonPath = eval('require.resolve')('@c4/g/dist/collection.json')
 
   return schematicsCliMain({
     args: [

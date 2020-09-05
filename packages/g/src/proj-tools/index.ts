@@ -51,14 +51,14 @@ export function main(options: Options): Rule {
 }
 
 function getRule(options: Options, includeItem: IncludeItem): Observable<Rule> {
-  const install = (opts: Parameters<typeof installNodePackage>[0]) =>
+  const install = (opts: Parameters<typeof installNodePackage>[0]): Rule =>
     installNodePackage({
       workingDirectory: options.cwd,
       type: NodePackageType.Dev,
       ...opts,
     })
 
-  const filePath = (relativePath: string) =>
+  const filePath = (relativePath: string): string =>
     path.join(options.cwd || '', relativePath)
 
   switch (includeItem) {
@@ -68,10 +68,13 @@ function getRule(options: Options, includeItem: IncludeItem): Observable<Rule> {
           install({
             packageNames: ['prettier'],
           }),
-          fileRule(filePath('package.json'), (content: object) => ({
-            ...content,
-            prettier: '@c4605/toolconfs/prettierrc',
-          })),
+          fileRule(
+            filePath('package.json'),
+            (content: Record<string, unknown>) => ({
+              ...content,
+              prettier: '@c4605/toolconfs/prettierrc',
+            }),
+          ),
         ]),
       )
 
@@ -81,7 +84,7 @@ function getRule(options: Options, includeItem: IncludeItem): Observable<Rule> {
           install({
             packageNames: ['commitlint', '@commitlint/config-conventional'],
           }),
-          configFile(options, '.commitlintrc.js'),
+          configFile(options, '__dot__commitlintrc.js'),
         ]),
       )
 
@@ -110,14 +113,23 @@ function getRule(options: Options, includeItem: IncludeItem): Observable<Rule> {
 }
 
 function configFile(options: Options, name: string, rules: Rule[] = []): Rule {
+  const templateOpts = {
+    dasherize: strings.dasherize,
+    dot: '.',
+  }
+
   return mergeWith(
-    apply(fileSource(`./files/${name}`), [move(options.cwd || ''), ...rules]),
+    apply(fileSource(`./files/${name}`), [
+      move(options.cwd || ''),
+      ...rules,
+      template(templateOpts),
+    ]),
   )
 }
 
 export function eslintRule(options: Options): Rule {
   return chain([
-    configFile(options, '.eslintrc.json'),
+    configFile(options, '__dot__eslintrc.json'),
     when(
       () => options.include!.includes(IncludeItem.Prettier),
       fileRule(
