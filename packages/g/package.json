@@ -1,6 +1,6 @@
 {
   "name": "@c4/g",
-  "version": "0.6.0-alpha.1",
+  "version": "0.6.0",
   "description": "A blank schematics",
   "scripts": {
     "g": "schematics",
