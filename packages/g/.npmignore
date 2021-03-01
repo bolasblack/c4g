@@ -1,7 +1,5 @@
 # ignores TypeScript files, but keeps definitions and `files` folder files.
-src/**/*.ts
-!src/**/*.d.ts
-!src/**/files/**/*.ts
+src/**/*
 
 # tests
 __snapshots__
