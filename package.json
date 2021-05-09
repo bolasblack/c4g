@@ -15,7 +15,7 @@
   "devDependencies": {
     "@c4605/toolconfs": "^5.0.0",
     "@commitlint/config-conventional": "^9.0.0",
-    "@rollup/plugin-commonjs": "^15.0.0",
+    "@rollup/plugin-commonjs": "^19.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@types/jest": "^26.0.0",
