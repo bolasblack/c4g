@@ -21,11 +21,11 @@
   "license": "MIT",
   "schematics": "./dist/collection.json",
   "devDependencies": {
-    "@types/inquirer": "^7.0.0",
+    "@types/inquirer": "^8.0.0",
     "concurrently": "^5.0.0",
     "coveralls": "^3.0.6",
     "immer": "^7.0.0",
-    "inquirer": "^7.0.0",
+    "inquirer": "^8.0.0",
     "quicktype": "^15.0.199"
   }
 }
