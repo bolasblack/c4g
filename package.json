@@ -49,6 +49,6 @@
     "@angular-devkit/schematics-cli": "^0.1000.0"
   },
   "resolutions": {
-    "**/rxjs": "^6.6.0"
+    "**/rxjs": "^7.0.0"
   }
 }
