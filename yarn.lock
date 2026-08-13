@@ -1899,10 +1899,10 @@
   dependencies:
     eslint-visitor-keys "^1.1.0"
 
-"@vercel/ncc@^0.24.0":
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/@vercel/ncc/-/ncc-0.24.0.tgz#a2e8783a185caa99b5d8961a57dfc9665de16296"
-  integrity sha512-crqItMcIwCkvdXY/V3/TzrHJQx6nbIaRqE1cOopJhgGX6izvNov40SmD//nS5flfEvdK54YGjwVVq+zG6crjOg==
+"@vercel/ncc@^0.45.0":
+  version "0.45.0"
+  resolved "https://registry.yarnpkg.com/@vercel/ncc/-/ncc-0.45.0.tgz#e1e2424d9eb0dbb3a8fa7067e36e0da96d42a316"
+  integrity sha512-8zPi1yO2mHpoKTD+e+Bf0ZT3e+sWHSOyGapm9s7b5R0gxJi3CiFTqmeQiMEyu6ejrz2s09M8JkEoUaTWjBJPQQ==
 
 "@yarnpkg/lockfile@^1.1.0":
   version "1.1.0"
